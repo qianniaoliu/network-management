@@ -8,8 +8,8 @@
 		<module>network-management-auth</module>
 		<module>network-management-service</module>
 		<module>network-management-domain</module>
-		<module>network-management-dao</module>
 		<module>network-management-common</module>
+		<module>network-management-mapper</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

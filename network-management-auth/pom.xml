@@ -15,19 +15,13 @@
     <dependencies>
         <dependency>
             <groupId>com.network.management</groupId>
-            <artifactId>network-management-dao</artifactId>
+            <artifactId>network-management-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>2.3.3</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.network.management</groupId>
-            <artifactId>network-management-dao</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

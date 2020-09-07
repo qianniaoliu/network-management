@@ -1,7 +1,7 @@
 package com.network.management.mapper;
 
+import com.network.management.User;
 
-import com.network.manaement.User;
 
 /**
  * @author yusheng

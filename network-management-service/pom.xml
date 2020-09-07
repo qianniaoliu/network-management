@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.network.management</groupId>
-            <artifactId>network-management-dao</artifactId>
+            <artifactId>network-management-mapper</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

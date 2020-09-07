@@ -1,4 +1,4 @@
-package com.network.manaement;
+package com.network.management;
 
 public class User {
 

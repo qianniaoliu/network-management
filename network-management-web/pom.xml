@@ -12,5 +12,13 @@
 
     <artifactId>network-management-web</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.network.management</groupId>
+            <artifactId>network-management-auth</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

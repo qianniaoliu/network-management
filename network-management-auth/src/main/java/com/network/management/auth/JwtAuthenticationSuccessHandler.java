@@ -11,7 +11,6 @@ import org.springframework.security.web.savedrequest.DefaultSavedRequest;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -23,7 +22,6 @@ import java.io.IOException;
  * @author yusheng
  * @date 2020-09-07
  */
-@Component
 public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private final static Logger logger = LoggerFactory.getLogger(JwtAuthenticationSuccessHandler.class);

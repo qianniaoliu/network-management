@@ -12,5 +12,13 @@
 
     <artifactId>network-management-domain</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.network.management</groupId>
+            <artifactId>network-management-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

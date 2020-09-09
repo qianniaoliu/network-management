@@ -1,7 +1,6 @@
 package com.network.management.controller;
 
-import com.network.management.account.RegistryVo;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.network.management.vo.RegistryVo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

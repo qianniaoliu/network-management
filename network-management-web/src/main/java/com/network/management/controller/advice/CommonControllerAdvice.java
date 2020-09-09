@@ -1,6 +1,7 @@
 package com.network.management.controller.advice;
 
 import com.network.management.exception.IllegalParamException;
+import com.network.management.vo.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -12,10 +13,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class CommonControllerAdvice {
 
     @ExceptionHandler(Exception.class)
-    public String handle(Exception ex){
+    public Result handle(Exception ex){
         if(ex instanceof IllegalParamException){
-            return ex.getMessage();
+            return Result.failure(ex.getMessage());
         }
-        return "system error";
+        return Result.failure("system error");
     }
 }

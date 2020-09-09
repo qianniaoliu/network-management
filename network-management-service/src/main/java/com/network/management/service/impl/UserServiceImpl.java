@@ -1,7 +1,7 @@
 package com.network.management.service.impl;
 
 import com.network.management.User;
-import com.network.management.account.RegistryVo;
+import com.network.management.vo.RegistryVo;
 import com.network.management.enums.YnEnum;
 import com.network.management.exception.IllegalParamException;
 import com.network.management.mapper.UserMapper;

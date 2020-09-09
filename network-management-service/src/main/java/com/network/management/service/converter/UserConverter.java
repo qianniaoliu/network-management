@@ -1,7 +1,7 @@
 package com.network.management.service.converter;
 
 import com.network.management.User;
-import com.network.management.account.RegistryVo;
+import com.network.management.vo.RegistryVo;
 import org.springframework.core.convert.converter.Converter;
 
 /**

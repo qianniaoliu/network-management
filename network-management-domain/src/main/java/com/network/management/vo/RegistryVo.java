@@ -1,4 +1,4 @@
-package com.network.management.account;
+package com.network.management.vo;
 
 import com.network.management.exception.IllegalParamException;
 import lombok.Data;

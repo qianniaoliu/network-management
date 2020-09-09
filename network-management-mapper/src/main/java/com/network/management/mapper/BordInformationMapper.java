@@ -1,0 +1,23 @@
+package com.network.management.mapper;
+
+import com.network.management.BordInformation;
+
+/**
+ * 巷道图基本信息mapper
+ *
+ * @author yusheng
+ */
+public interface BordInformationMapper {
+
+    /**
+     * 新增巷道图基本信息
+     * @param bordInformation 插入信息
+     */
+    void insert(BordInformation bordInformation);
+
+    /**
+     * 根据主键修改巷道图基本信息
+     * @param bordInformation 修改信息
+     */
+    void updateByKey(BordInformation bordInformation);
+}

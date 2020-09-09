@@ -5,9 +5,12 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="yn" jdbcType="TINYINT" property="yn" />
+        <result column="modified" jdbcType="DATE" property="modified" />
+        <result column="created" jdbcType="DATE" property="created" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, username, password
+        id, username, password, yn, modified, created
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -28,10 +31,10 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="User">
-        insert into user (id, username, password
+        insert into user (id, username, password, yn, modified, created
         )
-        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-               )
+        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
     </insert>
     <insert id="insertSelective" parameterType="User">
         insert into user

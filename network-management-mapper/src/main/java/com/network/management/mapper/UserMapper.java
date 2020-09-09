@@ -11,8 +11,14 @@ public interface UserMapper {
 
     /**
      * 通过用户名获取密码
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return 用户对象
      */
     User selectByUserName(String username);
+
+    /**
+     * 插入一条用户数据
+     * @param user 用户对象
+     */
+    void insert(User user);
 }

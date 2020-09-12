@@ -14,13 +14,7 @@ public interface BordInformationService {
      * 保存单个巷道图基本信息
      * @param bordInformation
      */
-    void add(BordInformation bordInformation);
-
-    /**
-     * 修改单个巷道图基本信息
-     * @param bordInformation
-     */
-    void update(BordInformation bordInformation);
+    void save(BordInformation bordInformation);
 
     /**
      * 完整保存整个巷道图信息

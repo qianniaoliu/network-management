@@ -3,6 +3,7 @@ package com.network.management.service;
 import com.network.management.EquipmentMapping;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 设备映射关系服务
@@ -25,9 +26,9 @@ public interface EquipmentMappingService {
 
     /**
      * 删除设备映射关系
-     * @param id 主键id
+     * @param ids 主键id
      */
-    void delete(Integer id);
+    void delete(Set<Integer> ids);
 
     /**
      * 通过巷道图id获取设备映射关系

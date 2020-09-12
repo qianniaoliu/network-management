@@ -20,4 +20,11 @@ public interface BordInformationMapper {
      * @param bordInformation 修改信息
      */
     void updateByKey(BordInformation bordInformation);
+
+    /**
+     * 获取巷道图基本信息
+     * @param bordId 巷道图id
+     * @return 巷道图基本信息
+     */
+    BordInformation selectByPrimaryKey(Integer bordId);
 }

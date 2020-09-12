@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.BordInformationMapper">
+  <resultMap id="BaseResultMap" type="com.network.management.BordInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+    <result column="modified" jdbcType="DATE" property="modified" />
+    <result column="created" jdbcType="DATE" property="created" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, url, yn, modified, created
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bord_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bord_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="BordInformation">
+    insert into bord_information (id, name, url, 
+      yn, modified, created)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="BordInformation">
+    insert into bord_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="yn != null">
+        yn,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=DATE},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByKey" parameterType="BordInformation">
+    update bord_information
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        yn = #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=DATE},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

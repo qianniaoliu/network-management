@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.EquipmentMapper">
+  <resultMap id="BaseResultMap" type="Equipment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bord_information_id" jdbcType="INTEGER" property="bordInformationId" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="equipment_type" jdbcType="TINYINT" property="equipmentType" />
+    <result column="internal_time" jdbcType="TIMESTAMP" property="internalTime" />
+    <result column="x" jdbcType="VARCHAR" property="x" />
+    <result column="y" jdbcType="VARCHAR" property="y" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+    <result column="modified" jdbcType="DATE" property="modified" />
+    <result column="created" jdbcType="DATE" property="created" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bord_information_id, ip, name, equipment_type, internal_time, x, y, username, 
+    password, yn, modified, created
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from equipment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Equipment">
+    insert into equipment (id, bord_information_id, ip, 
+      name, equipment_type, internal_time, 
+      x, y, username, password, 
+      yn, modified, created)
+    values (#{id,jdbcType=INTEGER}, #{bordInformationId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{equipmentType,jdbcType=TINYINT}, #{internalTime,jdbcType=TIMESTAMP}, 
+      #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="Equipment">
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bordInformationId != null">
+        bord_information_id,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="equipmentType != null">
+        equipment_type,
+      </if>
+      <if test="internalTime != null">
+        internal_time,
+      </if>
+      <if test="x != null">
+        x,
+      </if>
+      <if test="y != null">
+        y,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="yn != null">
+        yn,
+      </if>
+      <if test="modified != null">
+        modified,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bordInformationId != null">
+        #{bordInformationId,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentType != null">
+        #{equipmentType,jdbcType=TINYINT},
+      </if>
+      <if test="internalTime != null">
+        #{internalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="x != null">
+        #{x,jdbcType=VARCHAR},
+      </if>
+      <if test="y != null">
+        #{y,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=DATE},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Equipment">
+    update equipment
+    <set>
+      <if test="bordInformationId != null">
+        bord_information_id = #{bordInformationId,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentType != null">
+        equipment_type = #{equipmentType,jdbcType=TINYINT},
+      </if>
+      <if test="internalTime != null">
+        internal_time = #{internalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="x != null">
+        x = #{x,jdbcType=VARCHAR},
+      </if>
+      <if test="y != null">
+        y = #{y,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        yn = #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="modified != null">
+        modified = #{modified,jdbcType=DATE},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -42,5 +42,12 @@ public class BordInformation {
      */
     private Date created;
 
+    public BordInformation() {
+    }
 
+    public BordInformation(Integer id, String name, String url) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+    }
 }

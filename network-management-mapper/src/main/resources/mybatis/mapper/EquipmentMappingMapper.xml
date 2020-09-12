@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.EquipmentMappingMapper">
+  <resultMap id="BaseResultMap" type="EquipmentMapping">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="bord_information_id" jdbcType="INTEGER" property="bordInformationId" />
+    <result column="source_id" jdbcType="INTEGER" property="sourceId" />
+    <result column="source_ip" jdbcType="VARCHAR" property="sourceIp" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="target_ip" jdbcType="VARCHAR" property="targetIp" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+    <result column="modified" jdbcType="DATE" property="modified" />
+    <result column="created" jdbcType="DATE" property="created" />
+  </resultMap>
+  <insert id="insert" parameterType="EquipmentMapping">
+    insert into equipment_mapping (id, bord_information_id, source_id,
+    source_ip, target_id, target_ip,
+      yn, modified, created)
+    values (#{id,jdbcType=INTEGER}, #{bordInformationId,jdbcType=INTEGER}, #{sourceId,jdbcType=INTEGER},
+      #{sourceIp,jdbcType=VARCHAR}, #{targetId,jdbcType=INTEGER}, #{targetIp,jdbcType=VARCHAR},
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+  </insert>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from equipment_mapping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <update id="updateByPrimaryKeySelective" parameterType="EquipmentMapping">
+    update equipment_mapping
+    <set>
+      <if test="bordInformationId != null">
+        #{bordInformationId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceIp != null">
+        #{sourceIp,jdbcType=VARCHAR},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=INTEGER},
+      </if>
+      <if test="targetIp != null">
+        #{targetIp,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null">
+        #{yn,jdbcType=TINYINT},
+      </if>
+      <if test="modified != null">
+        #{modified,jdbcType=DATE},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

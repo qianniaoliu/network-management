@@ -53,6 +53,16 @@ public class Equipment {
     private Integer y;
 
     /**
+     * 用户名（只有基站才显示）
+     */
+    private String username;
+
+    /**
+     * 密码（只有基站才显示）
+     */
+    private String password;
+
+    /**
      * 有效状态
      */
     private Integer yn;

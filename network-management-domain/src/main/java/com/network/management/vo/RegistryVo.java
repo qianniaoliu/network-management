@@ -5,8 +5,7 @@ import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author: yusheng
- * @date: 2020/9/8 22:39
+ * @author yusheng
  */
 @Data
 public class RegistryVo {

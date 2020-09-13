@@ -29,4 +29,13 @@ public class DeviceBo {
      * 设备类型
      */
     private Integer equipmentType;
+
+    /**
+     * 用户名
+     */
+    private String username;
+    /**
+     * 密码
+     */
+    private String password;
 }

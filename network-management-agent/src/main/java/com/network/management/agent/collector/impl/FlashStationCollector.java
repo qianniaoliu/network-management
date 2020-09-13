@@ -25,7 +25,7 @@ import java.util.Objects;
  * @author yyc
  * @date 2020/9/12 22:03
  */
-@Component("flashStationCollector")
+@Component
 @Slf4j
 public class FlashStationCollector implements Collector{
     private static final String URL = "http://%s:8080/cgi-bin/c2s";

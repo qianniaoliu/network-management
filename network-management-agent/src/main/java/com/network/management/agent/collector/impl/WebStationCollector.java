@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
  * @author yyc
  * @date 2020/9/12 22:04
  */
-@Component("webStationCollector")
+@Component
 @Slf4j
 public class WebStationCollector implements Collector {
     /**

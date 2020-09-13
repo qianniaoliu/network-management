@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
  * @author yyc
  * @date 2020/9/12 22:48
  */
-@Component("webStationHandler")
-public class WebStationHandler implements DataHandler{
+@Component
+public class StationHandler implements DataHandler{
     @Override
     public void handle(DataBo<?> dataBo) {
 

@@ -19,7 +19,7 @@ import java.net.InetAddress;
  * @author yyc
  * @date 2020/9/12 22:05
  */
-@Component("otherDeviceCollector")
+@Component
 @Slf4j
 public class OtherDeviceCollector implements Collector{
     /**

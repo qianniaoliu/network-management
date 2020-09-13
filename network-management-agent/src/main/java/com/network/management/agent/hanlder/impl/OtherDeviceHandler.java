@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author yyc
  * @date 2020/9/12 22:46
  */
-@Component("otherDeviceHandler")
+@Component
 public class OtherDeviceHandler implements DataHandler{
     @Override
     public void handle(DataBo<?> dataBo) {

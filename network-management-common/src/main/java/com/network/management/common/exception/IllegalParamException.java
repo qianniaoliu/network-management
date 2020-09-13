@@ -1,4 +1,4 @@
-package com.network.management.exception;
+package com.network.management.common.exception;
 
 /**
  * @author: yusheng

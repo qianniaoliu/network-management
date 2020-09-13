@@ -57,4 +57,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="getByBordId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from equipment_mapping
+    where bord_information_id = #{bordInformationId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

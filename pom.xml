@@ -7,6 +7,7 @@
 		<module>network-management-web</module>
 		<module>network-management-auth</module>
 		<module>network-management-service</module>
+		<module>network-management-agent</module>
 		<module>network-management-domain</module>
 		<module>network-management-common</module>
 		<module>network-management-mapper</module>
@@ -76,6 +77,11 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>2.9.9</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.5.2</version>
 			</dependency>
 
 			<!--mybatis生成sql工具-->

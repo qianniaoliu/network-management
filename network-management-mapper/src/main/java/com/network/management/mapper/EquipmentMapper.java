@@ -18,7 +18,7 @@ public interface EquipmentMapper {
 
     void deleteByPrimaryKey(Integer id);
 
-    Equipment get(Integer id);
+    Equipment selectByPrimaryKey(Integer id);
 
     List<Equipment> getByBordId(Integer bordId);
 

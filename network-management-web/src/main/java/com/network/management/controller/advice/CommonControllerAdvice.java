@@ -1,6 +1,6 @@
 package com.network.management.controller.advice;
 
-import com.network.management.exception.IllegalParamException;
+import com.network.management.common.exception.IllegalParamException;
 import com.network.management.vo.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

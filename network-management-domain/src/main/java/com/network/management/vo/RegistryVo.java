@@ -1,6 +1,6 @@
 package com.network.management.vo;
 
-import com.network.management.exception.IllegalParamException;
+import com.network.management.common.exception.IllegalParamException;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 

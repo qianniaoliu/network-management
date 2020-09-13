@@ -54,7 +54,7 @@ public class BordInformationServiceImpl implements BordInformationService {
 
     @Override
     @Transactional
-    public void update(BordInformationAggregation data) {
+    public void updateAll(BordInformationAggregation data) {
         Assert.notNull(data, "BordInformationAggregation 对象不能为null");
         /**
          * 新增修改设备信息
@@ -116,11 +116,16 @@ public class BordInformationServiceImpl implements BordInformationService {
     }
 
     @Override
-    public BordInformationAggregation get(Integer bordInformationId) {
+    public BordInformationAggregation getAll(Integer bordInformationId) {
         BordInformationAggregation result = new BordInformationAggregation();
         result.setBordInformation(bordInformationMapper.selectByPrimaryKey(bordInformationId));
         result.setEquipments(equipmentService.getByBordId(bordInformationId));
         result.setEquipmentMappings(equipmentMappingService.getByBordId(bordInformationId));
         return result;
+    }
+
+    @Override
+    public Equipment getByEquipmentId(Integer equipmentId) {
+        return equipmentService.get(equipmentId);
     }
 }

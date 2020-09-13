@@ -1,5 +1,6 @@
 package com.network.management.exception;
 
+import com.network.management.common.exception.IllegalParamException;
 import org.springframework.lang.Nullable;
 
 /**

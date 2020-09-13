@@ -1,14 +1,12 @@
 package com.network.management.controller;
 
 import com.network.management.BordInformation;
-import com.network.management.exception.IllegalParamException;
+import com.network.management.common.exception.IllegalParamException;
 import com.network.management.service.BordInformationService;
+import com.network.management.vo.BordInformationAggregation;
 import com.network.management.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -62,8 +60,37 @@ public class BordInformationController {
     }
 
 
+    /**
+     * 获取巷道图全部信息
+     * @param bordId 巷道图id
+     * @return 巷道图全量信息
+     */
+    @GetMapping("/info/all")
+    public Result infoAll(@RequestParam("bordId") Integer bordId){
+        return Result.success(bordInformationService.getAll(bordId));
+    }
 
 
+    /**
+     * 获取单个设备信息
+     * @param equipmentId 设备信息id
+     * @return 前端渲染对象
+     */
+    @GetMapping("/info/equipment")
+    public Result equipmentInfo(@RequestParam("equipmentId") Integer equipmentId){
+        return Result.success(bordInformationService.getByEquipmentId(equipmentId));
+    }
+
+    /**
+     * 保存整张巷道图信息，包括巷道图基本信息，设备信息，设备之间映射关系
+     * @param bordInformationAggregation 所有的巷道图信息
+     * @return 前端渲染对象
+     */
+    @PostMapping("/save/all")
+    public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation){
+        bordInformationService.updateAll(bordInformationAggregation);
+        return Result.success(null);
+    }
 
 
 }

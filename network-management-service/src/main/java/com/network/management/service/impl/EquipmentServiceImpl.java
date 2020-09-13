@@ -38,12 +38,13 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Override
     public void delete(Set<Integer> ids) {
         Assert.notNull(ids, "ids对象不能为空");
+        ids.forEach(equipmentMapper::deleteByPrimaryKey);
     }
 
     @Override
     public Equipment get(Integer id) {
         Assert.notNull(id, "id对象不能为空");
-        return null;
+        return equipmentMapper.selectByPrimaryKey(id);
     }
 
     @Override

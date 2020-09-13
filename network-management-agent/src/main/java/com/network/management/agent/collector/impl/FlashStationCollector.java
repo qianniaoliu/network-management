@@ -1,5 +1,6 @@
-package com.network.management.agent.collector;
+package com.network.management.agent.collector.impl;
 
+import com.network.management.agent.collector.Collector;
 import com.network.management.bo.DataBo;
 import com.network.management.bo.DeviceBo;
 import org.springframework.stereotype.Component;

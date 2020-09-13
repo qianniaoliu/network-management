@@ -1,5 +1,6 @@
-package com.network.management.agent.hanlder;
+package com.network.management.agent.hanlder.impl;
 
+import com.network.management.agent.hanlder.DataHandler;
 import com.network.management.bo.DataBo;
 import org.springframework.stereotype.Component;
 

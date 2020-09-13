@@ -1,8 +1,8 @@
 package com.network.management.service.converter;
 
 import com.network.management.User;
+import com.network.management.common.convert.Converter;
 import com.network.management.vo.RegistryVo;
-import org.springframework.core.convert.converter.Converter;
 
 /**
  * @author yusheng
@@ -14,5 +14,10 @@ public class UserConverter implements Converter<RegistryVo, User> {
         user.setUsername(source.getUserName());
         user.setPassword(source.getPassword());
         return user;
+    }
+
+    @Override
+    public RegistryVo reverseConvert(User s) {
+        return null;
     }
 }

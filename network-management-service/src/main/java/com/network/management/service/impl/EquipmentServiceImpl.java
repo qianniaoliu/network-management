@@ -52,4 +52,9 @@ public class EquipmentServiceImpl implements EquipmentService {
         List<Equipment> equipments = equipmentMapper.getByBordId(bordId);
         return Optional.ofNullable(equipments).orElse(Collections.emptyList());
     }
+
+    @Override
+    public List<Equipment> getAllEquipments() {
+        return null;
+    }
 }

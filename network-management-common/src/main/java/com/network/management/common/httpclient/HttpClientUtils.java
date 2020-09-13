@@ -100,6 +100,18 @@ public class HttpClientUtils {
     }
 
     /**
+     * httpclient post请求
+     * @param url 请求url
+     * @param body 请求body
+     * @param timeOut 超时时间
+     * @return
+     * @throws HttpException
+     */
+    public static String doPost(String url, String body, int timeOut) throws HttpException {
+        return doPost(url, null, body, timeOut);
+    }
+
+    /**
      * httpGet
      *
      * @param url

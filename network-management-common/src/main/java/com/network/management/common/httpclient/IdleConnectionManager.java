@@ -1,22 +1,20 @@
 package com.network.management.common.httpclient;
 
 
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * httpclient空闲连接管理类
+ *
  * @Author: yyc
  * @Date: 2020/9/12 23:18
  * @Version 1.0
  */
+@Slf4j
 public class IdleConnectionManager extends Thread {
-    private static final Logger logger = Logger.getLogger(IdleConnectionManager.class.getName());
-
     private final PoolingHttpClientConnectionManager connMgr;
     private volatile boolean shutdown = false;
 
@@ -43,9 +41,7 @@ public class IdleConnectionManager extends Thread {
                 connMgr.closeIdleConnections(IDLE_TIME, TimeUnit.SECONDS);
             }
         } catch (Throwable e) {
-            if (logger.isLoggable(Level.WARNING)) {
-                logger.log(Level.WARNING, "IdleConnectionManager exception, cause: " + e.toString(), e);
-            }
+            log.warn("IdleConnectionManager exception, cause: " + e.toString(), e);
         }
     }
 

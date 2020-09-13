@@ -20,7 +20,7 @@ public interface EquipmentService {
 
     /**
      * 修改设备信息
-     * @param equipment设备信息
+     * @param equipment 设备信息
      */
     void update(Equipment equipment);
 

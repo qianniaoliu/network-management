@@ -7,14 +7,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * {@link NameThreadFactory} name of ThreadFactory {@link ThreadFactory}
  * @author yyc
- * @date 2020/5/12 19:30
+ * @date 2020/9/19 09:30
  * @since 1.0.0
  */
 public class NameThreadFactory implements ThreadFactory {
     /**
      * default name of ThreadFactory {@link ThreadFactory}
      */
-    private String threadPoolPrefix = "OverseaThreadPoolExecutor-Thread-";
+    private String threadPoolPrefix = "ThreadPoolExecutors-Thread-";
     public AtomicInteger counter = new AtomicInteger(0);
 
     /**

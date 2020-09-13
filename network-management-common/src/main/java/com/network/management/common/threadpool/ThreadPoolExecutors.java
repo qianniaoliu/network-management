@@ -9,19 +9,19 @@ import java.util.Objects;
 import java.util.concurrent.*;
 
 /**
- * {@link OverseaThreadPoolExecutor} wrapper of ThreadPoolExecutor {@link ThreadPoolExecutor}
+ * {@link ThreadPoolExecutors} wrapper of ThreadPoolExecutor {@link ThreadPoolExecutor}
  *
  * @author yyc
- * @date 2020/5/12 17:59
+ * @date 2020/9/13 09:39
  * @since 1.0.0
  */
-public class OverseaThreadPoolExecutor {
+public class ThreadPoolExecutors {
     /**
      * default queue number
      */
     private static final int DEFAULT_QUEUE_NUMBER = 2000;
 
-    private OverseaThreadPoolExecutor() {
+    private ThreadPoolExecutors() {
 
     }
 
@@ -32,8 +32,8 @@ public class OverseaThreadPoolExecutor {
      * @return {@link ExecutorService}
      */
     @Deprecated
-    public static ExecutorService overseaExecutorService(Integer poolSize) {
-        return overseaExecutorService(poolSize, poolSize);
+    public static ExecutorService getExecutorService(Integer poolSize) {
+        return getExecutorService(poolSize, poolSize);
     }
 
     /**
@@ -44,8 +44,8 @@ public class OverseaThreadPoolExecutor {
      * @return {@link ExecutorService}
      */
     @Deprecated
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize) {
-        return overseaExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER);
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize) {
+        return getExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER);
     }
 
     /**
@@ -57,7 +57,7 @@ public class OverseaThreadPoolExecutor {
      * @return {@link ExecutorService}
      */
     @Deprecated
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum) {
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum) {
         return new ThreadPoolExecutor(corePoolSize, maxPoolSize, 0L, TimeUnit.MILLISECONDS,
                 new LinkedBlockingQueue<Runnable>(queueNum),
                 new NameThreadFactory());
@@ -70,8 +70,8 @@ public class OverseaThreadPoolExecutor {
      * @param poolName     thread factory name
      * @return {@link ExecutorService}
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, String poolName) {
-        return overseaExecutorService(corePoolSize, corePoolSize, poolName);
+    public static ExecutorService getExecutorService(Integer corePoolSize, String poolName) {
+        return getExecutorService(corePoolSize, corePoolSize, poolName);
     }
 
     /**
@@ -88,8 +88,8 @@ public class OverseaThreadPoolExecutor {
      * @see RequeueRejectedExecutionHandler
      * @see RejectedExecutionHandlerChain
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, String poolName, RejectedExecutionHandler handler) {
-        return overseaExecutorService(corePoolSize, corePoolSize, poolName, handler);
+    public static ExecutorService getExecutorService(Integer corePoolSize, String poolName, RejectedExecutionHandler handler) {
+        return getExecutorService(corePoolSize, corePoolSize, poolName, handler);
     }
 
     /**
@@ -100,8 +100,8 @@ public class OverseaThreadPoolExecutor {
      * @param poolName     thread factory name
      * @return {@link ExecutorService}
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, String poolName) {
-        return overseaExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER, poolName);
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, String poolName) {
+        return getExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER, poolName);
     }
 
     /**
@@ -119,10 +119,10 @@ public class OverseaThreadPoolExecutor {
      * @see RequeueRejectedExecutionHandler
      * @see RejectedExecutionHandlerChain
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, String poolName, RejectedExecutionHandler handler) {
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, String poolName, RejectedExecutionHandler handler) {
         List<RejectedExecutionHandler> handles = new ArrayList<>();
         handles.add(handler);
-        return overseaExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER, poolName, handles);
+        return getExecutorService(corePoolSize, maxPoolSize, DEFAULT_QUEUE_NUMBER, poolName, handles);
     }
 
     /**
@@ -135,8 +135,8 @@ public class OverseaThreadPoolExecutor {
      * @return {@link ExecutorService}
      */
 
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum, String poolName) {
-        return overseaExecutorService(corePoolSize, maxPoolSize, queueNum, poolName, null);
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum, String poolName) {
+        return getExecutorService(corePoolSize, maxPoolSize, queueNum, poolName, null);
     }
 
     /**
@@ -155,7 +155,7 @@ public class OverseaThreadPoolExecutor {
      * @see RequeueRejectedExecutionHandler
      * @see RejectedExecutionHandlerChain
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum, String poolName, List<RejectedExecutionHandler> handlers) {
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, Integer queueNum, String poolName, List<RejectedExecutionHandler> handlers) {
         if (Objects.isNull(handlers) || handlers.size() == 0) {
             return new ThreadPoolExecutor(corePoolSize, maxPoolSize, 0L, TimeUnit.MILLISECONDS,
                     new LinkedBlockingQueue<Runnable>(queueNum),
@@ -184,7 +184,7 @@ public class OverseaThreadPoolExecutor {
      * @see RequeueRejectedExecutionHandler
      * @see RejectedExecutionHandlerChain
      */
-    public static ExecutorService overseaExecutorService(Integer corePoolSize, Integer maxPoolSize, long keepTime, BlockingQueue<Runnable> queue, String poolName, RejectedExecutionHandler handler) {
+    public static ExecutorService getExecutorService(Integer corePoolSize, Integer maxPoolSize, long keepTime, BlockingQueue<Runnable> queue, String poolName, RejectedExecutionHandler handler) {
         return new ThreadPoolExecutor(corePoolSize, maxPoolSize, keepTime, TimeUnit.MILLISECONDS, queue,
                 new NameThreadFactory(poolName), handler);
     }

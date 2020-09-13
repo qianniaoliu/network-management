@@ -35,4 +35,9 @@ public class EquipmentServiceImpl implements EquipmentService {
     public List<Equipment> getByBordId(Integer bordId) {
         return null;
     }
+
+    @Override
+    public List<Equipment> getAllEquipments() {
+        return null;
+    }
 }

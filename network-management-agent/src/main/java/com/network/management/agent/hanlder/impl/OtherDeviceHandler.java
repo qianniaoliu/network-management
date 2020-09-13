@@ -5,7 +5,7 @@ import com.network.management.bo.DataBo;
 import org.springframework.stereotype.Component;
 
 /**
- * 其他设备状态数据处理类
+ * 其他设备状态数据处理类(入库)
  * @author yyc
  * @date 2020/9/12 22:46
  */

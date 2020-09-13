@@ -9,4 +9,8 @@ import lombok.Data;
  */
 @Data
 public class DeviceStatusBo {
+    /**
+     * ping连接状态 {@link com.network.management.enums.YnEnum}
+     */
+    private Integer pingStatus;
 }

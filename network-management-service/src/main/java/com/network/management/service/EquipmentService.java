@@ -18,4 +18,6 @@ public interface EquipmentService {
     Equipment get(Integer id);
 
     List<Equipment> getByBordId(Integer bordId);
+
+    List<Equipment> getAllEquipments();
 }

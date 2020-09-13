@@ -8,9 +8,9 @@ import lombok.Data;
  * @date 2020/9/12 22:54
  */
 @Data
-public class DeviceStatusBo {
+public class OtherDeviceStatusBo {
     /**
      * ping连接状态 {@link com.network.management.enums.YnEnum}
      */
-    private Integer pingStatus;
+    private Integer status;
 }

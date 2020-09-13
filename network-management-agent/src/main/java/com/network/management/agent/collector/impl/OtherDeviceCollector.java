@@ -3,7 +3,7 @@ package com.network.management.agent.collector.impl;
 import com.network.management.agent.collector.Collector;
 import com.network.management.bo.DataBo;
 import com.network.management.bo.DeviceBo;
-import com.network.management.bo.DeviceStatusBo;
+import com.network.management.bo.OtherDeviceStatusBo;
 import com.network.management.common.exception.BizException;
 import com.network.management.common.exception.ErrorCodeEnum;
 import com.network.management.enums.YnEnum;
@@ -33,11 +33,11 @@ public class OtherDeviceCollector implements Collector{
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
         try {
             boolean status = InetAddress.getByName(deviceBo.getIp()).isReachable(TIME_OUT);
-            DataBo<DeviceStatusBo> dataBo = new DataBo<DeviceStatusBo>();
+            DataBo<OtherDeviceStatusBo> dataBo = new DataBo<OtherDeviceStatusBo>();
             dataBo.setIp(deviceBo.getIp());
             dataBo.setType(deviceBo.getEquipmentType());
-            DeviceStatusBo deviceStatusBo = new DeviceStatusBo();
-            deviceStatusBo.setPingStatus(status ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
+            OtherDeviceStatusBo deviceStatusBo = new OtherDeviceStatusBo();
+            deviceStatusBo.setStatus(status ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
             dataBo.setDataObj(deviceStatusBo);
             return dataBo;
         } catch (IOException e) {

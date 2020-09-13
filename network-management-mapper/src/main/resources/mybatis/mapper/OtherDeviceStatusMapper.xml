@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.OtherDeviceStatusMapper">
+  <resultMap id="BaseResultMap" type="OtherDeviceStatus">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="equipment_type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="yn" jdbcType="TINYINT" property="yn" />
+    <result column="modified" jdbcType="DATE" property="modified" />
+    <result column="created" jdbcType="DATE" property="created" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ip, equipment_type, status, yn, modified, created
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from other_device_status
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from other_device_status
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="OtherDeviceStatus">
+    insert into other_device_status (id, ip, equipment_type, status, yn, modified, created)
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR},#{type,jdbcType=TINYINT},
+    #{status,jdbcType=TINYINT},#{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE},
+    #{created,jdbcType=DATE})
+  </insert>
+
+  <select id="getLatestByIp" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from other_device_status
+    where ip = #{ip,jdbcType=VARCHAR}
+  </select>
+</mapper>

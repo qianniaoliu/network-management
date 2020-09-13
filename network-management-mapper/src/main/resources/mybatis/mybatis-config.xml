@@ -27,6 +27,8 @@
         <typeAlias alias="EquipmentMapping" type="com.network.management.EquipmentMapping"/>
         <typeAlias alias="Equipment" type="com.network.management.Equipment"/>
         <typeAlias alias="BordInformation" type="com.network.management.BordInformation"/>
+        <typeAlias alias="OtherDeviceStatus" type="com.network.management.dao.OtherDeviceStatus"/>
+        <typeAlias alias="StationStatus" type="com.network.management.dao.StationStatus"/>
     </typeAliases>
 
     <mappers>
@@ -34,5 +36,7 @@
         <mapper resource="mybatis/mapper/BordInformationMapper.xml"/>
         <mapper resource="mybatis/mapper/EquipmentMapper.xml"/>
         <mapper resource="mybatis/mapper/EquipmentMappingMapper.xml"/>
+        <mapper resource="mybatis/mapper/OtherDeviceStatusMapper.xml"/>
+        <mapper resource="mybatis/mapper/StationStatusMapper.xml"/>
     </mappers>
 </configuration>

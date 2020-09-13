@@ -2,7 +2,7 @@ package com.network.management.service.impl;
 
 import com.network.management.User;
 import com.network.management.enums.YnEnum;
-import com.network.management.exception.Assert;
+import com.network.management.common.exception.Assert;
 import com.network.management.mapper.UserMapper;
 import com.network.management.service.UserService;
 import com.network.management.service.converter.UserConverter;

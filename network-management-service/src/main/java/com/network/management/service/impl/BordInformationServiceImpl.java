@@ -4,7 +4,7 @@ import com.network.management.BordInformation;
 import com.network.management.Equipment;
 import com.network.management.EquipmentMapping;
 import com.network.management.enums.YnEnum;
-import com.network.management.exception.Assert;
+import com.network.management.common.exception.Assert;
 import com.network.management.mapper.BordInformationMapper;
 import com.network.management.service.BordInformationService;
 import com.network.management.service.EquipmentMappingService;

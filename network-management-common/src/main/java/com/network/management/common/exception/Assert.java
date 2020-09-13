@@ -1,6 +1,5 @@
-package com.network.management.exception;
+package com.network.management.common.exception;
 
-import com.network.management.common.exception.IllegalParamException;
 import org.springframework.lang.Nullable;
 
 /**
@@ -12,6 +11,7 @@ public class Assert {
 
     /**
      * 目标对象不能为空，为空则抛出异常
+     *
      * @param object
      * @param message
      */
@@ -23,6 +23,7 @@ public class Assert {
 
     /**
      * 目标对象必须为空，不为空则抛出异常
+     *
      * @param object
      * @param message
      */

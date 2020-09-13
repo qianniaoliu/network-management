@@ -1,8 +1,14 @@
 package com.network.management.agent.hanlder.impl;
 
+import com.network.management.agent.convert.OtherDeviceStatusConverter;
 import com.network.management.agent.hanlder.DataHandler;
 import com.network.management.bo.DataBo;
+import com.network.management.dao.OtherDeviceStatus;
+import com.network.management.mapper.OtherDeviceStatusMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 /**
  * 其他设备状态数据处理类(入库)
@@ -11,8 +17,15 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OtherDeviceHandler implements DataHandler{
+    @Autowired
+    private OtherDeviceStatusMapper otherDeviceStatusMapper;
+    @Autowired
+    private OtherDeviceStatusConverter converter;
     @Override
     public void handle(DataBo<?> dataBo) {
-
+        OtherDeviceStatus otherDeviceStatus = converter.convert(dataBo);
+        if(Objects.nonNull(otherDeviceStatus)){
+            otherDeviceStatusMapper.insert(otherDeviceStatus);
+        }
     }
 }

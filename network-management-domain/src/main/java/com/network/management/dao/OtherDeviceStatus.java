@@ -19,7 +19,7 @@ public class OtherDeviceStatus {
     /**
      * 设备类型
      */
-    private String type;
+    private Integer type;
     /**
      * ping连接状态 {@link com.network.management.enums.YnEnum}
      */

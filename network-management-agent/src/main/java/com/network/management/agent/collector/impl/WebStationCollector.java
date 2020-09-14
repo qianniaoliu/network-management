@@ -58,13 +58,18 @@ public class WebStationCollector implements Collector {
         Assert.notNull(deviceBo, "web界面基站基本信息不能为空.");
         Assert.notNull(deviceBo.getIp(), "web界面基站ip信息不能为空.");
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
+        DataBo<WebStationStatusBo> dataBo = null;
         try {
             String result = HttpClientUtils.doGet(String.format(URL, deviceBo.getIp()), Integer.parseInt(timeOut));
-            return getDataBo(getJSONObject(result), deviceBo);
+            dataBo = getDataBo(getJSONObject(result), deviceBo);
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败", e);
-            throw new BizException(ErrorCodeEnum.HTTPCLIENT_ERROR);
         }
+        if(Objects.isNull(dataBo)){
+            dataBo = new DataBo<WebStationStatusBo>();
+            // todo
+        }
+        return dataBo;
     }
 
     /**

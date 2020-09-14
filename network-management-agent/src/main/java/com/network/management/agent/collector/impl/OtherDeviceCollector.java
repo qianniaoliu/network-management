@@ -31,18 +31,18 @@ public class OtherDeviceCollector implements Collector{
         Assert.notNull(deviceBo, "其他设备基本信息不能为空.");
         Assert.notNull(deviceBo.getIp(), "其他设备ip信息不能为空.");
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
+        boolean status = false;
         try {
-            boolean status = InetAddress.getByName(deviceBo.getIp()).isReachable(TIME_OUT);
-            DataBo<OtherDeviceStatusBo> dataBo = new DataBo<OtherDeviceStatusBo>();
-            dataBo.setIp(deviceBo.getIp());
-            dataBo.setType(deviceBo.getEquipmentType());
-            OtherDeviceStatusBo deviceStatusBo = new OtherDeviceStatusBo();
-            deviceStatusBo.setStatus(status ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
-            dataBo.setDataObj(deviceStatusBo);
-            return dataBo;
+            status = InetAddress.getByName(deviceBo.getIp()).isReachable(TIME_OUT);
         } catch (IOException e) {
             log.error(String.format("其他设备基本ip:%s 网络连通失败.", deviceBo.getIp()), e);
-            throw new BizException(ErrorCodeEnum.PING_ERROR);
         }
+        DataBo<OtherDeviceStatusBo> dataBo = new DataBo<OtherDeviceStatusBo>();
+        dataBo.setIp(deviceBo.getIp());
+        dataBo.setType(deviceBo.getEquipmentType());
+        OtherDeviceStatusBo deviceStatusBo = new OtherDeviceStatusBo();
+        deviceStatusBo.setStatus(status ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
+        dataBo.setDataObj(deviceStatusBo);
+        return dataBo;
     }
 }

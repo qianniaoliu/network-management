@@ -35,10 +35,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .apis(RequestHandlerSelectors.basePackage("com.network.management.web.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("SpringBoot整合Swagger")
-                        .description("SpringBoot整合Swagger，详细信息......")
-                        .version("9.0")
-                        .contact(new Contact("啊啊啊啊","blog.csdn.net","aaa@gmail.com"))
+                        .title("4G网管系统API文档")
+                        .description("4G网管系统API详细文档")
+                        .version("1.0")
+                        .contact(new Contact("职业白给团队","https://github.com/qianniaoliu/network-management","598968402@qq.com"))
                         .license("The Apache License")
                         .build());
     }
@@ -48,5 +48,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         String rootPath = System.getProperty("user.dir");
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + rootPath + "/static/img/");
+        registry.addResourceHandler("swagger-ui")
+                .addResourceLocations("classpath:/META-INF/resources/");
+
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

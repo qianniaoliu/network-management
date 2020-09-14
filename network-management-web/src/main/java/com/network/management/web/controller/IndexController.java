@@ -1,5 +1,7 @@
 package com.network.management.web.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import java.io.IOException;
  * @author yusheng
  */
 @RestController
+@Api(tags = "主页控制器")
 public class IndexController {
 
 
@@ -22,12 +25,13 @@ public class IndexController {
     private String defaultRedirectUrl;
 
     /**
-     * 登录调整首页逻辑
+     * 登录跳转首页逻辑
      * @param request
      * @param response
      * @throws IOException
      */
     @GetMapping("/index")
+    @ApiOperation("登录跳转首页逻辑")
     public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String redirectUrl = request.getParameter("redirectUrl");
         if(StringUtils.isNotBlank(redirectUrl)){

@@ -46,13 +46,18 @@ public class FlashStationCollector implements Collector{
         Assert.notNull(deviceBo, "flash界面基站基本信息不能为空.");
         Assert.notNull(deviceBo.getIp(), "flash界面基站ip信息不能为空.");
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
+        DataBo<FlashStationStatusBo> dataBo = null;
         try {
             String result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getBodyJson(), Integer.parseInt(timeOut));
-            return parseResponse(result, deviceBo);
+            dataBo = parseResponse(result, deviceBo);
         } catch (Exception e) {
             log.error("flash界面基站http请求状态数据失败", e);
-            throw new BizException(ErrorCodeEnum.HTTPCLIENT_ERROR);
         }
+        if(Objects.isNull(dataBo)){
+            dataBo = new DataBo<FlashStationStatusBo>();
+            // TODO
+        }
+        return dataBo;
     }
 
     /**

@@ -55,6 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //开启跨域访问
         http.cors().disable();
 
+
         //设置用户验证跳转路径
         http.csrf().disable()
                 .sessionManagement()
@@ -66,12 +67,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(jwtAuthenticationSuccessHandler())
                 .permitAll();
 
+
+
         //logout
         http.logout().logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
-                .addLogoutHandler(new CookieClearingLogoutHandler("ACCESS_TOKEN","JSESSIONID"))
+                .addLogoutHandler(new CookieClearingLogoutHandler("ACCESS_TOKEN", "JSESSIONID"))
                 .permitAll();
+
+
 
 
         //新增JWT权限拦截器
@@ -86,6 +91,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**")
+                .antMatchers("/swagger-ui.html")
+                .antMatchers("/v2/**")
+                .antMatchers("/swagger-resources/**");
     }
 }

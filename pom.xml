@@ -109,7 +109,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.network.management.NetworkManagementApplication</mainClass>
+					<mainClass>com.network.management.web.NetworkManagementApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

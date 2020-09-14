@@ -1,7 +1,7 @@
 package com.network.management.agent.collector;
 
-import com.network.management.bo.DataBo;
-import com.network.management.bo.DeviceBo;
+import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.bo.DeviceBo;
 
 /**
  * 数据采集接口

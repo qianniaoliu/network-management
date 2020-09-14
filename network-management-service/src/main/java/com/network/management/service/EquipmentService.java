@@ -1,6 +1,6 @@
 package com.network.management.service;
 
-import com.network.management.Equipment;
+import com.network.management.domain.dao.Equipment;
 
 import java.util.List;
 import java.util.Set;

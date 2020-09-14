@@ -1,6 +1,6 @@
 package com.network.management.mapper;
 
-import com.network.management.dao.StationStatus;
+import com.network.management.domain.dao.StationStatus;
 
 import java.util.List;
 import java.util.Map;

@@ -12,6 +12,13 @@
     <result column="modified" jdbcType="DATE" property="modified" />
     <result column="created" jdbcType="DATE" property="created" />
   </resultMap>
+
+  <sql id="Base_Column_List">
+    id, bord_information_id, source_id,
+    source_ip, target_id, target_ip,
+    yn, modified, created
+  </sql>
+
   <insert id="insert" parameterType="EquipmentMapping">
     insert into equipment_mapping (id, bord_information_id, source_id,
     source_ip, target_id, target_ip,

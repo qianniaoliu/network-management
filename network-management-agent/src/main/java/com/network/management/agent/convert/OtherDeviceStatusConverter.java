@@ -1,10 +1,10 @@
 package com.network.management.agent.convert;
 
-import com.network.management.bo.DataBo;
-import com.network.management.bo.OtherDeviceStatusBo;
+import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.bo.OtherDeviceStatusBo;
 import com.network.management.common.convert.Converter;
-import com.network.management.dao.OtherDeviceStatus;
-import com.network.management.enums.YnEnum;
+import com.network.management.domain.dao.OtherDeviceStatus;
+import com.network.management.domain.enums.YnEnum;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;

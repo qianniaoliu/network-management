@@ -1,6 +1,6 @@
 package com.network.management.mapper;
 
-import com.network.management.BordInformation;
+import com.network.management.domain.dao.BordInformation;
 
 /**
  * 巷道图基本信息mapper

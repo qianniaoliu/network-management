@@ -1,15 +1,15 @@
 package com.network.management.service.impl;
 
-import com.network.management.BordInformation;
-import com.network.management.Equipment;
-import com.network.management.EquipmentMapping;
-import com.network.management.enums.YnEnum;
+import com.network.management.domain.dao.BordInformation;
+import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.dao.EquipmentMapping;
+import com.network.management.domain.enums.YnEnum;
 import com.network.management.common.exception.Assert;
 import com.network.management.mapper.BordInformationMapper;
 import com.network.management.service.BordInformationService;
 import com.network.management.service.EquipmentMappingService;
 import com.network.management.service.EquipmentService;
-import com.network.management.vo.BordInformationAggregation;
+import com.network.management.domain.vo.BordInformationAggregation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;

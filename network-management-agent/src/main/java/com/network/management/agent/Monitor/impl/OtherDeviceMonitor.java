@@ -3,18 +3,15 @@ package com.network.management.agent.Monitor.impl;
 import com.alibaba.fastjson.JSON;
 import com.network.management.agent.Monitor.Monitor;
 import com.network.management.agent.annotation.DeviceType;
-import com.network.management.agent.collector.Collector;
 import com.network.management.agent.collector.impl.OtherDeviceCollector;
-import com.network.management.agent.hanlder.DataHandler;
 import com.network.management.agent.hanlder.impl.OtherDeviceHandler;
-import com.network.management.bo.DataBo;
-import com.network.management.bo.DeviceBo;
+import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.bo.DeviceBo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import javax.annotation.Resource;
 import java.util.Objects;
 
 /**

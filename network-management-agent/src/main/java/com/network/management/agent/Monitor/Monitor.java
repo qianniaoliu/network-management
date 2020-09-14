@@ -1,6 +1,6 @@
 package com.network.management.agent.Monitor;
 
-import com.network.management.bo.DeviceBo;
+import com.network.management.domain.bo.DeviceBo;
 
 /**
  * 数据监控接口

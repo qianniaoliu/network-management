@@ -1,8 +1,8 @@
 package com.network.management.service.converter;
 
-import com.network.management.User;
+import com.network.management.domain.dao.User;
 import com.network.management.common.convert.Converter;
-import com.network.management.vo.RegistryVo;
+import com.network.management.domain.vo.RegistryVo;
 
 /**
  * @author yusheng

@@ -1,8 +1,8 @@
 package com.network.management.service;
 
-import com.network.management.BordInformation;
-import com.network.management.Equipment;
-import com.network.management.vo.BordInformationAggregation;
+import com.network.management.domain.dao.BordInformation;
+import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.vo.BordInformationAggregation;
 
 /**
  * 巷道信息服务

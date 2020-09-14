@@ -1,7 +1,7 @@
 package com.network.management.agent.convert;
 
-import com.network.management.Equipment;
-import com.network.management.bo.DeviceBo;
+import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.bo.DeviceBo;
 import com.network.management.common.convert.Converter;
 import org.springframework.stereotype.Component;
 

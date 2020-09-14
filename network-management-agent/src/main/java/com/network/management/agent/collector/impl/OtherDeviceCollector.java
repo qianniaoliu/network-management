@@ -1,12 +1,12 @@
 package com.network.management.agent.collector.impl;
 
 import com.network.management.agent.collector.Collector;
-import com.network.management.bo.DataBo;
-import com.network.management.bo.DeviceBo;
-import com.network.management.bo.OtherDeviceStatusBo;
+import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.bo.DeviceBo;
+import com.network.management.domain.bo.OtherDeviceStatusBo;
 import com.network.management.common.exception.BizException;
 import com.network.management.common.exception.ErrorCodeEnum;
-import com.network.management.enums.YnEnum;
+import com.network.management.domain.enums.YnEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;

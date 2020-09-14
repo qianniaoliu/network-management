@@ -1,6 +1,6 @@
 package com.network.management.agent.hanlder;
 
-import com.network.management.bo.DataBo;
+import com.network.management.domain.bo.DataBo;
 
 /**
  * 数据处理接口

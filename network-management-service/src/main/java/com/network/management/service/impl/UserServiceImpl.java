@@ -1,12 +1,12 @@
 package com.network.management.service.impl;
 
-import com.network.management.User;
-import com.network.management.enums.YnEnum;
+import com.network.management.domain.dao.User;
+import com.network.management.domain.enums.YnEnum;
 import com.network.management.common.exception.Assert;
 import com.network.management.mapper.UserMapper;
 import com.network.management.service.UserService;
 import com.network.management.service.converter.UserConverter;
-import com.network.management.vo.RegistryVo;
+import com.network.management.domain.vo.RegistryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

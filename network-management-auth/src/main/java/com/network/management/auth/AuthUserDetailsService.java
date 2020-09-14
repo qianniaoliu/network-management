@@ -1,6 +1,5 @@
 package com.network.management.auth;
 
-import com.network.management.User;
 import com.network.management.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

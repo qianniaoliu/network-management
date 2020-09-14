@@ -1,6 +1,6 @@
 package com.network.management.service.impl;
 
-import com.network.management.Equipment;
+import com.network.management.domain.dao.Equipment;
 import com.network.management.common.exception.Assert;
 import com.network.management.mapper.EquipmentMapper;
 import com.network.management.service.EquipmentService;

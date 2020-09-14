@@ -1,6 +1,6 @@
 package com.network.management.mapper;
 
-import com.network.management.User;
+import com.network.management.domain.dao.User;
 
 
 /**

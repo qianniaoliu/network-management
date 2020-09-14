@@ -1,6 +1,6 @@
 package com.network.management.mapper;
 
-import com.network.management.dao.OtherDeviceStatus;
+import com.network.management.domain.dao.OtherDeviceStatus;
 
 import java.util.List;
 import java.util.Map;

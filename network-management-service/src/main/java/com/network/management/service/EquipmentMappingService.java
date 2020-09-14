@@ -1,6 +1,6 @@
 package com.network.management.service;
 
-import com.network.management.EquipmentMapping;
+import com.network.management.domain.dao.EquipmentMapping;
 
 import java.util.List;
 import java.util.Set;

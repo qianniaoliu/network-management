@@ -23,12 +23,12 @@
         <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
         <typeAlias alias="ArrayList" type="java.util.ArrayList" />
         <typeAlias alias="LinkedList" type="java.util.LinkedList" />
-        <typeAlias alias="User" type="com.network.management.User"/>
-        <typeAlias alias="EquipmentMapping" type="com.network.management.EquipmentMapping"/>
-        <typeAlias alias="Equipment" type="com.network.management.Equipment"/>
-        <typeAlias alias="BordInformation" type="com.network.management.BordInformation"/>
-        <typeAlias alias="OtherDeviceStatus" type="com.network.management.dao.OtherDeviceStatus"/>
-        <typeAlias alias="StationStatus" type="com.network.management.dao.StationStatus"/>
+        <typeAlias alias="User" type="com.network.management.domain.dao.User"/>
+        <typeAlias alias="EquipmentMapping" type="com.network.management.domain.dao.EquipmentMapping"/>
+        <typeAlias alias="Equipment" type="com.network.management.domain.dao.Equipment"/>
+        <typeAlias alias="BordInformation" type="com.network.management.domain.dao.BordInformation"/>
+        <typeAlias alias="OtherDeviceStatus" type="com.network.management.domain.dao.OtherDeviceStatus"/>
+        <typeAlias alias="StationStatus" type="com.network.management.domain.dao.StationStatus"/>
     </typeAliases>
 
     <mappers>

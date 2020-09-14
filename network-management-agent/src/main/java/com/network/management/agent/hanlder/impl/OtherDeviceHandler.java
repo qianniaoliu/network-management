@@ -2,8 +2,8 @@ package com.network.management.agent.hanlder.impl;
 
 import com.network.management.agent.convert.OtherDeviceStatusConverter;
 import com.network.management.agent.hanlder.DataHandler;
-import com.network.management.bo.DataBo;
-import com.network.management.dao.OtherDeviceStatus;
+import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.dao.OtherDeviceStatus;
 import com.network.management.mapper.OtherDeviceStatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

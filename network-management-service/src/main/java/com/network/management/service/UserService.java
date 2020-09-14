@@ -1,6 +1,6 @@
 package com.network.management.service;
 
-import com.network.management.vo.RegistryVo;
+import com.network.management.domain.vo.RegistryVo;
 
 /**
  * 用户信息服务

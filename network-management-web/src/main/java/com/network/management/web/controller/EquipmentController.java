@@ -1,5 +1,6 @@
 package com.network.management.web.controller;
 
+import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
 import com.network.management.service.EquipmentService;
 import com.network.management.web.vo.Result;
@@ -50,6 +51,17 @@ public class EquipmentController {
     @PostMapping("/modify")
     public Result modifyEquipment(@RequestBody Equipment equipment){
         equipmentService.update(equipment);
+        return Result.success(null);
+    }
+
+    /**
+     * 删除设备基本信息
+     * @param equipmentId 设备Id
+     * @return 前端渲染对象
+     */
+    @DeleteMapping("/delete")
+    public Result deleteEquipment(@RequestParam("equipmentId") Integer equipmentId){
+        equipmentService.delete(Sets.newHashSet(equipmentId));
         return Result.success(null);
     }
 

@@ -1,6 +1,7 @@
 package com.network.management.web.controller;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,10 @@ import java.io.IOException;
  */
 @RestController
 public class IndexController {
+
+
+    @Value("${default.redirect.url}")
+    private String defaultRedirectUrl;
 
     /**
      * 登录调整首页逻辑
@@ -32,6 +37,6 @@ public class IndexController {
                 response.sendRedirect("http://" + redirectUrl);
             }
         }
-        response.sendRedirect("https://github.com/qianniaoliu/network-management");
+        response.sendRedirect(defaultRedirectUrl);
     }
 }

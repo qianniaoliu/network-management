@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 /**
  * @author yusheng
- * @date 2020-09-07
  */
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override

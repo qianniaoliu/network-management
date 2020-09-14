@@ -21,6 +21,7 @@ public interface UserMapper {
     /**
      * 插入一条用户数据
      * @param user 用户对象
+     * @return 主键id
      */
-    void insert(User user);
+    Integer insert(User user);
 }

@@ -5,7 +5,6 @@ import com.network.management.domain.dao.BordInformation;
 import com.network.management.domain.vo.BordInformationAggregation;
 import com.network.management.service.BordInformationService;
 import com.network.management.web.vo.Result;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,8 +21,11 @@ import java.util.Objects;
 @RequestMapping("/bord")
 public class BordInformationController {
 
-    @Autowired
-    private BordInformationService bordInformationService;
+    private final BordInformationService bordInformationService;
+
+    public BordInformationController(BordInformationService bordInformationService) {
+        this.bordInformationService = bordInformationService;
+    }
 
 
     /**

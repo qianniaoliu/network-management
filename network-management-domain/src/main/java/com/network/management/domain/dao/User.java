@@ -1,5 +1,6 @@
 package com.network.management.domain.dao;
 
+import com.network.management.domain.enums.YnEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -40,5 +41,11 @@ public class User {
      * 创建时间
      */
     private Date created;
+
+    public void initCreateInfo(){
+        setYn(YnEnum.YES.getCode());
+        setCreated(new Date());
+        setModified(new Date());
+    }
 
 }

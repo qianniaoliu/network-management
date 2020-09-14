@@ -6,8 +6,8 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
-    <result column="modified" jdbcType="DATE" property="modified" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, url, yn, modified, created
@@ -22,11 +22,11 @@
     delete from bord_information
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="BordInformation">
-    insert into bord_information (id, name, url, 
+  <insert id="insert" parameterType="BordInformation" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into bord_information (name, url,
       yn, modified, created)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
-      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+    values (#{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="BordInformation">
     insert into bord_information
@@ -64,10 +64,10 @@
         #{yn,jdbcType=TINYINT},
       </if>
       <if test="modified != null">
-        #{modified,jdbcType=DATE},
+        #{modified,jdbcType=TIMESTAMP},
       </if>
       <if test="created != null">
-        #{created,jdbcType=DATE},
+        #{created,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -84,10 +84,10 @@
         yn = #{yn,jdbcType=TINYINT},
       </if>
       <if test="modified != null">
-        modified = #{modified,jdbcType=DATE},
+        modified = #{modified,jdbcType=TIMESTAMP},
       </if>
       <if test="created != null">
-        created = #{created,jdbcType=DATE},
+        created = #{created,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

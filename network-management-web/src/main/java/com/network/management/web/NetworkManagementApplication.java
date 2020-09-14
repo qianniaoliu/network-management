@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * 启动引导类
  *
  * @author yusheng
- * @date 2020-09-07
  */
 @SpringBootApplication(scanBasePackages = {"com.network.management"})
 @EnableScheduling

@@ -12,7 +12,6 @@ import java.util.Collection;
 
 /**
  * @author yusheng
- * @date 2020-09-07
  */
 @Component
 public class UserAuthenticationProvider implements AuthenticationProvider {

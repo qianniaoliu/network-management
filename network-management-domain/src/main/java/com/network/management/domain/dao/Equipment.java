@@ -1,5 +1,6 @@
 package com.network.management.domain.dao;
 
+import com.network.management.domain.enums.YnEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -40,7 +41,7 @@ public class Equipment {
     /**
      * 数据采集间隔时间
      */
-    private Integer internalTime;
+    private Long internalTime;
 
     /**
      * x坐标
@@ -76,4 +77,14 @@ public class Equipment {
      * 创建时间
      */
     private Date created;
+
+    public void initCreateInfo(){
+        setYn(YnEnum.YES.getCode());
+        setCreated(new Date());
+        setModified(new Date());
+    }
+
+    public void initModifyInfo(){
+        setModified(new Date());
+    }
 }

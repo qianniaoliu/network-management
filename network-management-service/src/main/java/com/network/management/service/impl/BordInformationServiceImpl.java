@@ -1,20 +1,22 @@
 package com.network.management.service.impl;
 
+import com.network.management.common.exception.Assert;
 import com.network.management.domain.dao.BordInformation;
 import com.network.management.domain.dao.Equipment;
 import com.network.management.domain.dao.EquipmentMapping;
-import com.network.management.domain.enums.YnEnum;
-import com.network.management.common.exception.Assert;
+import com.network.management.domain.vo.BordInformationAggregation;
 import com.network.management.mapper.BordInformationMapper;
 import com.network.management.service.BordInformationService;
 import com.network.management.service.EquipmentMappingService;
 import com.network.management.service.EquipmentService;
-import com.network.management.domain.vo.BordInformationAggregation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -42,12 +44,11 @@ public class BordInformationServiceImpl implements BordInformationService {
     @Override
     public void save(BordInformation bordInformation) {
         Assert.notNull(bordInformation, "bordInformation 对象不能为null");
-        bordInformation.setModified(new Date());
         if(Objects.nonNull(bordInformation.getId())){
+            bordInformation.initModifyInfo();
             bordInformationMapper.updateByKey(bordInformation);
         }else {
-            bordInformation.setYn(YnEnum.YES.getCode());
-            bordInformation.setCreated(new Date());
+            bordInformation.initCreateInfo();
             bordInformationMapper.insert(bordInformation);
         }
     }
@@ -122,10 +123,5 @@ public class BordInformationServiceImpl implements BordInformationService {
         result.setEquipments(equipmentService.getByBordId(bordInformationId));
         result.setEquipmentMappings(equipmentMappingService.getByBordId(bordInformationId));
         return result;
-    }
-
-    @Override
-    public Equipment getByEquipmentId(Integer equipmentId) {
-        return equipmentService.get(equipmentId);
     }
 }

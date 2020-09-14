@@ -1,7 +1,7 @@
 package com.network.management.auth;
 
-import com.network.management.mapper.UserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.network.management.domain.dao.User;
+import com.network.management.service.UserService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,18 +14,20 @@ import java.util.List;
 
 /**
  * @author yusheng
- * @date 2020-09-07
  */
 @Component
 public class AuthUserDetailsService implements UserDetailsService {
 
-    @Autowired(required = false)
-    private UserMapper userMapper;
+    private final UserService userService;
+
+    public AuthUserDetailsService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         SysUser sysUser = new SysUser(s);
-        sysUser.setId(1L);
+        sysUser.setId(110L);
         sysUser.setPassword(validUser(s));
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("ADMIN");
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -35,12 +37,11 @@ public class AuthUserDetailsService implements UserDetailsService {
     }
 
     public String validUser(String username){
-//        User user = userMapper.selectByUserName(username);
-//        if(user == null){
-//            return null;
-//        }else {
-//            return user.getPassword();
-//        }
-        return "1";
+        User user = userService.queryByName(username);
+        if(user == null){
+            return null;
+        }else {
+            return user.getPassword();
+        }
     }
 }

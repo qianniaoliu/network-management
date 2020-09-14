@@ -1,16 +1,12 @@
 package com.network.management.service.impl;
 
-import com.network.management.domain.dao.User;
-import com.network.management.domain.enums.YnEnum;
 import com.network.management.common.exception.Assert;
+import com.network.management.domain.dao.User;
+import com.network.management.domain.vo.RegistryVo;
 import com.network.management.mapper.UserMapper;
 import com.network.management.service.UserService;
 import com.network.management.service.converter.UserConverter;
-import com.network.management.domain.vo.RegistryVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Date;
 
 /**
  * 用户服务实现类
@@ -20,8 +16,11 @@ import java.util.Date;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
+
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     @Override
     public void add(RegistryVo registryVo) {
@@ -29,9 +28,13 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectByUserName(registryVo.getUserName());
         Assert.isNull(user, "用户名已存在!");
         user = new UserConverter().convert(registryVo);
-        user.setYn(YnEnum.YES.getCode());
-        user.setCreated(new Date());
-        user.setModified(new Date());
+        user.initCreateInfo();
         userMapper.insert(user);
+    }
+
+    @Override
+    public User queryByName(String name) {
+        Assert.notNull(name, "用户名不能为空!");
+        return userMapper.selectByUserName(name);
     }
 }

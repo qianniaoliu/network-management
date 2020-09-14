@@ -7,14 +7,14 @@
     <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="equipment_type" jdbcType="TINYINT" property="equipmentType" />
-    <result column="internal_time" jdbcType="TIMESTAMP" property="internalTime" />
+    <result column="internal_time" jdbcType="BIGINT" property="internalTime" />
     <result column="x" jdbcType="VARCHAR" property="x" />
     <result column="y" jdbcType="VARCHAR" property="y" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
-    <result column="modified" jdbcType="DATE" property="modified" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
     id, bord_information_id, ip, name, equipment_type, internal_time, x, y, username, 
@@ -30,15 +30,15 @@
     delete from equipment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="Equipment">
-    insert into equipment (id, bord_information_id, ip, 
+  <insert id="insert" parameterType="Equipment" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into equipment (bord_information_id, ip,
       name, equipment_type, internal_time, 
       x, y, username, password, 
       yn, modified, created)
-    values (#{id,jdbcType=INTEGER}, #{bordInformationId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{equipmentType,jdbcType=TINYINT}, #{internalTime,jdbcType=TIMESTAMP}, 
+    values (#{bordInformationId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{equipmentType,jdbcType=TINYINT}, #{internalTime,jdbcType=BIGINT},
       #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="Equipment">
     insert into equipment
@@ -100,7 +100,7 @@
         #{equipmentType,jdbcType=TINYINT},
       </if>
       <if test="internalTime != null">
-        #{internalTime,jdbcType=TIMESTAMP},
+        #{internalTime,jdbcType=BIGINT},
       </if>
       <if test="x != null">
         #{x,jdbcType=VARCHAR},
@@ -118,10 +118,10 @@
         #{yn,jdbcType=TINYINT},
       </if>
       <if test="modified != null">
-        #{modified,jdbcType=DATE},
+        #{modified,jdbcType=TIMESTAMP},
       </if>
       <if test="created != null">
-        #{created,jdbcType=DATE},
+        #{created,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -141,7 +141,7 @@
         equipment_type = #{equipmentType,jdbcType=TINYINT},
       </if>
       <if test="internalTime != null">
-        internal_time = #{internalTime,jdbcType=TIMESTAMP},
+        internal_time = #{internalTime,jdbcType=BIGINT},
       </if>
       <if test="x != null">
         x = #{x,jdbcType=VARCHAR},
@@ -159,10 +159,10 @@
         yn = #{yn,jdbcType=TINYINT},
       </if>
       <if test="modified != null">
-        modified = #{modified,jdbcType=DATE},
+        modified = #{modified,jdbcType=TIMESTAMP},
       </if>
       <if test="created != null">
-        created = #{created,jdbcType=DATE},
+        created = #{created,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

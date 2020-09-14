@@ -15,8 +15,9 @@ public interface EquipmentMappingService {
     /**
      * 新增设备映射关系
      * @param equipmentMapping
+     * @return 设备id
      */
-    void add(EquipmentMapping equipmentMapping);
+    Integer add(EquipmentMapping equipmentMapping);
 
     /**
      * 修改设备映射关系
@@ -33,7 +34,7 @@ public interface EquipmentMappingService {
     /**
      * 通过巷道图id获取设备映射关系
      * @param bordId
-     * @return
+     * @return 关系集合
      */
     List<EquipmentMapping> getByBordId(Integer bordId);
 }

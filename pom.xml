@@ -106,6 +106,14 @@
 				<artifactId>guava</artifactId>
 				<version>29.0-jre</version>
 			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.13</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.logout.CookieClearingLogo
 
 /**
  * @author yusheng
- * @date 2020-09-07
  */
 @Configuration
 @EnableWebSecurity

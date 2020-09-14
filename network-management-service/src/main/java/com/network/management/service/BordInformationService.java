@@ -1,7 +1,6 @@
 package com.network.management.service;
 
 import com.network.management.domain.dao.BordInformation;
-import com.network.management.domain.dao.Equipment;
 import com.network.management.domain.vo.BordInformationAggregation;
 
 /**
@@ -31,13 +30,5 @@ public interface BordInformationService {
      * @see BordInformationAggregation
      */
     BordInformationAggregation getAll(Integer bordInformationId);
-
-    /**
-     * 获取单个设备信息
-     * @param equipmentId 设备信息id
-     * @return 设备信息
-     * @see Equipment
-     */
-    Equipment getByEquipmentId(Integer equipmentId);
 
 }

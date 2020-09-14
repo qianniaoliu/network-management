@@ -12,8 +12,9 @@ public interface BordInformationMapper {
     /**
      * 新增巷道图基本信息
      * @param bordInformation 插入信息
+     * @return 主键id
      */
-    void insert(BordInformation bordInformation);
+    Integer insert(BordInformation bordInformation);
 
     /**
      * 根据主键修改巷道图基本信息

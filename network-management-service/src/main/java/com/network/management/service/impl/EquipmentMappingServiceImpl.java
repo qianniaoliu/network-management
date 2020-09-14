@@ -1,7 +1,7 @@
 package com.network.management.service.impl;
 
-import com.network.management.domain.dao.EquipmentMapping;
 import com.network.management.common.exception.Assert;
+import com.network.management.domain.dao.EquipmentMapping;
 import com.network.management.mapper.EquipmentMappingMapper;
 import com.network.management.service.EquipmentMappingService;
 import org.springframework.stereotype.Service;
@@ -26,14 +26,16 @@ public class EquipmentMappingServiceImpl implements EquipmentMappingService {
     }
 
     @Override
-    public void add(EquipmentMapping equipmentMapping) {
+    public Integer add(EquipmentMapping equipmentMapping) {
         Assert.notNull(equipmentMapping, "equipmentMapping不能为空");
-        equipmentMappingMapper.insert(equipmentMapping);
+        equipmentMapping.initCreateInfo();
+        return equipmentMappingMapper.insert(equipmentMapping);
     }
 
     @Override
     public void update(EquipmentMapping equipmentMapping) {
         Assert.notNull(equipmentMapping, "equipmentMapping不能为空");
+        equipmentMapping.initModifyInfo();
         equipmentMappingMapper.updateByPrimaryKeySelective(equipmentMapping);
     }
 

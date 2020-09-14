@@ -7,7 +7,6 @@ import java.util.Collection;
 
 /**
  * @author yusheng
- * @date 2020-09-07
  */
 public class SysUser implements UserDetails {
 

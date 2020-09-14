@@ -1,5 +1,6 @@
 package com.network.management.domain.dao;
 
+import com.network.management.domain.enums.YnEnum;
 import lombok.Data;
 
 import java.util.Date;
@@ -49,5 +50,15 @@ public class BordInformation {
         this.id = id;
         this.name = name;
         this.url = url;
+    }
+
+    public void initCreateInfo(){
+        setYn(YnEnum.YES.getCode());
+        setCreated(new Date());
+        setModified(new Date());
+    }
+
+    public void initModifyInfo(){
+        setModified(new Date());
     }
 }

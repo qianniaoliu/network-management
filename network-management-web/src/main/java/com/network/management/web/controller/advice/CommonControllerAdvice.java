@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * @author: yusheng
- * @date: 2020/9/9 0:06
+ * @author yusheng
  */
 @RestControllerAdvice(basePackages = {"com.network.management.web.controller"})
 public class CommonControllerAdvice {

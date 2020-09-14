@@ -9,8 +9,8 @@
     <result column="target_id" jdbcType="INTEGER" property="targetId" />
     <result column="target_ip" jdbcType="VARCHAR" property="targetIp" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
-    <result column="modified" jdbcType="DATE" property="modified" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
 
   <sql id="Base_Column_List">
@@ -19,13 +19,13 @@
     yn, modified, created
   </sql>
 
-  <insert id="insert" parameterType="EquipmentMapping">
-    insert into equipment_mapping (id, bord_information_id, source_id,
+  <insert id="insert" parameterType="EquipmentMapping" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into equipment_mapping (bord_information_id, source_id,
     source_ip, target_id, target_ip,
       yn, modified, created)
-    values (#{id,jdbcType=INTEGER}, #{bordInformationId,jdbcType=INTEGER}, #{sourceId,jdbcType=INTEGER},
+    values (#{bordInformationId,jdbcType=INTEGER}, #{sourceId,jdbcType=INTEGER},
       #{sourceIp,jdbcType=VARCHAR}, #{targetId,jdbcType=INTEGER}, #{targetIp,jdbcType=VARCHAR},
-      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=DATE}, #{created,jdbcType=DATE})
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -55,10 +55,10 @@
         #{yn,jdbcType=TINYINT},
       </if>
       <if test="modified != null">
-        #{modified,jdbcType=DATE},
+        #{modified,jdbcType=TIMESTAMP},
       </if>
       <if test="created != null">
-        #{created,jdbcType=DATE},
+        #{created,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

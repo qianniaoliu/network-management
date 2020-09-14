@@ -1,9 +1,8 @@
 package com.network.management.web.controller;
 
-import com.network.management.service.UserService;
 import com.network.management.domain.vo.RegistryVo;
+import com.network.management.service.UserService;
 import com.network.management.web.vo.Result;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public LoginController(UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * 注册用户信息

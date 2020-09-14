@@ -39,8 +39,7 @@ public class EquipmentController {
      */
     @PostMapping("/save")
     public Result saveEquipment(@RequestBody Equipment equipment){
-        equipmentService.add(equipment);
-        return Result.success(null);
+        return Result.success(equipmentService.add(equipment));
     }
 
     /**

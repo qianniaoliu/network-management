@@ -15,8 +15,9 @@ public interface EquipmentService {
     /**
      * 新增设备信息
      * @param equipment 设备信息
+     * @return 设备id
      */
-    void add(Equipment equipment);
+    Integer add(Equipment equipment);
 
     /**
      * 修改设备信息

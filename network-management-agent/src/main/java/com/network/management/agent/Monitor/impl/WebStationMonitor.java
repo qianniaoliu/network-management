@@ -15,7 +15,7 @@ import org.springframework.util.Assert;
 import java.util.Objects;
 
 /**
- * web界面基站状态数据监控
+ * 瑞斯康达基站状态数据监控
  *
  * @author yyc
  * @date 2020/9/12 22:36

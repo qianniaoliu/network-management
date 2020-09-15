@@ -19,7 +19,7 @@ public class StationStatus {
     /**
      * 设备类型
      */
-    private String type;
+    private Integer type;
     /**
      * RF状态
      */

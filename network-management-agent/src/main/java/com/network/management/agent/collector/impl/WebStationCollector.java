@@ -6,8 +6,6 @@ import com.network.management.agent.collector.Collector;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
 import com.network.management.domain.bo.WebStationStatusBo;
-import com.network.management.common.exception.BizException;
-import com.network.management.common.exception.ErrorCodeEnum;
 import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.enums.WebStationKeyEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -58,18 +56,13 @@ public class WebStationCollector implements Collector {
         Assert.notNull(deviceBo, "web界面基站基本信息不能为空.");
         Assert.notNull(deviceBo.getIp(), "web界面基站ip信息不能为空.");
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
-        DataBo<WebStationStatusBo> dataBo = null;
+        String result = null;
         try {
-            String result = HttpClientUtils.doGet(String.format(URL, deviceBo.getIp()), Integer.parseInt(timeOut));
-            dataBo = getDataBo(getJSONObject(result), deviceBo);
+            result = HttpClientUtils.doGet(String.format(URL, deviceBo.getIp()), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败", e);
         }
-        if(Objects.isNull(dataBo)){
-            dataBo = new DataBo<WebStationStatusBo>();
-            // todo
-        }
-        return dataBo;
+        return getDataBo(getJSONObject(result), deviceBo);
     }
 
     /**
@@ -105,23 +98,39 @@ public class WebStationCollector implements Collector {
      * @return {@link DataBo<WebStationStatusBo>}
      */
     private DataBo<WebStationStatusBo> getDataBo(JSONObject jsonObject, DeviceBo deviceBo){
+        DataBo<WebStationStatusBo> dataBo = null;
         if(Objects.nonNull(jsonObject) && !jsonObject.isEmpty()){
-            DataBo<WebStationStatusBo> dataBo = new DataBo<WebStationStatusBo>();
+            dataBo = getStationStatusDataBo(jsonObject, deviceBo);
+        }
+        if(Objects.isNull(dataBo)){
+            dataBo = new DataBo<WebStationStatusBo>();
             dataBo.setIp(deviceBo.getIp());
             dataBo.setType(deviceBo.getEquipmentType());
-            WebStationStatusBo webStationStatusBo = new WebStationStatusBo();
-            webStationStatusBo.setRfStatus(jsonObject.getString(WebStationKeyEnum.RF_STATUS.getKey()));
-            webStationStatusBo.setSctpStatus(jsonObject.getString(WebStationKeyEnum.SCTP_STATUS.getKey()));
-            webStationStatusBo.setIpSpecStatus(jsonObject.getString(WebStationKeyEnum.IP_SPEC_STATUS.getKey()));
-            webStationStatusBo.setCellStatus(jsonObject.getString(WebStationKeyEnum.CELL_STATUS.getKey()));
-            webStationStatusBo.setWanStatus(jsonObject.getString(WebStationKeyEnum.WAN_STATUS.getKey()));
-            webStationStatusBo.setNetManagerStatus(jsonObject.getString(WebStationKeyEnum.MANAGEMENT_STATUS.getKey()));
-            webStationStatusBo.setTimeClockStatus(jsonObject.getString(WebStationKeyEnum.TIME_CLOCK_STATUS.getKey()));
-            webStationStatusBo.setApStatus(jsonObject.getString(WebStationKeyEnum.AP_STATUS.getKey()));
-            webStationStatusBo.setC820Status(jsonObject.getString(WebStationKeyEnum.C820_STATUS.getKey()));
-            dataBo.setDataObj(webStationStatusBo);
-            return dataBo;
         }
-        return null;
+        return dataBo;
+    }
+
+    /**
+     * 获取DataBo对象
+     * @param jsonObject {@link JSONObject}
+     * @param deviceBo {@link DeviceBo}
+     * @return {@link DataBo<WebStationStatusBo>}
+     */
+    private DataBo<WebStationStatusBo> getStationStatusDataBo(JSONObject jsonObject, DeviceBo deviceBo) {
+        DataBo<WebStationStatusBo> dataBo = new DataBo<WebStationStatusBo>();
+        dataBo.setIp(deviceBo.getIp());
+        dataBo.setType(deviceBo.getEquipmentType());
+        WebStationStatusBo webStationStatusBo = new WebStationStatusBo();
+        webStationStatusBo.setRfStatus(jsonObject.getString(WebStationKeyEnum.RF_STATUS.getKey()));
+        webStationStatusBo.setSctpStatus(jsonObject.getString(WebStationKeyEnum.SCTP_STATUS.getKey()));
+        webStationStatusBo.setIpSpecStatus(jsonObject.getString(WebStationKeyEnum.IP_SPEC_STATUS.getKey()));
+        webStationStatusBo.setCellStatus(jsonObject.getString(WebStationKeyEnum.CELL_STATUS.getKey()));
+        webStationStatusBo.setWanStatus(jsonObject.getString(WebStationKeyEnum.WAN_STATUS.getKey()));
+        webStationStatusBo.setNetManagerStatus(jsonObject.getString(WebStationKeyEnum.MANAGEMENT_STATUS.getKey()));
+        webStationStatusBo.setTimeClockStatus(jsonObject.getString(WebStationKeyEnum.TIME_CLOCK_STATUS.getKey()));
+        webStationStatusBo.setApStatus(jsonObject.getString(WebStationKeyEnum.AP_STATUS.getKey()));
+        webStationStatusBo.setUcStatus(jsonObject.getString(WebStationKeyEnum.C820_STATUS.getKey()));
+        dataBo.setDataObj(webStationStatusBo);
+        return dataBo;
     }
 }

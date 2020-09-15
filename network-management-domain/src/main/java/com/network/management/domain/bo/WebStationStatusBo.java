@@ -44,5 +44,5 @@ public class WebStationStatusBo{
     /**
      * C820状态
      */
-    private String c820Status;
+    private String ucStatus;
 }

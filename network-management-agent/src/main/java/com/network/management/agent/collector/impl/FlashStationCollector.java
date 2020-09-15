@@ -46,18 +46,13 @@ public class FlashStationCollector implements Collector{
         Assert.notNull(deviceBo, "flash界面基站基本信息不能为空.");
         Assert.notNull(deviceBo.getIp(), "flash界面基站ip信息不能为空.");
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
-        DataBo<FlashStationStatusBo> dataBo = null;
+        String result = null;
         try {
-            String result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getBodyJson(), Integer.parseInt(timeOut));
-            dataBo = parseResponse(result, deviceBo);
+            result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getBodyJson(), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("flash界面基站http请求状态数据失败", e);
         }
-        if(Objects.isNull(dataBo)){
-            dataBo = new DataBo<FlashStationStatusBo>();
-            // TODO
-        }
-        return dataBo;
+        return parseResponse(result, deviceBo);
     }
 
     /**
@@ -66,16 +61,22 @@ public class FlashStationCollector implements Collector{
      * @return
      */
     private DataBo<FlashStationStatusBo> parseResponse(String result, DeviceBo deviceBo) {
+        DataBo<FlashStationStatusBo> dataBo = null;
         if(StringUtils.isNotEmpty(result)){
             JSONObject jsonObject = JSON.parseObject(result);
             if(Objects.nonNull(jsonObject) && !jsonObject.isEmpty()){
                 JSONObject statusJson = jsonObject.getJSONObject(RESPONSE_KEY);
                 if(Objects.nonNull(statusJson) && !statusJson.isEmpty()){
-                    return getDataBo(statusJson, deviceBo);
+                    dataBo = getDataBo(statusJson, deviceBo);
                 }
             }
         }
-        return null;
+        if(Objects.isNull(dataBo)){
+            dataBo = new DataBo<FlashStationStatusBo>();
+            dataBo.setType(deviceBo.getEquipmentType());
+            dataBo.setIp(deviceBo.getIp());
+        }
+        return dataBo;
     }
 
     /**

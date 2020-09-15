@@ -25,7 +25,7 @@ public class OtherDeviceCollector implements Collector{
     /**
      * ping超时时间
      */
-    private static final int TIME_OUT = 3000;
+    private static final int TIME_OUT = 5000;
     @Override
     public DataBo<?> collect(DeviceBo deviceBo) {
         Assert.notNull(deviceBo, "其他设备基本信息不能为空.");

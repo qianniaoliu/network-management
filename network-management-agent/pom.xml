@@ -15,7 +15,13 @@
     <dependencies>
         <dependency>
             <groupId>com.network.management</groupId>
-            <artifactId>network-management-service</artifactId>
+            <artifactId>network-management-mapper</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.network.management</groupId>
+            <artifactId>network-management-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

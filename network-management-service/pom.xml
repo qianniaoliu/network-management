@@ -34,16 +34,9 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.network.management</groupId>
-            <artifactId>network-management-mapper</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.network.management</groupId>
-            <artifactId>network-management-common</artifactId>
+            <artifactId>network-management-agent</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

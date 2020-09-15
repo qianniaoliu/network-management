@@ -44,4 +44,10 @@ public interface EquipmentMapper {
      */
     List<Equipment> getByBordId(Integer bordId);
 
+    /**
+     * 获取所有设备列表
+     * @return {@link Equipment}
+     */
+    List<Equipment> getAll();
+
 }

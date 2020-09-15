@@ -18,11 +18,6 @@
             <artifactId>network-management-auth</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.network.management</groupId>
-            <artifactId>network-management-agent</artifactId>
-            <version>${project.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>

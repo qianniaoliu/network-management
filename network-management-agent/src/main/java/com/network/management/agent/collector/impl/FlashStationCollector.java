@@ -13,6 +13,8 @@ import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.enums.FlashStationKeyEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -50,7 +52,7 @@ public class FlashStationCollector implements Collector{
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
         String result = null;
         try {
-            result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getBodyJson(), Integer.parseInt(timeOut));
+            result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getStringEntity(), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("flash界面基站http请求状态数据失败", e);
         }
@@ -106,10 +108,10 @@ public class FlashStationCollector implements Collector{
      * 获取请求参数json
      * @return
      */
-    private String getBodyJson(){
+    private StringEntity getStringEntity(){
         Map<String, Integer> bodyMap = new HashMap<>();
         bodyMap.put(BODY_MESSAGE_TYPE, MESSAGE_TYPE_VALUE);
         bodyMap.put(BODY_PARAMETER_TYPE, PARAMETER_TYPE_VALUE);
-        return JSON.toJSONString(bodyMap);
+        return new StringEntity(JSON.toJSONString(bodyMap), ContentType.APPLICATION_JSON);
     }
 }

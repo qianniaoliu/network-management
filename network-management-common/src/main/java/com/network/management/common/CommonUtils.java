@@ -16,7 +16,7 @@ public class CommonUtils {
      * @return
      */
     public static Integer String2Integer(String str){
-        if(StringUtils.isEmpty(str)){
+        if(StringUtils.isNotEmpty(str)){
             try{
                 return Integer.parseInt(str);
             }catch (Exception e){

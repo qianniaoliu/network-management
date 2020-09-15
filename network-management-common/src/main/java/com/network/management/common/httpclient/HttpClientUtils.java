@@ -1,20 +1,26 @@
 package com.network.management.common.httpclient;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -70,7 +76,7 @@ public class HttpClientUtils {
      * @return
      * @throws HttpException
      */
-    public static String doPost(String url, Map<String, String> headers, String body, int timeOut) throws HttpException {
+    public static String doPost(String url, Map<String, String> headers, HttpEntity entity, int timeOut) throws HttpException {
         String response = null;
         CloseableHttpResponse httpResponse = null;
         HttpEntity httpEntity = null;
@@ -82,12 +88,13 @@ public class HttpClientUtils {
                     request.addHeader(e.getKey(), e.getValue());
                 }
             }
-            if (StringUtils.isNotBlank(body)) {
-                request.setEntity(new StringEntity(body, ContentType.APPLICATION_JSON));
+            if (null != entity) {
+                request.setEntity(entity);
             }
             httpResponse = HttpClientManager.getInstance().getCloseableHttpClient().execute(request);
             if (httpResponse != null &&
-                    httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK
+                            || httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY)) {
                 httpEntity = httpResponse.getEntity();
                 response = EntityUtils.toString(httpEntity);
             }
@@ -102,13 +109,13 @@ public class HttpClientUtils {
     /**
      * httpclient post请求
      * @param url 请求url
-     * @param body 请求body
+     * @param entity {@link HttpEntity}
      * @param timeOut 超时时间
      * @return
      * @throws HttpException
      */
-    public static String doPost(String url, String body, int timeOut) throws HttpException {
-        return doPost(url, null, body, timeOut);
+    public static String doPost(String url, HttpEntity entity, int timeOut) throws HttpException {
+        return doPost(url, null, entity, timeOut);
     }
 
     /**

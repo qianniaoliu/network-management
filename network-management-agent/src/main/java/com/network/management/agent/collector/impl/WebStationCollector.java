@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
+import com.network.management.common.cache.CaffeineCache;
 import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
@@ -11,18 +12,23 @@ import com.network.management.domain.bo.WebStationStatusBo;
 import com.network.management.domain.enums.WebStationKeyEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.ContentType;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,10 +43,13 @@ import java.util.regex.Pattern;
 @DeviceCollectorType("webStation")
 public class WebStationCollector implements Collector {
     /**
-     * 请求url
+     * 数据请求url
      */
-    private static final String URL = "http://%s:8080/page/core_diagnose.asp";
+    private static final String LOGIN_URL = "http://%s:8080/action/login";
+    private static final String DATA_URL = "http://%s:8080/page/core_diagnose.asp";
     private static final String RESPONSE_KEY = "data";
+    private static final String USER_NAME = "username";
+    private static final String PASS_WORD = "password";
     /**
      * 匹配数据的正则表达式
      */
@@ -52,6 +61,8 @@ public class WebStationCollector implements Collector {
 
     @Value("${collect.time.out:10000}")
     private String timeOut;
+    @Autowired
+    private CaffeineCache caffeineCache;
 
     @Override
     public DataBo<?> collect(DeviceBo deviceBo) {
@@ -60,11 +71,29 @@ public class WebStationCollector implements Collector {
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
         String result = null;
         try {
-            result = HttpClientUtils.doGet(String.format(URL, deviceBo.getIp()), Integer.parseInt(timeOut));
+            if(StringUtils.isEmpty(caffeineCache.get(deviceBo.getIp()))){
+                UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(getUrlEncodedFormEntity(deviceBo.getUsername(), deviceBo.getPassword()), HTTP.UTF_8);
+                HttpClientUtils.doPost(String.format(LOGIN_URL, deviceBo.getIp()), urlEncodedFormEntity, Integer.parseInt(timeOut));
+                caffeineCache.put(deviceBo.getIp(), deviceBo.getIp());
+            }
+            result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败", e);
         }
         return getDataBo(getJSONObject(result), deviceBo);
+    }
+
+    /**
+     * 获取NameValuePair列表
+     * @param username
+     * @param password
+     * @return {@link NameValuePair}
+     */
+    private List<NameValuePair> getUrlEncodedFormEntity(String username, String password){
+        List<NameValuePair> nameValuePairs = new ArrayList<>();
+        nameValuePairs.add(new BasicNameValuePair(USER_NAME, username));
+        nameValuePairs.add(new BasicNameValuePair(PASS_WORD, password));
+        return nameValuePairs;
     }
 
     /**
@@ -84,11 +113,27 @@ public class WebStationCollector implements Collector {
                         Pattern pattern = Pattern.compile(PATTERN_KEY);
                         Matcher math = pattern.matcher(nodes.get(0).attr(RESPONSE_KEY));
                         if (math.find()) {
-                            String dataStr = math.group();
-                            return JSON.parseObject(dataStr.substring(dataStr.indexOf("=") + 3, dataStr.length() - 2));
+                            return getDataJsonObj(math.group());
                         }
                     }
                 }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取数据对象
+     *
+     * @param dataStr 数据json串
+     * @return {@link JSONObject}
+     */
+    private JSONObject getDataJsonObj(String dataStr) {
+        if (StringUtils.isNotEmpty(dataStr)) {
+            try {
+                return JSON.parseObject(dataStr.substring(dataStr.indexOf("=") + 3, dataStr.length() - 2));
+            } catch (Exception e) {
+                log.error("JSON.parseObject error:{}", dataStr, e);
             }
         }
         return null;

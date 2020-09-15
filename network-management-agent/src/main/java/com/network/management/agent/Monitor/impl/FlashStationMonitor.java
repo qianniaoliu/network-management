@@ -15,7 +15,7 @@ import org.springframework.util.Assert;
 import java.util.Objects;
 
 /**
- * 超讯站状态数据监控
+ * 超讯基站状态数据监控
  * @author yyc
  * @date 2020/9/12 22:34
  */

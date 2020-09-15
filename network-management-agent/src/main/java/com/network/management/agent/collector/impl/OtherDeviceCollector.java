@@ -1,11 +1,10 @@
 package com.network.management.agent.collector.impl;
 
+import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
 import com.network.management.domain.bo.OtherDeviceStatusBo;
-import com.network.management.common.exception.BizException;
-import com.network.management.common.exception.ErrorCodeEnum;
 import com.network.management.domain.enums.YnEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -16,16 +15,19 @@ import java.net.InetAddress;
 
 /**
  * 其他设备状态采集器
+ *
  * @author yyc
  * @date 2020/9/12 22:05
  */
 @Component
+@DeviceCollectorType("otherDevice")
 @Slf4j
-public class OtherDeviceCollector implements Collector{
+public class OtherDeviceCollector implements Collector {
     /**
      * ping超时时间
      */
     private static final int TIME_OUT = 5000;
+
     @Override
     public DataBo<?> collect(DeviceBo deviceBo) {
         Assert.notNull(deviceBo, "其他设备基本信息不能为空.");

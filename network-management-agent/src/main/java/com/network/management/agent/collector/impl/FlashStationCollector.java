@@ -2,6 +2,7 @@ package com.network.management.agent.collector.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
@@ -27,6 +28,7 @@ import java.util.Objects;
  */
 @Component
 @Slf4j
+@DeviceCollectorType("flashStation")
 public class FlashStationCollector implements Collector{
     private static final String URL = "http://%s:8080/cgi-bin/c2s";
     /**

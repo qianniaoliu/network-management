@@ -13,12 +13,13 @@ import java.util.Objects;
 @AllArgsConstructor
 @Getter
 public enum DeviceTypeEnum {
-    FLASH_STATION(1, "flashStation"),
-    WEB_STATION(2, "webStation"),
-    OTHER_STATION(3, "otherDevice");
+    FLASH_STATION(1, "flashStation", "超讯基站"),
+    WEB_STATION(2, "webStation", "瑞斯康达基站"),
+    OTHER_STATION(3, "otherDevice", "其他设备");
 
     private Integer type;
     private String typeKey;
+    private String desc;
 
     /**
      * 获取设备类型key

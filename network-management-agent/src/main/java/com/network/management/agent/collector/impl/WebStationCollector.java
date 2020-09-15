@@ -2,11 +2,12 @@ package com.network.management.agent.collector.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
+import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
 import com.network.management.domain.bo.WebStationStatusBo;
-import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.enums.WebStationKeyEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +34,7 @@ import java.util.regex.Pattern;
  */
 @Component
 @Slf4j
+@DeviceCollectorType("webStation")
 public class WebStationCollector implements Collector {
     /**
      * 请求url
@@ -67,6 +69,7 @@ public class WebStationCollector implements Collector {
 
     /**
      * 获取数据JSONObject
+     *
      * @param result
      * @return {@link JSONObject}
      */
@@ -93,16 +96,17 @@ public class WebStationCollector implements Collector {
 
     /**
      * 获取设备状态数据对象
+     *
      * @param jsonObject {@link JSONObject}
-     * @param deviceBo {@link DeviceBo}
+     * @param deviceBo   {@link DeviceBo}
      * @return {@link DataBo<WebStationStatusBo>}
      */
-    private DataBo<WebStationStatusBo> getDataBo(JSONObject jsonObject, DeviceBo deviceBo){
+    private DataBo<WebStationStatusBo> getDataBo(JSONObject jsonObject, DeviceBo deviceBo) {
         DataBo<WebStationStatusBo> dataBo = null;
-        if(Objects.nonNull(jsonObject) && !jsonObject.isEmpty()){
+        if (Objects.nonNull(jsonObject) && !jsonObject.isEmpty()) {
             dataBo = getStationStatusDataBo(jsonObject, deviceBo);
         }
-        if(Objects.isNull(dataBo)){
+        if (Objects.isNull(dataBo)) {
             dataBo = new DataBo<WebStationStatusBo>();
             dataBo.setIp(deviceBo.getIp());
             dataBo.setType(deviceBo.getEquipmentType());
@@ -112,8 +116,9 @@ public class WebStationCollector implements Collector {
 
     /**
      * 获取DataBo对象
+     *
      * @param jsonObject {@link JSONObject}
-     * @param deviceBo {@link DeviceBo}
+     * @param deviceBo   {@link DeviceBo}
      * @return {@link DataBo<WebStationStatusBo>}
      */
     private DataBo<WebStationStatusBo> getStationStatusDataBo(JSONObject jsonObject, DeviceBo deviceBo) {

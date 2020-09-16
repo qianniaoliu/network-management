@@ -2,11 +2,13 @@ package com.network.management.web.controller;
 
 import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.service.DeviceStatusService;
 import com.network.management.service.EquipmentService;
 import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -25,6 +27,8 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
+    @Autowired
+    private DeviceStatusService deviceStatusService;
     /**
      * 获取单个设备信息
      * @param equipmentId 设备信息id
@@ -74,6 +78,18 @@ public class EquipmentController {
     public Result deleteEquipment(@RequestParam("equipmentId") Integer equipmentId){
         equipmentService.delete(Sets.newHashSet(equipmentId));
         return Result.success(null);
+    }
+
+    /**
+     * 获取单个设备信息以及状态数据
+     * @param equipmentId 设备信息id
+     * @return 前端渲染对象
+     */
+    @GetMapping("/queryDeviceStatus")
+    @ApiOperation("获取单个设备信息")
+    @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
+    public Result queryDeviceStatus(@RequestParam("equipmentId") Integer equipmentId){
+        return Result.success(deviceStatusService.queryDeviceStatus(equipmentId));
     }
 
 }

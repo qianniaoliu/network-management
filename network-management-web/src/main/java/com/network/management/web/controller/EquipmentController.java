@@ -2,13 +2,11 @@ package com.network.management.web.controller;
 
 import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
-import com.network.management.service.DeviceStatusService;
 import com.network.management.service.EquipmentService;
 import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -27,69 +25,72 @@ public class EquipmentController {
         this.equipmentService = equipmentService;
     }
 
-    @Autowired
-    private DeviceStatusService deviceStatusService;
     /**
      * 获取单个设备信息
+     *
      * @param equipmentId 设备信息id
      * @return 前端渲染对象
      */
     @GetMapping("/get")
     @ApiOperation("获取单个设备信息")
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
-    public Result equipmentInfo(@RequestParam("equipmentId") Integer equipmentId){
+    public Result equipmentInfo(@RequestParam("equipmentId") Integer equipmentId) {
         return Result.success(equipmentService.get(equipmentId));
     }
 
 
     /**
      * 新增设备基本信息
+     *
      * @param equipment 设备信息
      * @return 前端渲染对象
      */
     @PostMapping("/save")
     @ApiOperation("新增设备基本信息")
     @ApiImplicitParam(name = "equipment", value = "设备信息", required = true)
-    public Result saveEquipment(@RequestBody Equipment equipment){
+    public Result saveEquipment(@RequestBody Equipment equipment) {
         return Result.success(equipmentService.add(equipment));
     }
 
     /**
      * 修改设备基本信息
+     *
      * @param equipment 设备信息
      * @return 前端渲染对象
      */
     @PostMapping("/modify")
     @ApiOperation("修改设备基本信息")
     @ApiImplicitParam(name = "equipment", value = "设备信息", required = true)
-    public Result modifyEquipment(@RequestBody Equipment equipment){
+    public Result modifyEquipment(@RequestBody Equipment equipment) {
         equipmentService.update(equipment);
         return Result.success(null);
     }
 
     /**
      * 删除设备基本信息
+     *
      * @param equipmentId 设备Id
      * @return 前端渲染对象
      */
     @DeleteMapping("/delete")
     @ApiOperation("删除设备基本信息")
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
-    public Result deleteEquipment(@RequestParam("equipmentId") Integer equipmentId){
+    public Result deleteEquipment(@RequestParam("equipmentId") Integer equipmentId) {
         equipmentService.delete(Sets.newHashSet(equipmentId));
         return Result.success(null);
     }
 
     /**
      * 获取单个设备信息以及状态数据
+     *
      * @param equipmentId 设备信息id
      * @return 前端渲染对象
      */
-    @GetMapping("/queryDeviceStatus")
+    @GetMapping("/queryStatus")
     @ApiOperation("获取单个设备信息")
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
-    public Result queryDeviceStatus(@RequestParam("equipmentId") Integer equipmentId){
-        return Result.success(deviceStatusService.queryDeviceStatus(equipmentId));
+    public Result queryStatus(@RequestParam("equipmentId") Integer equipmentId) {
+        return Result.success(equipmentService.queryStatus(equipmentId));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.network.management.service;
 
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.vo.DeviceStatusVo;
 
 import java.util.List;
 import java.util.Set;
@@ -49,4 +50,12 @@ public interface EquipmentService {
      * @return 设备信息集合
      */
     List<Equipment> getByBordId(Integer bordId);
+
+    /**
+     * 查询设备信息以及状态
+     *
+     * @param id 设备id
+     * @return {@link DeviceStatusVo}
+     */
+    DeviceStatusVo<?> queryStatus(Integer id);
 }

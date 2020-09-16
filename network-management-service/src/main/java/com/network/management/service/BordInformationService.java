@@ -3,6 +3,8 @@ package com.network.management.service;
 import com.network.management.domain.dao.BordInformation;
 import com.network.management.domain.vo.BordInformationAggregation;
 
+import java.util.List;
+
 /**
  * 巷道信息服务
  *
@@ -30,5 +32,11 @@ public interface BordInformationService {
      * @see BordInformationAggregation
      */
     BordInformationAggregation getAll(Integer bordInformationId);
+
+    /**
+     * 获取所有巷道图信息
+     * @return 巷道图列表
+     */
+    List<BordInformation> selectAll();
 
 }

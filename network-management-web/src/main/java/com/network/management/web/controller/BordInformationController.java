@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -57,7 +58,7 @@ public class BordInformationController {
             if (!imgDir.exists()) {
                 imgDir.mkdirs();
             }
-            String bordFileName = "bord-img.jpg";
+            String bordFileName = "bord-" + new Date().getTime() + ".jpg";
             File imgFile = new File(imgDir, bordFileName);
             try {
                 bordFile.transferTo(imgFile);
@@ -97,5 +98,16 @@ public class BordInformationController {
     public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation){
         bordInformationService.updateAll(bordInformationAggregation);
         return Result.success(null);
+    }
+
+
+    /**
+     * 获取巷道图列表信息
+     * @return 巷道图全量信息
+     */
+    @GetMapping("/list/all")
+    @ApiOperation("获取巷道图列表信息")
+    public Result listAll(){
+        return Result.success(bordInformationService.selectAll());
     }
 }

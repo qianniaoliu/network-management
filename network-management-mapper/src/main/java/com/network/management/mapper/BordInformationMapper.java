@@ -2,6 +2,8 @@ package com.network.management.mapper;
 
 import com.network.management.domain.dao.BordInformation;
 
+import java.util.List;
+
 /**
  * 巷道图基本信息mapper
  *
@@ -28,4 +30,10 @@ public interface BordInformationMapper {
      * @return 巷道图基本信息
      */
     BordInformation selectByPrimaryKey(Integer bordId);
+
+    /**
+     * 获取所有巷道图信息
+     * @return 巷道图列表
+     */
+    List<BordInformation> selectAll();
 }

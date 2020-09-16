@@ -124,4 +124,9 @@ public class BordInformationServiceImpl implements BordInformationService {
         result.setEquipmentMappings(equipmentMappingService.getByBordId(bordInformationId));
         return result;
     }
+
+    @Override
+    public List<BordInformation> selectAll() {
+        return bordInformationMapper.selectAll();
+    }
 }

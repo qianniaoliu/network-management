@@ -74,4 +74,11 @@ public class BordInformationServiceTests {
         Assert.assertNotNull(bordInformationAggregation2);
 
     }
+
+
+    @Test
+    public void testSelectAll(){
+        List<BordInformation> bordInformationList = bordInformationService.selectAll();
+        Assert.assertNotNull(bordInformationList);
+    }
 }

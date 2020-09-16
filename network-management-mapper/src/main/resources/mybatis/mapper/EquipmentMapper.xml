@@ -174,4 +174,16 @@
     from equipment
     where bord_information_id = #{bordInformationId,jdbcType=INTEGER}
   </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from equipment
+  </select>
+
+  <select id="getByIp" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from equipment where ip = #{ip,jdbcType=VARCHAR}
+  </select>
 </mapper>

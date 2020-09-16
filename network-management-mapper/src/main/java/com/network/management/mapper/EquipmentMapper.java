@@ -50,4 +50,10 @@ public interface EquipmentMapper {
      */
     List<Equipment> getAll();
 
+    /**
+     * 根据ip查询设备信息
+     * @return {@link Equipment}
+     */
+    Equipment getByIp(String ip);
+
 }

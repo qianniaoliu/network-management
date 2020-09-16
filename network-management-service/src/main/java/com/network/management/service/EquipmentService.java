@@ -44,6 +44,4 @@ public interface EquipmentService {
      * @return 设备信息集合
      */
     List<Equipment> getByBordId(Integer bordId);
-
-    List<Equipment> getAllEquipments();
 }

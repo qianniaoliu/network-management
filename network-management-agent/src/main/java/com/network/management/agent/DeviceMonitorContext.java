@@ -5,6 +5,7 @@ import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.annotation.DeviceType;
 import com.network.management.agent.collector.Collector;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -56,12 +57,15 @@ public class DeviceMonitorContext implements ApplicationContextAware {
      * @return
      */
     public Collector getCollector(String type){
-        Class clazz = deviceCollectorMap.get(type);
-        if (clazz == null) {
-            log.error("not support device collector type:{}", type);
-            return null;
+        if(StringUtils.isNotEmpty(type)){
+            Class clazz = deviceCollectorMap.get(type);
+            if (clazz == null) {
+                log.error("not support device collector type:{}", type);
+                return null;
+            }
+            return (Collector) applicationContext.getBean(clazz);
         }
-        return (Collector) applicationContext.getBean(clazz);
+        return null;
     }
 
     @Override

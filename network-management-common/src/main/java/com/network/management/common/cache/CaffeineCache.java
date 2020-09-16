@@ -3,6 +3,7 @@ package com.network.management.common.cache;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +21,8 @@ public class CaffeineCache {
     /**
      * 默认失效时间
      */
-    private static final int TIME_OUT = 60 * 60;
+    @Value("${caffeine.expire.time:600}")
+    private String cacheExpireTime;
     /**
      * 最大对象数量
      */
@@ -33,7 +35,7 @@ public class CaffeineCache {
     @PostConstruct
     public void init() {
         cache = Caffeine.newBuilder()
-                .expireAfterWrite(TIME_OUT, TimeUnit.SECONDS)
+                .expireAfterWrite(Long.parseLong(cacheExpireTime), TimeUnit.SECONDS)
                 .maximumSize(MAX_SIZE)
                 .build();
         log.info("Caffeine Cache init success.");

@@ -28,7 +28,7 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
     @Autowired
     private WebStationStatusVoConverter webStationStatusVoConverter;
     @Autowired
-    private StationStatusConverter converter;
+    private StationStatusConverter stationStatusConverter;
     @Override
     public DeviceStatusVo<?> convert(DataBo<?> dataBo) {
         if(Objects.nonNull(dataBo)){
@@ -66,7 +66,7 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
         DeviceStatusVo<WebStationStatusVo> deviceStatusVo = new DeviceStatusVo<WebStationStatusVo>();
         deviceStatusVo.setEquipmentType(dataBo.getType());
         deviceStatusVo.setIp(dataBo.getIp());
-        StationStatus stationStatus = converter.convert(dataBo);
+        StationStatus stationStatus = stationStatusConverter.convert(dataBo);
         deviceStatusVo.setStatusObj(webStationStatusVoConverter.convert(stationStatus));
         return deviceStatusVo;
     }
@@ -80,7 +80,7 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
         DeviceStatusVo<FlashStationStatusVo> deviceStatusVo = new DeviceStatusVo<FlashStationStatusVo>();
         deviceStatusVo.setIp(dataBo.getIp());
         deviceStatusVo.setEquipmentType(dataBo.getType());
-        StationStatus stationStatus = converter.convert(dataBo);
+        StationStatus stationStatus = stationStatusConverter.convert(dataBo);
         deviceStatusVo.setStatusObj(flashStationStatusVoConverter.convert(stationStatus));
         return deviceStatusVo;
     }

@@ -1,7 +1,9 @@
 package com.network.management.service;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.service.config.TestConfig;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -44,9 +46,9 @@ public class EquipmentServiceTests {
     public void testUpdate(){
         Equipment equipment = new Equipment();
         equipment.setId(1);
-        equipment.setIp("127.0.0.6");
+        equipment.setIp("127.0.0.7");
         equipment.setName("6G信号发射台");
-        equipment.setEquipmentType(1);
+        equipment.setEquipmentType(3);
         equipment.setInternalTime(210000L);
         equipment.setX(100);
         equipment.setY(300);
@@ -72,6 +74,12 @@ public class EquipmentServiceTests {
     public void testGetByBordId(){
         List<Equipment> equipments = equipmentService.getByBordId(5);
         Assert.assertNotNull(equipments);
+    }
+
+    @Test
+    public void testQueryStatus(){
+        DeviceStatusVo<?> deviceStatusVo = equipmentService.queryStatus(3);
+        Assert.assertNotNull(deviceStatusVo);
     }
 
 }

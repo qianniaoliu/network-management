@@ -2,6 +2,7 @@ package com.network.management.service.converter;
 
 import com.network.management.common.convert.Converter;
 import com.network.management.domain.bo.WebStationStatusBo;
+import com.network.management.domain.dao.StationStatus;
 import com.network.management.domain.vo.WebStationStatusVo;
 import org.springframework.stereotype.Component;
 
@@ -13,27 +14,27 @@ import java.util.Objects;
  * @date 2020/9/16 22:59
  */
 @Component
-public class WebStationStatusVoConverter implements Converter<WebStationStatusBo, WebStationStatusVo> {
+public class WebStationStatusVoConverter implements Converter<StationStatus, WebStationStatusVo> {
     @Override
-    public WebStationStatusVo convert(WebStationStatusBo webStationStatusBo) {
-        if(Objects.nonNull(webStationStatusBo)){
+    public WebStationStatusVo convert(StationStatus stationStatus) {
+        if(Objects.nonNull(stationStatus)){
             WebStationStatusVo webStationStatusVo = new WebStationStatusVo();
-            webStationStatusVo.setApStatus(webStationStatusBo.getApStatus());
-            webStationStatusVo.setCellStatus(webStationStatusBo.getCellStatus());
-            webStationStatusVo.setIpSpecStatus(webStationStatusBo.getIpSpecStatus());
-            webStationStatusVo.setNetManagerStatus(webStationStatusBo.getNetManagerStatus());
-            webStationStatusVo.setRfStatus(webStationStatusBo.getRfStatus());
-            webStationStatusVo.setSctpStatus(webStationStatusBo.getSctpStatus());
-            webStationStatusVo.setTimeClockStatus(webStationStatusBo.getTimeClockStatus());
-            webStationStatusVo.setUcStatus(webStationStatusBo.getUcStatus());
-            webStationStatusVo.setWanStatus(webStationStatusBo.getWanStatus());
+            webStationStatusVo.setApStatus(stationStatus.getApStatus());
+            webStationStatusVo.setCellStatus(stationStatus.getCellStatus());
+            webStationStatusVo.setIpSpecStatus(stationStatus.getIpSpecStatus());
+            webStationStatusVo.setNetManagerStatus(stationStatus.getNetManagerStatus());
+            webStationStatusVo.setRfStatus(stationStatus.getRfStatus());
+            webStationStatusVo.setSctpStatus(stationStatus.getSctpStatus());
+            webStationStatusVo.setTimeClockStatus(stationStatus.getTimeClockStatus());
+            webStationStatusVo.setUcStatus(stationStatus.getUcStatus());
+            webStationStatusVo.setWanStatus(stationStatus.getWanStatus());
             return webStationStatusVo;
         }
         return null;
     }
 
     @Override
-    public WebStationStatusBo reverseConvert(WebStationStatusVo s) {
+    public StationStatus reverseConvert(WebStationStatusVo s) {
         return null;
     }
 }

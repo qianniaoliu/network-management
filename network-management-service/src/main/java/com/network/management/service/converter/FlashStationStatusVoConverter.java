@@ -2,6 +2,7 @@ package com.network.management.service.converter;
 
 import com.network.management.common.convert.Converter;
 import com.network.management.domain.bo.FlashStationStatusBo;
+import com.network.management.domain.dao.StationStatus;
 import com.network.management.domain.vo.FlashStationStatusVo;
 import org.springframework.stereotype.Component;
 
@@ -13,24 +14,25 @@ import java.util.Objects;
  * @date 2020/9/16 22:49
  */
 @Component
-public class FlashStationStatusVoConverter implements Converter<FlashStationStatusBo, FlashStationStatusVo> {
+public class FlashStationStatusVoConverter implements Converter<StationStatus, FlashStationStatusVo> {
+
     @Override
-    public FlashStationStatusVo convert(FlashStationStatusBo flashStationStatusBo) {
-        if(Objects.nonNull(flashStationStatusBo)){
+    public FlashStationStatusVo convert(StationStatus stationStatus) {
+        if(Objects.nonNull(stationStatus)){
             FlashStationStatusVo statusVo = new FlashStationStatusVo();
-            statusVo.setCellStatus(flashStationStatusBo.getCellStatus());
-            statusVo.setIpSecStatus(flashStationStatusBo.getIpSecStatus());
-            statusVo.setIpSecSwitch(flashStationStatusBo.getIpSecSwitch());
-            statusVo.setS1Status(flashStationStatusBo.getS1Status());
-            statusVo.setWanInternet(flashStationStatusBo.getWanInternet());
-            statusVo.setWanStatus(flashStationStatusBo.getWanStatus());
+            statusVo.setCellStatus(stationStatus.getCellStatus());
+            statusVo.setIpSecStatus(stationStatus.getIpSpecStatus());
+            statusVo.setIpSecSwitch(stationStatus.getIpSecSwitchStatus());
+            statusVo.setS1Status(stationStatus.getS1Status());
+            statusVo.setWanInternet(stationStatus.getWanInternet());
+            statusVo.setWanStatus(stationStatus.getWanStatus());
             return statusVo;
         }
         return null;
     }
 
     @Override
-    public FlashStationStatusBo reverseConvert(FlashStationStatusVo s) {
+    public StationStatus reverseConvert(FlashStationStatusVo s) {
         return null;
     }
 }

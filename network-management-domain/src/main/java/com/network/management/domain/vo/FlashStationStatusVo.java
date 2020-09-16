@@ -12,25 +12,25 @@ public class FlashStationStatusVo{
     /**
      * wan口状态
      */
-    private String wanStatus;
+    private Integer wanStatus;
     /**
      * wan口连接状态
      */
-    private String wanInternet;
+    private Integer wanInternet;
     /**
      * ipsec开关状态
      */
-    private String ipSecSwitch;
+    private Integer ipSecSwitch;
     /**
      * ipsec状态
      */
-    private String ipSecStatus;
+    private Integer ipSecStatus;
     /**
      * s1状态
      */
-    private String s1Status;
+    private Integer s1Status;
     /**
      * 小区状态
      */
-    private String cellStatus;
+    private Integer cellStatus;
 }

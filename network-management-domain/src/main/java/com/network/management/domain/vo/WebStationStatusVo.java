@@ -12,37 +12,37 @@ public class WebStationStatusVo{
     /**
      * RF状态
      */
-    private String rfStatus;
+    private Integer rfStatus;
     /**
      * SCTP链路状态
      */
-    private String sctpStatus;
+    private Integer sctpStatus;
     /**
      * IPSec状态
      */
-    private String ipSpecStatus;
+    private Integer ipSpecStatus;
     /**
      * 小区状态
      */
-    private String cellStatus;
+    private Integer cellStatus;
     /**
      * WAN口状态
      */
-    private String wanStatus;
+    private Integer wanStatus;
     /**
      * 网管连接状态
      */
-    private String netManagerStatus;
+    private Integer netManagerStatus;
     /**
      * 时钟状态
      */
-    private String timeClockStatus;
+    private Integer timeClockStatus;
     /**
      * AP状态
      */
-    private String apStatus;
+    private Integer apStatus;
     /**
      * C820状态
      */
-    private String ucStatus;
+    private Integer ucStatus;
 }

@@ -1,10 +1,12 @@
 package com.network.management.service.converter;
 
+import com.network.management.agent.convert.StationStatusConverter;
 import com.network.management.common.convert.Converter;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.FlashStationStatusBo;
 import com.network.management.domain.bo.OtherDeviceStatusBo;
 import com.network.management.domain.bo.WebStationStatusBo;
+import com.network.management.domain.dao.StationStatus;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.domain.vo.FlashStationStatusVo;
 import com.network.management.domain.vo.OtherDeviceStatusVo;
@@ -25,6 +27,8 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
     private FlashStationStatusVoConverter flashStationStatusVoConverter;
     @Autowired
     private WebStationStatusVoConverter webStationStatusVoConverter;
+    @Autowired
+    private StationStatusConverter converter;
     @Override
     public DeviceStatusVo<?> convert(DataBo<?> dataBo) {
         if(Objects.nonNull(dataBo)){
@@ -59,11 +63,11 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
      * @return {@link DeviceStatusVo<WebStationStatusVo>}
      */
     private DeviceStatusVo<WebStationStatusVo> getWebDeviceStatusVo(DataBo<?> dataBo) {
-        WebStationStatusBo stationStatusBo = (WebStationStatusBo)dataBo.getDataObj();
         DeviceStatusVo<WebStationStatusVo> deviceStatusVo = new DeviceStatusVo<WebStationStatusVo>();
-        deviceStatusVo.setIp(dataBo.getIp());
         deviceStatusVo.setEquipmentType(dataBo.getType());
-        deviceStatusVo.setStatusObj(webStationStatusVoConverter.convert(stationStatusBo));
+        deviceStatusVo.setIp(dataBo.getIp());
+        StationStatus stationStatus = converter.convert(dataBo);
+        deviceStatusVo.setStatusObj(webStationStatusVoConverter.convert(stationStatus));
         return deviceStatusVo;
     }
 
@@ -76,8 +80,8 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
         DeviceStatusVo<FlashStationStatusVo> deviceStatusVo = new DeviceStatusVo<FlashStationStatusVo>();
         deviceStatusVo.setIp(dataBo.getIp());
         deviceStatusVo.setEquipmentType(dataBo.getType());
-        FlashStationStatusBo statusBo = (FlashStationStatusBo)dataBo.getDataObj();
-        deviceStatusVo.setStatusObj(flashStationStatusVoConverter.convert(statusBo));
+        StationStatus stationStatus = converter.convert(dataBo);
+        deviceStatusVo.setStatusObj(flashStationStatusVoConverter.convert(stationStatus));
         return deviceStatusVo;
     }
 

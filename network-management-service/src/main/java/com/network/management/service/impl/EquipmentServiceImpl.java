@@ -27,12 +27,14 @@ public class EquipmentServiceImpl implements EquipmentService {
     public EquipmentServiceImpl(EquipmentMapper equipmentMapper) {
         this.equipmentMapper = equipmentMapper;
     }
+
     @Autowired
     private DeviceMonitorContext deviceMonitorContext;
     @Autowired
     private DeviceConverter deviceConverter;
     @Autowired
     private DeviceStatusVoConverter deviceStatusVoConverter;
+
     @Override
     public Integer add(Equipment equipment) {
         Assert.notNull(equipment, "equipment对象不能为空");
@@ -67,7 +69,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public DeviceStatusVo<?> queryStatus(Integer id) {
-        org.springframework.util.Assert.notNull(id, "设备ip不能为空");
+        Assert.notNull(id, "设备ip不能为空");
         Equipment equipment = get(id);
         String deviceType = DeviceTypeEnum.getTypeKey(Objects.isNull(equipment) ? null : equipment.getEquipmentType());
         Collector collector = deviceMonitorContext.getCollector(deviceType);

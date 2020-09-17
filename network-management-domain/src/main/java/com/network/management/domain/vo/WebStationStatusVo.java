@@ -20,7 +20,7 @@ public class WebStationStatusVo{
     /**
      * IPSec状态
      */
-    private Integer ipSpecStatus;
+    private Integer ipSecStatus;
     /**
      * 小区状态
      */

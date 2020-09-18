@@ -1,5 +1,6 @@
 package com.network.management.web.controller;
 
+import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -25,22 +26,23 @@ public class IndexController {
     private String defaultRedirectUrl;
 
     /**
-     * 登录跳转首页逻辑
+     * 登录成功返回逻辑
      * @param request
      * @param response
      * @throws IOException
      */
     @GetMapping("/index")
-    @ApiOperation("登录跳转首页逻辑")
-    public void index(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String redirectUrl = request.getParameter("redirectUrl");
-        if(StringUtils.isNotBlank(redirectUrl)){
-            if(redirectUrl.startsWith("http://") || redirectUrl.startsWith("https://")){
-                response.sendRedirect(redirectUrl);
-            }else {
-                response.sendRedirect("http://" + redirectUrl);
-            }
-        }
-        response.sendRedirect(defaultRedirectUrl);
+    @ApiOperation("登录成功返回逻辑")
+    public Result index(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        String redirectUrl = request.getParameter("redirectUrl");
+//        if(StringUtils.isNotBlank(redirectUrl)){
+//            if(redirectUrl.startsWith("http://") || redirectUrl.startsWith("https://")){
+//                response.sendRedirect(redirectUrl);
+//            }else {
+//                response.sendRedirect("http://" + redirectUrl);
+//            }
+//        }
+//        response.sendRedirect(defaultRedirectUrl);
+        return Result.success(true);
     }
 }

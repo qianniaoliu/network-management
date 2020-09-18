@@ -61,7 +61,7 @@ public class EquipmentController {
     @ApiOperation("修改设备基本信息")
     public Result modifyEquipment(@RequestBody Equipment equipment) {
         equipmentService.update(equipment);
-        return Result.success(null);
+        return Result.success(true);
     }
 
     /**
@@ -75,7 +75,7 @@ public class EquipmentController {
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
     public Result deleteEquipment(@RequestParam("equipmentId") Integer equipmentId) {
         equipmentService.delete(Sets.newHashSet(equipmentId));
-        return Result.success(null);
+        return Result.success(true);
     }
 
     /**

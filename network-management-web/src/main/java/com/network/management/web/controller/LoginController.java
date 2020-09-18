@@ -35,6 +35,6 @@ public class LoginController {
     public Result registry(@RequestBody RegistryVo registryVo) {
         registryVo.check();
         userService.add(registryVo);
-        return Result.success(null);
+        return Result.success(true);
     }
 }

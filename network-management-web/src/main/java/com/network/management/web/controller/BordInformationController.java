@@ -70,7 +70,7 @@ public class BordInformationController {
         BordInformation bordInformation =
                 new BordInformation(bordId, bordName, bordFileUrl);
         bordInformationService.save(bordInformation);
-        return Result.success(null);
+        return Result.success(true);
     }
 
 
@@ -96,7 +96,7 @@ public class BordInformationController {
     @ApiOperation("保存整张巷道图信息，包括巷道图基本信息，设备信息，设备之间映射关系")
     public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation){
         bordInformationService.updateAll(bordInformationAggregation);
-        return Result.success(null);
+        return Result.success(true);
     }
 
 

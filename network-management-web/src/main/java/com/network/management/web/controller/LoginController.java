@@ -27,13 +27,14 @@ public class LoginController {
 
     /**
      * 注册用户信息
+     *
      * @param registryVo 注册对象
      * @return 返回结果
      */
     @PostMapping("/registry")
     @ApiOperation("注册用户信息")
-    @ApiImplicitParam(name = "registryVo", value = "用户信息", required = true)
-    public Result registry(@RequestBody RegistryVo registryVo){
+    @ApiImplicitParam(name = "registryVo", value = "用户信息", required = true, dataTypeClass = RegistryVo.class)
+    public Result registry(@RequestBody RegistryVo registryVo) {
         registryVo.check();
         userService.add(registryVo);
         return Result.success(null);

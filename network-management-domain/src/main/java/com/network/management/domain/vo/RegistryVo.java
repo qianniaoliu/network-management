@@ -17,7 +17,7 @@ public class RegistryVo {
      * 用户名
      */
     @ApiModelProperty("用户名")
-    private String userName;
+    private String username;
 
     /**
      * 密码
@@ -33,7 +33,7 @@ public class RegistryVo {
 
 
     public void check(){
-        if(StringUtils.isBlank(this.userName)){
+        if(StringUtils.isBlank(this.username)){
             throw new IllegalParamException("用户名不能为空");
         }
 

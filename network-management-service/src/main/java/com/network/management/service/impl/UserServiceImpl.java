@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void add(RegistryVo registryVo) {
         Assert.notNull(registryVo, "注册对象不能为空!");
-        User user = userMapper.selectByUserName(registryVo.getUserName());
+        User user = userMapper.selectByUserName(registryVo.getUsername());
         Assert.isNull(user, "用户名已存在!");
         user = new UserConverter().convert(registryVo);
         user.initCreateInfo();

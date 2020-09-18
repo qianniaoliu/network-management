@@ -24,7 +24,7 @@ public class UserServiceTests {
     @Test
     public void testRegistry(){
         RegistryVo registryVo = new RegistryVo();
-        registryVo.setUserName("athena");
+        registryVo.setUsername("athena");
         registryVo.setPassword("athena");
         registryVo.setConfirmPassword("athena");
         userService.add(registryVo);

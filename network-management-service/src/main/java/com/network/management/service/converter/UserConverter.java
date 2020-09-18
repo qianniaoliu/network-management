@@ -11,7 +11,7 @@ public class UserConverter implements Converter<RegistryVo, User> {
     @Override
     public User convert(RegistryVo source) {
         User user = new User();
-        user.setUsername(source.getUserName());
+        user.setUsername(source.getUsername());
         user.setPassword(source.getPassword());
         return user;
     }

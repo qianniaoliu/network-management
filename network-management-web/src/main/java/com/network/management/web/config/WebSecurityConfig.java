@@ -1,5 +1,6 @@
 package com.network.management.web.config;
 
+import com.alibaba.fastjson.JSONObject;
 import com.network.management.auth.AuthUserDetailsService;
 import com.network.management.auth.JwtAuthenticationSuccessHandler;
 import com.network.management.auth.RestAuthenticationEntryPoint;
@@ -16,6 +17,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
+
+import java.io.OutputStream;
 
 /**
  * @author yusheng
@@ -65,6 +68,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .successHandler(jwtAuthenticationSuccessHandler())
+                .failureHandler(((request, response, ex) -> {
+                    OutputStream outputStream = response.getOutputStream();
+                    response.setHeader("content-type", "application/json");
+                    JSONObject jo = new JSONObject();
+                    jo.put("code", 500);
+                    jo.put("message", "用户名或密码错误!");
+                    byte[] bytes = jo.toJSONString().getBytes();
+                    outputStream.write(bytes);
+                }))
                 .permitAll();
 
 

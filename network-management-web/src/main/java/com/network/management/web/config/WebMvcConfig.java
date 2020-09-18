@@ -48,10 +48,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
         String rootPath = System.getProperty("user.dir");
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + rootPath + "/static/img/");
-        registry.addResourceHandler("swagger-ui")
-                .addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

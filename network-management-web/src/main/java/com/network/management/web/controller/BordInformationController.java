@@ -94,7 +94,6 @@ public class BordInformationController {
      */
     @PostMapping("/save/all")
     @ApiOperation("保存整张巷道图信息，包括巷道图基本信息，设备信息，设备之间映射关系")
-    @ApiImplicitParam(name = "bordInformationAggregation", value = "巷道图全量信息")
     public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation){
         bordInformationService.updateAll(bordInformationAggregation);
         return Result.success(null);

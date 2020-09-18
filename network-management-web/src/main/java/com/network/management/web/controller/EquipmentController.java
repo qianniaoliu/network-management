@@ -33,7 +33,7 @@ public class EquipmentController {
      */
     @GetMapping("/get")
     @ApiOperation("获取单个设备信息")
-    @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
+    @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true, dataType = "integer")
     public Result equipmentInfo(@RequestParam("equipmentId") Integer equipmentId) {
         return Result.success(equipmentService.get(equipmentId));
     }
@@ -47,7 +47,6 @@ public class EquipmentController {
      */
     @PostMapping("/save")
     @ApiOperation("新增设备基本信息")
-    @ApiImplicitParam(name = "equipment", value = "设备信息", required = true)
     public Result saveEquipment(@RequestBody Equipment equipment) {
         return Result.success(equipmentService.add(equipment));
     }
@@ -60,7 +59,6 @@ public class EquipmentController {
      */
     @PostMapping("/modify")
     @ApiOperation("修改设备基本信息")
-    @ApiImplicitParam(name = "equipment", value = "设备信息", required = true)
     public Result modifyEquipment(@RequestBody Equipment equipment) {
         equipmentService.update(equipment);
         return Result.success(null);
@@ -87,7 +85,7 @@ public class EquipmentController {
      * @return 前端渲染对象
      */
     @GetMapping("/queryStatus")
-    @ApiOperation("获取单个设备信息")
+    @ApiOperation("获取单个设备状态")
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
     public Result queryStatus(@RequestParam("equipmentId") Integer equipmentId) {
         return Result.success(equipmentService.queryStatus(equipmentId));

@@ -59,7 +59,9 @@ public class BordInformationServiceImpl implements BordInformationService {
         Assert.notNull(data, "BordInformationAggregation 对象不能为null");
         //更新巷道图信息
         BordInformation bordInformation = data.getBordInformation();
-        bordInformationMapper.updateByKey(bordInformation);
+        if(Objects.nonNull(bordInformation)) {
+            bordInformationMapper.updateByKey(bordInformation);
+        }
         /**
          * 新增修改设备信息
          */

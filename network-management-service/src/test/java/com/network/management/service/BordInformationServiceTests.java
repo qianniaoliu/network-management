@@ -40,8 +40,9 @@ public class BordInformationServiceTests {
         BordInformationAggregation data = new BordInformationAggregation();
 
         BordInformation bordInformation = new BordInformation();
-        bordInformation.setId(1);
+        bordInformation.setId(5);
         bordInformation.setName("修改标题");
+        bordInformation.setExtendInfo("{'test':22}");
         data.setBordInformation(bordInformation);
 
         Equipment equipment1 = new Equipment();

@@ -41,6 +41,12 @@ public class BordInformation {
     private Integer yn;
 
     /**
+     * 巷道图扩展信息
+     */
+    @ApiModelProperty("巷道图扩展信息")
+    private String extendInfo;
+
+    /**
      * 修改时间
      */
     @ApiModelProperty("修改时间")

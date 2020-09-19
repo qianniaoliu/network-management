@@ -39,7 +39,8 @@ public class EquipmentServiceImpl implements EquipmentService {
     public Integer add(Equipment equipment) {
         Assert.notNull(equipment, "equipment对象不能为空");
         equipment.initCreateInfo();
-        return equipmentMapper.insert(equipment);
+        equipmentMapper.insert(equipment);
+        return equipment.getId();
     }
 
     @Override

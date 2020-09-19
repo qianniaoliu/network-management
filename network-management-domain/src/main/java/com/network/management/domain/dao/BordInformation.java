@@ -76,4 +76,9 @@ public class BordInformation {
     public void initModifyInfo(){
         setModified(new Date());
     }
+
+    public BordInformation clearExtendInfo(){
+        setExtendInfo(null);
+        return this;
+    }
 }

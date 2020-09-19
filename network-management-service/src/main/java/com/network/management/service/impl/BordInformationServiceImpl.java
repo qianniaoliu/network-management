@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -132,6 +129,10 @@ public class BordInformationServiceImpl implements BordInformationService {
 
     @Override
     public List<BordInformation> selectAll() {
-        return bordInformationMapper.selectAll();
+        List<BordInformation> result = Optional.ofNullable(bordInformationMapper.selectAll())
+                .orElse(Collections.emptyList());
+        return result.stream()
+                .map(BordInformation::clearExtendInfo)
+                .collect(Collectors.toList());
     }
 }

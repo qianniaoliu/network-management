@@ -109,4 +109,16 @@ public class BordInformationController {
     public Result listAll(){
         return Result.success(bordInformationService.selectAll());
     }
+
+
+    /**
+     * 修改巷道图信息
+     * @return 是否成功
+     */
+    @PostMapping("/info/modify")
+    @ApiOperation("修改巷道图基本信息")
+    public Result modify(@RequestBody BordInformation bordInformation){
+        bordInformationService.save(bordInformation);
+        return Result.success(true);
+    }
 }

@@ -87,7 +87,7 @@
         url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="extendInfo != null">
-        extend_info = #{extendInfo,jdbcType=LONGVARCHAR}
+        extend_info = #{extendInfo,jdbcType=LONGVARCHAR},
       </if>
       <if test="yn != null">
         yn = #{yn,jdbcType=TINYINT},

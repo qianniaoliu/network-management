@@ -80,7 +80,7 @@ public class EquipmentServiceImpl implements EquipmentService {
             fillDeviceStatusVo(deviceStatusVo, equipment);
             return deviceStatusVo;
         }
-        return null;
+        throw new IllegalArgumentException("设备类型错误id:" + id);
     }
 
 

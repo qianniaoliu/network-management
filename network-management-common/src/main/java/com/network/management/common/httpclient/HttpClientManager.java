@@ -55,9 +55,9 @@ public class HttpClientManager {
     private static volatile HttpClientManager instance;
     private SSLContext sslContext = null;
     /**
-     * httpclient默认超时时间30s
+     * httpclient默认超时时间5s
      */
-    private final int DEFAULT_TIMEOUT = 30000;
+    private final int DEFAULT_TIMEOUT = 5000;
     /**
      * 最大并发http连接
      */
@@ -71,7 +71,7 @@ public class HttpClientManager {
     /**
      * 重试次数
      */
-    private final int RETRY_NUMBER = 3;
+    private final int RETRY_NUMBER = 2;
 
     /**
      * init HttpClientManager

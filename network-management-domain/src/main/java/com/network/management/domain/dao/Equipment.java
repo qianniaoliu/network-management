@@ -78,6 +78,12 @@ public class Equipment {
     private String password;
 
     /**
+     * 设备位置
+     */
+    @ApiModelProperty("设备位置")
+    private String position;
+
+    /**
      * 有效状态
      */
     @ApiModelProperty("有效状态")

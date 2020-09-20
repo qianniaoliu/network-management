@@ -38,6 +38,7 @@ public class EquipmentServiceTests {
         equipment.setY(300);
         equipment.setUsername("test1");
         equipment.setPassword("test1");
+        equipment.setPosition("美国旧金山");
         Integer equipmentId = equipmentService.add(equipment);
         Assert.assertNotNull(equipmentId);
     }
@@ -45,7 +46,7 @@ public class EquipmentServiceTests {
     @Test
     public void testUpdate(){
         Equipment equipment = new Equipment();
-        equipment.setId(1);
+        equipment.setId(61);
         equipment.setIp("127.0.0.7");
         equipment.setName("6G信号发射台");
         equipment.setEquipmentType(3);
@@ -54,6 +55,7 @@ public class EquipmentServiceTests {
         equipment.setY(300);
         equipment.setUsername("test");
         equipment.setPassword("test");
+        equipment.setPosition("美国曼哈顿");
         equipmentService.update(equipment);
     }
 

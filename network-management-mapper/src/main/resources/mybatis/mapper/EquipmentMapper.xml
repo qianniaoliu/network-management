@@ -12,13 +12,14 @@
     <result column="y" jdbcType="VARCHAR" property="y" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
     <result column="modified" jdbcType="TIMESTAMP" property="modified" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
     id, bord_information_id, ip, name, equipment_type, internal_time, x, y, username, 
-    password, yn, modified, created
+    password, position, yn, modified, created
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -33,11 +34,11 @@
   <insert id="insert" parameterType="Equipment" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into equipment (bord_information_id, ip,
       name, equipment_type, internal_time, 
-      x, y, username, password, 
+      x, y, username, password, position,
       yn, modified, created)
     values (#{bordInformationId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR}, #{equipmentType,jdbcType=TINYINT}, #{internalTime,jdbcType=BIGINT},
-      #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
       #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="Equipment">
@@ -72,6 +73,9 @@
       </if>
       <if test="password != null">
         password,
+      </if>
+      <if test="position != null">
+        position,
       </if>
       <if test="yn != null">
         yn,
@@ -114,6 +118,9 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
       <if test="yn != null">
         #{yn,jdbcType=TINYINT},
       </if>
@@ -154,6 +161,9 @@
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
       </if>
       <if test="yn != null">
         yn = #{yn,jdbcType=TINYINT},

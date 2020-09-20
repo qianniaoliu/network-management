@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
 import com.network.management.common.cache.CaffeineCache;
-import com.network.management.common.exception.IllegalParamException;
 import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
@@ -15,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.entity.ContentType;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.jsoup.Jsoup;
@@ -29,7 +27,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -80,7 +80,6 @@ public class WebStationCollector implements Collector {
             result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败", e);
-            throw new IllegalParamException("基站http请求状态数据失败");
         }
         return getDataBo(getJSONObject(result), deviceBo);
     }

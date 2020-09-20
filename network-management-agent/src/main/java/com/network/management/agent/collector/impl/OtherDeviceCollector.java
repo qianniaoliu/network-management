@@ -2,7 +2,6 @@ package com.network.management.agent.collector.impl;
 
 import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
-import com.network.management.common.exception.IllegalParamException;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
 import com.network.management.domain.bo.OtherDeviceStatusBo;
@@ -39,7 +38,6 @@ public class OtherDeviceCollector implements Collector {
             status = InetAddress.getByName(deviceBo.getIp()).isReachable(TIME_OUT);
         } catch (IOException e) {
             log.error(String.format("其他设备基本ip:%s 网络连通失败.", deviceBo.getIp()), e);
-            throw new IllegalParamException("其他设备基本ip:%s 网络连通失败.");
         }
         DataBo<OtherDeviceStatusBo> dataBo = new DataBo<OtherDeviceStatusBo>();
         dataBo.setIp(deviceBo.getIp());

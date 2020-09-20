@@ -7,6 +7,8 @@ import com.network.management.domain.bo.FlashStationStatusBo;
 import com.network.management.domain.bo.OtherDeviceStatusBo;
 import com.network.management.domain.bo.WebStationStatusBo;
 import com.network.management.domain.dao.StationStatus;
+import com.network.management.domain.enums.DeviceTypeEnum;
+import com.network.management.domain.enums.YnEnum;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.domain.vo.FlashStationStatusVo;
 import com.network.management.domain.vo.OtherDeviceStatusVo;
@@ -32,11 +34,11 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
     @Override
     public DeviceStatusVo<?> convert(DataBo<?> dataBo) {
         if(Objects.nonNull(dataBo)){
-            if(dataBo.getDataObj() instanceof FlashStationStatusBo){
+            if(Objects.equals(DeviceTypeEnum.FLASH_STATION.getType(), dataBo.getType())){
                 return getFlashDeviceStatusVo(dataBo);
-            }else if(dataBo.getDataObj() instanceof WebStationStatusBo){
+            }else if(Objects.equals(DeviceTypeEnum.WEB_STATION.getType(), dataBo.getType())){
                 return getWebDeviceStatusVo(dataBo);
-            }else if(dataBo.getDataObj() instanceof OtherDeviceStatusBo){
+            }else if(Objects.equals(DeviceTypeEnum.OTHER_STATION.getType(), dataBo.getType())){
                 return getOtherDeviceStatusVo(dataBo);
             }
         }
@@ -49,11 +51,15 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
      * @return {@link DeviceStatusVo<OtherDeviceStatusVo>}
      */
     private DeviceStatusVo<OtherDeviceStatusVo> getOtherDeviceStatusVo(DataBo<?> dataBo) {
-        OtherDeviceStatusBo otherDeviceStatusBo = (OtherDeviceStatusBo)dataBo.getDataObj();
         DeviceStatusVo<OtherDeviceStatusVo> deviceStatusVo = new DeviceStatusVo<OtherDeviceStatusVo>();
         deviceStatusVo.setIp(dataBo.getIp());
         deviceStatusVo.setEquipmentType(dataBo.getType());
-        deviceStatusVo.setStatusObj(new OtherDeviceStatusVo(otherDeviceStatusBo.getStatus()));
+        Integer status = YnEnum.NO.getCode();
+        if(Objects.nonNull(dataBo.getDataObj())){
+            OtherDeviceStatusBo otherDeviceStatusBo = (OtherDeviceStatusBo)dataBo.getDataObj();
+            status = otherDeviceStatusBo.getStatus();
+        }
+        deviceStatusVo.setStatusObj(new OtherDeviceStatusVo(status));
         return deviceStatusVo;
     }
 

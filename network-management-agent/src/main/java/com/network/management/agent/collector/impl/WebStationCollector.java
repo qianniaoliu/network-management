@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
 import com.network.management.common.cache.CaffeineCache;
+import com.network.management.common.exception.IllegalParamException;
 import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
@@ -79,6 +80,7 @@ public class WebStationCollector implements Collector {
             result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败", e);
+            throw new IllegalParamException("基站http请求状态数据失败");
         }
         return getDataBo(getJSONObject(result), deviceBo);
     }

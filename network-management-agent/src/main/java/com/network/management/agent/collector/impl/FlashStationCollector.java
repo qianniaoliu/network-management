@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.network.management.agent.annotation.DeviceCollectorType;
 import com.network.management.agent.collector.Collector;
+import com.network.management.common.exception.IllegalParamException;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceBo;
 import com.network.management.domain.bo.FlashStationStatusBo;
@@ -55,6 +56,7 @@ public class FlashStationCollector implements Collector{
             result = HttpClientUtils.doPost(String.format(URL, deviceBo.getIp()), getStringEntity(), Integer.parseInt(timeOut));
         } catch (Exception e) {
             log.error("flash界面基站http请求状态数据失败", e);
+            throw new IllegalParamException("基站http请求状态数据失败");
         }
         return parseResponse(result, deviceBo);
     }

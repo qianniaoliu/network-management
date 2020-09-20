@@ -184,7 +184,7 @@ public class HttpClientManager {
         public boolean retryRequest(IOException exception,
                                     int executionCount, HttpContext context) {
             /**
-             * 如果已经重试了3次，就放弃
+             * 如果已经重试了2次，就放弃
              */
             if (executionCount >= RETRY_NUMBER) {
                 return false;

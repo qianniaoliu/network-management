@@ -60,7 +60,7 @@ public class WebStationCollector implements Collector {
      */
     private static final String DOCUMENT_FILTER_KEY = "javascript,script";
 
-    @Value("${collect.time.out:10000}")
+    @Value("${collect.time.out:5000}")
     private String timeOut;
     @Autowired
     private CaffeineCache caffeineCache;

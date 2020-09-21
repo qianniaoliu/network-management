@@ -98,6 +98,6 @@
         <if test="username != null">
             AND username = #{username,jdbcType=VARCHAR}
         </if>
-        LIMIT #{startIndex}, #{endIndex}
+        LIMIT #{startIndex}, #{pageSize}
     </select>
 </mapper>

@@ -26,8 +26,4 @@ public class UserSearch {
     private Integer getStartIndex(){
         return (currentPage - 1) * pageSize;
     }
-
-    private Integer getEndIndex(){
-        return currentPage * pageSize;
-    }
 }

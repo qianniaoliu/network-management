@@ -79,4 +79,25 @@
             password = #{password,jdbcType=VARCHAR}
         where id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="count" parameterType="com.network.management.domain.UserSearch" resultMap="BaseResultMap">
+        select
+        COUNT(1)
+        from user
+        where 1 = 1
+        <if test="username != null">
+            AND username = #{username,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="search" parameterType="com.network.management.domain.UserSearch" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where 1 = 1
+        <if test="username != null">
+            AND username = #{username,jdbcType=VARCHAR}
+        </if>
+        LIMIT #{startIndex}, #{endIndex}
+    </select>
 </mapper>

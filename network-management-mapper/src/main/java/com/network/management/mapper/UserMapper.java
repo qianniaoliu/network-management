@@ -1,6 +1,9 @@
 package com.network.management.mapper;
 
+import com.network.management.domain.UserSearch;
 import com.network.management.domain.dao.User;
+
+import java.util.List;
 
 
 /**
@@ -24,4 +27,30 @@ public interface UserMapper {
      * @return 主键id
      */
     Integer insert(User user);
+
+    /**
+     * 修改用户数据
+     * @param user 用户信息
+     */
+    void updateByPrimaryKeySelective(User user);
+
+    /**
+     * 通过主键id删除用户数据
+     * @param id 主键id
+     */
+    void deleteByPrimaryKey(Integer id);
+
+    /**
+     * 条件查询总数
+     * @param search 搜索条件
+     * @return 总数
+     */
+    Integer count(UserSearch search);
+
+    /**
+     * 条件搜索
+     * @param search 搜索条件
+     * @return 用户列表
+     */
+    List<User> search(UserSearch search);
 }

@@ -27,11 +27,10 @@ public interface BordInformationService {
 
     /**
      * 获取整个巷道图信息
-     * @param bordInformationId 巷道图id
      * @return 巷道图聚合信息
      * @see BordInformationAggregation
      */
-    BordInformationAggregation getAll(Integer bordInformationId);
+    BordInformationAggregation getAll();
 
     /**
      * 获取所有巷道图信息

@@ -48,4 +48,8 @@ public class User {
         setModified(new Date());
     }
 
+    public void initModifyInfo(){
+        setModified(new Date());
+    }
+
 }

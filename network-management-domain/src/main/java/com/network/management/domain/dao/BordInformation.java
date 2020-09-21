@@ -67,6 +67,11 @@ public class BordInformation {
         this.url = url;
     }
 
+    public BordInformation(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public void initCreateInfo(){
         setYn(YnEnum.YES.getCode());
         setCreated(new Date());

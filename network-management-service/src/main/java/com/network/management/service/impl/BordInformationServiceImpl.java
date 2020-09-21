@@ -119,9 +119,15 @@ public class BordInformationServiceImpl implements BordInformationService {
     }
 
     @Override
-    public BordInformationAggregation getAll(Integer bordInformationId) {
+    public BordInformationAggregation getAll() {
         BordInformationAggregation result = new BordInformationAggregation();
-        result.setBordInformation(bordInformationMapper.selectByPrimaryKey(bordInformationId));
+        List<BordInformation> bordInformationList = selectAll();
+        if(CollectionUtils.isEmpty(bordInformationList)){
+            return result;
+        }
+        BordInformation bordInformation = bordInformationList.get(0);
+        Integer bordInformationId = bordInformation.getId();
+        result.setBordInformation(bordInformation);
         result.setEquipments(equipmentService.getByBordId(bordInformationId));
         result.setEquipmentMappings(equipmentMappingService.getByBordId(bordInformationId));
         return result;

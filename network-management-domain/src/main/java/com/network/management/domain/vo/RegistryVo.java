@@ -14,6 +14,12 @@ import org.apache.commons.lang3.StringUtils;
 public class RegistryVo {
 
     /**
+     * 用户id
+     */
+    @ApiModelProperty("用户id")
+    private Integer id;
+
+    /**
      * 用户名
      */
     @ApiModelProperty("用户名")

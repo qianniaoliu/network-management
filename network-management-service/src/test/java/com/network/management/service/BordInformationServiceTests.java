@@ -68,10 +68,10 @@ public class BordInformationServiceTests {
 
     @Test
     public void testGetAll(){
-        BordInformationAggregation bordInformationAggregation1 = bordInformationService.getAll(110);
+        BordInformationAggregation bordInformationAggregation1 = bordInformationService.getAll();
         Assert.assertNotNull(bordInformationAggregation1);
 
-        BordInformationAggregation bordInformationAggregation2 = bordInformationService.getAll(5);
+        BordInformationAggregation bordInformationAggregation2 = bordInformationService.getAll();
         Assert.assertNotNull(bordInformationAggregation2);
 
     }

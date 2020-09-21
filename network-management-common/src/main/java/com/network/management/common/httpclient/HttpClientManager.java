@@ -57,7 +57,7 @@ public class HttpClientManager {
     /**
      * httpclient默认超时时间5s
      */
-    private final int DEFAULT_TIMEOUT = 10000;
+    private final int DEFAULT_TIMEOUT = 5000;
     /**
      * 最大并发http连接
      */

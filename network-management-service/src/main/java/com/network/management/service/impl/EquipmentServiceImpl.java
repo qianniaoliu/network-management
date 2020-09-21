@@ -96,6 +96,7 @@ public class EquipmentServiceImpl implements EquipmentService {
         deviceStatusVo.setEquipmentType(equipment.getEquipmentType());
         deviceStatusVo.setInternalTime(equipment.getInternalTime());
         deviceStatusVo.setName(equipment.getName());
+        deviceStatusVo.setPosition(equipment.getPosition());
 //        deviceStatusVo.setPassword(equipment.getPassword());
 //        deviceStatusVo.setUsername(equipment.getUsername());
         deviceStatusVo.setX(equipment.getX());

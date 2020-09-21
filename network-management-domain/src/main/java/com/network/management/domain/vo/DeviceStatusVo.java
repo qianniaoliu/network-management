@@ -54,6 +54,10 @@ public class DeviceStatusVo<T> {
      */
     private String password;
     /**
+     * 位置
+     */
+    private String position;
+    /**
      * 设备状态对象
      */
     private T statusObj;

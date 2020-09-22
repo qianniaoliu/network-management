@@ -80,7 +80,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <select id="count" parameterType="com.network.management.domain.UserSearch" resultMap="BaseResultMap">
+    <select id="count" parameterType="com.network.management.domain.UserSearch" resultType="java.lang.Integer">
         select
         COUNT(1)
         from user

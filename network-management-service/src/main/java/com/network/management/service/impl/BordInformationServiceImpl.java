@@ -41,10 +41,17 @@ public class BordInformationServiceImpl implements BordInformationService {
     @Override
     public void save(BordInformation bordInformation) {
         Assert.notNull(bordInformation, "bordInformation 对象不能为null");
-        if(Objects.nonNull(bordInformation.getId())){
+        if (Objects.isNull(bordInformation.getId())) {
+            List<BordInformation> bordInformationList = selectAll();
+            if (!CollectionUtils.isEmpty(bordInformationList)) {
+                BordInformation existBordInformation = bordInformationList.get(0);
+                bordInformation.setId(existBordInformation.getId());
+            }
+        }
+        if (Objects.nonNull(bordInformation.getId())) {
             bordInformation.initModifyInfo();
             bordInformationMapper.updateByKey(bordInformation);
-        }else {
+        } else {
             bordInformation.initCreateInfo();
             bordInformationMapper.insert(bordInformation);
         }
@@ -56,17 +63,17 @@ public class BordInformationServiceImpl implements BordInformationService {
         Assert.notNull(data, "BordInformationAggregation 对象不能为null");
         //更新巷道图信息
         BordInformation bordInformation = data.getBordInformation();
-        if(Objects.nonNull(bordInformation)) {
+        if (Objects.nonNull(bordInformation)) {
             bordInformationMapper.updateByKey(bordInformation);
         }
         /**
          * 新增修改设备信息
          */
         List<Integer> newExistEquipmentId = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(data.getEquipments())){
+        if (!CollectionUtils.isEmpty(data.getEquipments())) {
             data.getEquipments().forEach(equipment -> {
                 //id为空则新增
-                if(Objects.isNull(equipment.getId())){
+                if (Objects.isNull(equipment.getId())) {
                     equipmentService.add(equipment);
                 }
                 //id不为空则修改
@@ -84,7 +91,7 @@ public class BordInformationServiceImpl implements BordInformationService {
                 .map(Equipment::getId)
                 .filter(item -> !newExistEquipmentId.contains(item))
                 .collect(Collectors.toSet());
-        if(!CollectionUtils.isEmpty(needDeleteEquipmentIds)){
+        if (!CollectionUtils.isEmpty(needDeleteEquipmentIds)) {
             equipmentService.delete(needDeleteEquipmentIds);
         }
 
@@ -92,10 +99,10 @@ public class BordInformationServiceImpl implements BordInformationService {
          * 新增修改设备之间的映射关系
          */
         List<Integer> newExistEquipmentMappingId = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(data.getEquipmentMappings())){
+        if (!CollectionUtils.isEmpty(data.getEquipmentMappings())) {
             data.getEquipmentMappings().forEach(equipmentMapping -> {
                 //id为空则新增
-                if(Objects.isNull(equipmentMapping.getId())){
+                if (Objects.isNull(equipmentMapping.getId())) {
                     equipmentMappingService.add(equipmentMapping);
                 }
                 //id不为空则修改
@@ -113,7 +120,7 @@ public class BordInformationServiceImpl implements BordInformationService {
                 .map(EquipmentMapping::getId)
                 .filter(item -> !newExistEquipmentMappingId.contains(item))
                 .collect(Collectors.toSet());
-        if(!CollectionUtils.isEmpty(needDeleteEquipmentMappingIds)){
+        if (!CollectionUtils.isEmpty(needDeleteEquipmentMappingIds)) {
             equipmentMappingService.delete(needDeleteEquipmentMappingIds);
         }
     }
@@ -122,7 +129,7 @@ public class BordInformationServiceImpl implements BordInformationService {
     public BordInformationAggregation getAll() {
         BordInformationAggregation result = new BordInformationAggregation();
         List<BordInformation> bordInformationList = selectAll();
-        if(CollectionUtils.isEmpty(bordInformationList)){
+        if (CollectionUtils.isEmpty(bordInformationList)) {
             return result;
         }
         BordInformation bordInformation = bordInformationList.get(0);

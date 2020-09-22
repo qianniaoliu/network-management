@@ -30,8 +30,7 @@ public class BordInformationServiceTests {
     @Test
     public void testSave(){
         BordInformation bordInformation = new BordInformation();
-        bordInformation.setName("测试巷道图名称1");
-        bordInformation.setUrl("/bord-img.jpg");
+        bordInformation.setName("测试唯一巷道图名称");
         bordInformationService.save(bordInformation);
     }
 

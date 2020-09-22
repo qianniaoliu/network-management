@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.*;
  * @author yusheng
  */
 @RestController
-@Api(tags = "登录注册管理")
-public class LoginController {
+@Api(tags = "用户信息管理")
+@RequestMapping("/user")
+public class UserController {
 
     private final UserService userService;
 
-    public LoginController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -59,8 +60,15 @@ public class LoginController {
     }
 
     @PostMapping("/search")
-    @ApiOperation("删除用户信息")
+    @ApiOperation("搜索用户信息")
     public Result search(@RequestBody UserSearch search){
         return Result.success(userService.search(search));
+    }
+
+
+    @GetMapping("/get")
+    @ApiOperation("获取用户信息")
+    public Result get(@RequestParam("userId") Integer userId){
+        return Result.success(userService.get(userId));
     }
 }

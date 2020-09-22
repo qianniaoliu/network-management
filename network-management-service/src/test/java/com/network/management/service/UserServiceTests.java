@@ -1,5 +1,7 @@
 package com.network.management.service;
 
+import com.network.management.domain.Page;
+import com.network.management.domain.UserSearch;
 import com.network.management.domain.dao.User;
 import com.network.management.domain.vo.RegistryVo;
 import com.network.management.service.config.TestConfig;
@@ -14,7 +16,7 @@ import org.springframework.test.context.TestPropertySource;
  *
  * @author yusheng
  */
-@SpringBootTest(classes = TestConfig.class, webEnvironment= SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = TestConfig.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @TestPropertySource(value = {"classpath:application-test.properties"})
 public class UserServiceTests {
 
@@ -22,7 +24,7 @@ public class UserServiceTests {
     private UserService userService;
 
     @Test
-    public void testRegistry(){
+    public void testRegistry() {
         RegistryVo registryVo = new RegistryVo();
         registryVo.setUsername("athena");
         registryVo.setPassword("athena");
@@ -31,9 +33,41 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testQueryByName(){
+    public void testQueryByName() {
         User user = userService.queryByName("athena");
         Assert.assertNotNull("user不能为空", user);
     }
+
+    @Test
+    public void testSearch() {
+        UserSearch userSearch = new UserSearch();
+//        userSearch.setUsername("test");
+        userSearch.setPageSize(2);
+        userSearch.setCurrentPage(1);
+        Page<User> page = userService.search(userSearch);
+        Assert.assertNotNull("用户数据不为空", page);
+    }
+
+    @Test
+    public void testDelete(){
+        userService.delete(5);
+    }
+
+    @Test
+    public void testUpdate(){
+        RegistryVo registryVo = new RegistryVo();
+        registryVo.setId(1);
+        registryVo.setUsername("athena");
+        registryVo.setPassword("athena1");
+        registryVo.setConfirmPassword("athena");
+        userService.update(registryVo);
+    }
+
+    @Test
+    public void testGet(){
+        User user = userService.get(1);
+        Assert.assertNotNull("用户信息不能为空", user);
+    }
+
 
 }

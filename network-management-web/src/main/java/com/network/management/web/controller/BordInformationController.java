@@ -36,20 +36,18 @@ public class BordInformationController {
 
     /**
      * 上传巷道图到本地（临时方案），目前只会上传一张图片
+     *
      * @param bordFile 巷道图图片
-     * @param bordId 巷道图id
      * @return 前端返回信息
      */
     @PostMapping("/file/upload")
     @ApiOperation("上传巷道图图片")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "bordFile", value = "巷道图文件"),
-            @ApiImplicitParam(name = "bordId", value = "巷道图id，不传表示新增")
+            @ApiImplicitParam(name = "bordFile", value = "巷道图文件")
     })
-    public Result uploadFile(@RequestParam(value = "bordFile", required = false) MultipartFile bordFile,
-                             @RequestParam(value = "bordId", required = false) Integer bordId){
+    public Result uploadFile(@RequestParam(value = "bordFile") MultipartFile bordFile) {
         String bordFileUrl = null;
-        if(Objects.nonNull(bordFile)) {
+        if (Objects.nonNull(bordFile)) {
             String rootPath = System.getProperty("user.dir") + "/static/img/";
             File imgDir = new File(rootPath);
             if (!imgDir.exists()) {
@@ -65,27 +63,25 @@ public class BordInformationController {
             }
         }
         BordInformation bordInformation =
-                new BordInformation(bordId, null, bordFileUrl);
+                new BordInformation(null, null, bordFileUrl);
         bordInformationService.save(bordInformation);
         return Result.success(bordInformation);
     }
 
     /**
      * 保存巷道图基本信息
+     *
      * @param bordName 巷道图标题
-     * @param bordId 巷道图id
      * @return 前端返回信息
      */
     @PostMapping("/info/save")
     @ApiOperation("保存巷道图名称")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "bordName", value = "巷道图名称"),
-            @ApiImplicitParam(name = "bordId", value = "巷道图id，不传表示新增")
+            @ApiImplicitParam(name = "bordName", value = "巷道图名称")
     })
-    public Result save(@RequestParam(value = "bordName", required = false) String bordName,
-                             @RequestParam(value = "bordId", required = false) Integer bordId){
+    public Result save(@RequestParam(value = "bordName") String bordName) {
         BordInformation bordInformation =
-                new BordInformation(bordId, bordName);
+                new BordInformation(null, bordName);
         bordInformationService.save(bordInformation);
         return Result.success(bordInformation);
     }
@@ -93,23 +89,25 @@ public class BordInformationController {
 
     /**
      * 获取巷道图全部信息
+     *
      * @return 巷道图全量信息
      */
     @GetMapping("/info/all")
     @ApiOperation("根据巷道图id获取巷道图全量信息")
-    public Result infoAll(){
+    public Result infoAll() {
         return Result.success(bordInformationService.getAll());
     }
 
 
     /**
      * 保存整张巷道图信息，包括巷道图基本信息，设备信息，设备之间映射关系
+     *
      * @param bordInformationAggregation 所有的巷道图信息
      * @return 前端渲染对象
      */
     @PostMapping("/save/all")
     @ApiOperation("保存整张巷道图信息，包括巷道图基本信息，设备信息，设备之间映射关系")
-    public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation){
+    public Result saveAll(@RequestBody BordInformationAggregation bordInformationAggregation) {
         bordInformationService.updateAll(bordInformationAggregation);
         return Result.success(true);
     }
@@ -117,22 +115,24 @@ public class BordInformationController {
 
     /**
      * 获取巷道图列表信息
+     *
      * @return 巷道图全量信息
      */
     @GetMapping("/list/all")
     @ApiOperation("获取巷道图列表信息")
-    public Result listAll(){
+    public Result listAll() {
         return Result.success(bordInformationService.selectAll());
     }
 
 
     /**
      * 修改巷道图信息
+     *
      * @return 是否成功
      */
     @PostMapping("/info/modify")
     @ApiOperation("修改巷道图基本信息")
-    public Result modify(@RequestBody BordInformation bordInformation){
+    public Result modify(@RequestBody BordInformation bordInformation) {
         bordInformationService.save(bordInformation);
         return Result.success(bordInformation);
     }

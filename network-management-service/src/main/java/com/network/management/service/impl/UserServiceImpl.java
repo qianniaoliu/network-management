@@ -68,4 +68,10 @@ public class UserServiceImpl implements UserService {
         result.setCurrentPage(search.getCurrentPage());
         return result;
     }
+
+    @Override
+    public User get(Integer userId) {
+        Assert.notNull(userId, "userId不能为空");
+        return userMapper.selectByPrimaryKey(userId);
+    }
 }

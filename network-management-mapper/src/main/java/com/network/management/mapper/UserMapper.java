@@ -53,4 +53,11 @@ public interface UserMapper {
      * @return 用户列表
      */
     List<User> search(UserSearch search);
+
+    /**
+     * 根据用户id获取用户信息
+     * @param userId 用户id
+     * @return 用户信息
+     */
+    User selectByPrimaryKey(Integer userId);
 }

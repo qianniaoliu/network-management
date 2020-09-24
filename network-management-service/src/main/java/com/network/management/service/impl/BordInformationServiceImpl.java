@@ -128,7 +128,7 @@ public class BordInformationServiceImpl implements BordInformationService {
     @Override
     public BordInformationAggregation getAll() {
         BordInformationAggregation result = new BordInformationAggregation();
-        List<BordInformation> bordInformationList = selectAll();
+        List<BordInformation> bordInformationList = bordInformationMapper.selectAll();
         if (CollectionUtils.isEmpty(bordInformationList)) {
             return result;
         }

@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,7 +49,11 @@ public class BordInformationController {
     public Result uploadFile(@RequestParam(value = "bordFile") MultipartFile bordFile) {
         String bordFileUrl = null;
         if (Objects.nonNull(bordFile)) {
-            String rootPath = System.getProperty("user.dir") + "/static/img/";
+            String imgDirPath = System.getProperty("bord.img.dir");
+            if(StringUtils.isBlank(imgDirPath)){
+                imgDirPath = System.getProperty("user.dir");
+            }
+            String rootPath = imgDirPath + "/static/img/";
             File imgDir = new File(rootPath);
             if (!imgDir.exists()) {
                 imgDir.mkdirs();

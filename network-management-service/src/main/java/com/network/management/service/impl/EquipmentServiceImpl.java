@@ -7,20 +7,22 @@ import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceStatusResultBo;
 import com.network.management.domain.dao.Equipment;
 import com.network.management.domain.enums.DeviceTypeEnum;
+import com.network.management.domain.excel.DeviceStatusData;
+import com.network.management.domain.excel.FlashStationStatusExcel;
+import com.network.management.domain.excel.OtherDeviceStatusExcel;
+import com.network.management.domain.excel.WebStationStatusExcel;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.mapper.EquipmentMapper;
 import com.network.management.service.DeviceStatueHandler;
 import com.network.management.service.EquipmentService;
-import com.network.management.service.converter.DeviceConverter;
-import com.network.management.service.converter.DeviceStatusVoConverter;
+import com.network.management.service.converter.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author yusheng
@@ -43,6 +45,13 @@ public class EquipmentServiceImpl implements EquipmentService {
     private DeviceConverter deviceConverter;
     @Autowired
     private DeviceStatusVoConverter deviceStatusVoConverter;
+
+    @Autowired
+    private WebStationStatusExcelConverter webStationStatusExcelConverter;
+    @Autowired
+    private OtherDeviceStatusExcelConverter otherDeviceStatusExcelConverter;
+    @Autowired
+    private FlashStationStatusExcelConverter flashStationStatusExcelConverter;
 
     @Override
     public Integer add(Equipment equipment) {
@@ -98,7 +107,7 @@ public class EquipmentServiceImpl implements EquipmentService {
         result.setCurrentPage(param.getCurrentPage());
         result.setPageSize(param.getPageSize());
         result.setCount(0);
-        if(!Objects.isNull(param.getIp())) {
+        if (!Objects.isNull(param.getIp())) {
             Equipment equipment = equipmentMapper.getByIp(param.getIp());
             if (Objects.isNull(equipment)) {
                 return result;
@@ -117,5 +126,26 @@ public class EquipmentServiceImpl implements EquipmentService {
         result.setData(deviceStatusResultBo.getData());
         result.setCount(deviceStatusResultBo.getCount());
         return result;
+    }
+
+    @Override
+    public DeviceStatusData searchExportData(EquipmentStatusSearch param) {
+        DeviceStatusData deviceStatusData = new DeviceStatusData();
+        Page<DeviceStatusVo> pageData = searchDeviceStatus(param);
+        List<DeviceStatusVo> deviceStatusVoList = pageData.getData();
+        if (CollectionUtils.isEmpty(deviceStatusVoList)) {
+            return deviceStatusData;
+        }
+        if (DeviceTypeEnum.OTHER_STATION.getType().equals(param.getEquipmentType())) {
+            deviceStatusData.setClazz(OtherDeviceStatusExcel.class);
+            deviceStatusData.setData(otherDeviceStatusExcelConverter.convertToList(deviceStatusVoList));
+        } else if (DeviceTypeEnum.WEB_STATION.getType().equals(param.getEquipmentType())) {
+            deviceStatusData.setClazz(WebStationStatusExcel.class);
+            deviceStatusData.setData(webStationStatusExcelConverter.convertToList(deviceStatusVoList));
+        } else if (DeviceTypeEnum.FLASH_STATION.getType().equals(param.getEquipmentType())) {
+            deviceStatusData.setClazz(FlashStationStatusExcel.class);
+            deviceStatusData.setData(flashStationStatusExcelConverter.convertToList(deviceStatusVoList));
+        }
+        return deviceStatusData;
     }
 }

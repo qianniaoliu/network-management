@@ -1,6 +1,7 @@
 package com.network.management.service;
 
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.excel.DeviceStatusData;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
@@ -67,6 +68,13 @@ public interface EquipmentService {
      * @return 分页信息
      */
     Page<DeviceStatusVo> searchDeviceStatus(EquipmentStatusSearch param);
+
+    /**
+     * 查询导出的数据
+     * @param param 查询条件
+     * @return 导出数据
+     */
+    DeviceStatusData searchExportData(EquipmentStatusSearch param);
 
 
 }

@@ -89,6 +89,7 @@
     <if test="endTime != null">
       AND created &lt;= #{endTime,jdbcType=DATE}
     </if>
+    ORDER BY id DESC
     <if test="startIndex != null and pageSize != null">
       LIMIT #{startIndex}, #{pageSize}
     </if>

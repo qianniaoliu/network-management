@@ -1,9 +1,15 @@
 package com.network.management.web.controller;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
+import com.alibaba.excel.write.metadata.style.WriteCellStyle;
+import com.alibaba.excel.write.metadata.style.WriteFont;
+import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import com.google.common.collect.Sets;
 import com.network.management.common.CommonUtils;
 import com.network.management.common.exception.IllegalParamException;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.excel.DeviceStatusData;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.service.EquipmentService;
 import com.network.management.web.vo.Result;
@@ -11,11 +17,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.Objects;
 
@@ -145,4 +155,40 @@ public class EquipmentController {
         return Result.success(equipmentService.searchDeviceStatus(search));
     }
 
+    /**
+     * 导出设备状态信息
+     * @param search 查询条件
+     * @param response 响应对象
+     * @return 返回
+     */
+    @PostMapping("/status/export")
+    @ApiOperation("导出设备状态信息")
+    public void export(@RequestBody EquipmentStatusSearch search, HttpServletResponse response) throws Exception{
+        search.checkExportParams();
+        DeviceStatusData deviceStatusData = equipmentService.searchExportData(search);
+        if(CollectionUtils.isEmpty(deviceStatusData.getData())){
+            return;
+        }
+        response.setContentType("application/vnd.ms-excel");
+        response.setCharacterEncoding("utf-8");
+        String fileName = URLEncoder.encode("设备状态数据", "UTF-8");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+
+        // 头的策略
+        WriteCellStyle headWriteCellStyle = new WriteCellStyle();
+        // 背景设置为红色
+        headWriteCellStyle.setFillForegroundColor(IndexedColors.SKY_BLUE.getIndex());
+        WriteFont headWriteFont = new WriteFont();
+        headWriteFont.setFontHeightInPoints((short) 16);
+        headWriteCellStyle.setWriteFont(headWriteFont);
+
+        // 内容的策略
+        WriteCellStyle contentWriteCellStyle = new WriteCellStyle();
+        HorizontalCellStyleStrategy horizontalCellStyleStrategy = new HorizontalCellStyleStrategy(headWriteCellStyle, contentWriteCellStyle);
+        EasyExcel.write(response.getOutputStream(), deviceStatusData.getClazz())
+                .excelType(ExcelTypeEnum.XLSX)
+                .registerWriteHandler(horizontalCellStyleStrategy)
+                .sheet("设备状态数据")
+                .doWrite(deviceStatusData.getData());
+    }
 }

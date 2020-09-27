@@ -1,6 +1,6 @@
 package com.network.management.web.controller;
 
-import com.network.management.domain.UserSearch;
+import com.network.management.domain.search.UserSearch;
 import com.network.management.domain.vo.RegistryVo;
 import com.network.management.service.UserService;
 import com.network.management.web.vo.Result;

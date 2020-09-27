@@ -1,9 +1,9 @@
 package com.network.management.mapper;
 
 import com.network.management.domain.dao.StationStatus;
+import com.network.management.domain.search.EquipmentStatusSearch;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 基站状态数据mapper
@@ -16,6 +16,18 @@ public interface StationStatusMapper {
 
     StationStatus getLatestByIp(String ip);
 
-    List<StationStatus> getByConditions(Map<String, String> conditions);
+    /**
+     * 分页查询基站状态
+     * @param condition 条件
+     * @return
+     */
+    List<StationStatus> getByConditions(EquipmentStatusSearch condition);
+
+    /**
+     * 查询总数
+     * @param condition 条件
+     * @return
+     */
+    Integer count(EquipmentStatusSearch condition);
 
 }

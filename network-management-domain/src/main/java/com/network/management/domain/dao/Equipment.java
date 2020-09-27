@@ -84,6 +84,12 @@ public class Equipment {
     private String position;
 
     /**
+     * 设备图标路径
+     */
+    @ApiModelProperty("设备图标")
+    private String equipmentImgUrl;
+
+    /**
      * 有效状态
      */
     @ApiModelProperty("有效状态")

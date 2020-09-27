@@ -1,6 +1,6 @@
 package com.network.management.web.config;
 
-import org.apache.commons.lang3.StringUtils;
+import com.network.management.common.CommonUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -46,10 +46,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String imgDirPath = System.getProperty("bord.img.dir");
-        if(StringUtils.isBlank(imgDirPath)){
-            imgDirPath = System.getProperty("user.dir");
-        }
+        String imgDirPath = CommonUtils.getImgDirPath();
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + imgDirPath + "/static/img/");
     }

@@ -36,4 +36,45 @@
     from other_device_status
     where ip = #{ip,jdbcType=VARCHAR}
   </select>
+
+  <select id="count" parameterType="com.network.management.domain.search.EquipmentStatusSearch" resultType="java.lang.Integer">
+    select
+    COUNT(1)
+    from other_device_status
+    where 1 = 1
+    <if test="ip != null">
+      AND ip = #{ip,jdbcType=VARCHAR}
+    </if>
+    <if test="equipmentType != null">
+      AND equipment_type = #{equipmentType,jdbcType=TINYINT}
+    </if>
+    <if test="startTime != null">
+      AND created &gt;= #{startTime,jdbcType=DATE}
+    </if>
+    <if test="endTime != null">
+      AND created &lt;= #{endTime,jdbcType=DATE}
+    </if>
+  </select>
+
+  <select id="getByConditions" parameterType="com.network.management.domain.search.EquipmentStatusSearch" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from other_device_status
+    where 1 = 1
+    <if test="ip != null">
+      AND ip = #{ip,jdbcType=VARCHAR}
+    </if>
+    <if test="equipmentType != null">
+      AND equipment_type = #{equipmentType,jdbcType=TINYINT}
+    </if>
+    <if test="startTime != null">
+      AND created &gt;= #{startTime,jdbcType=DATE}
+    </if>
+    <if test="endTime != null">
+      AND created &lt;= #{endTime,jdbcType=DATE}
+    </if>
+    <if test="startIndex != null and pageSize != null">
+      LIMIT #{startIndex}, #{pageSize}
+    </if>
+  </select>
 </mapper>

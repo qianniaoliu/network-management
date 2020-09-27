@@ -1,6 +1,8 @@
 package com.network.management.service;
 
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.search.EquipmentStatusSearch;
+import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
 
 import java.util.List;
@@ -58,4 +60,13 @@ public interface EquipmentService {
      * @return {@link DeviceStatusVo}
      */
     DeviceStatusVo<?> queryStatus(Integer id);
+
+    /**
+     * 分页查询设备状态
+     * @param param 搜索条件
+     * @return 分页信息
+     */
+    Page<DeviceStatusVo> searchDeviceStatus(EquipmentStatusSearch param);
+
+
 }

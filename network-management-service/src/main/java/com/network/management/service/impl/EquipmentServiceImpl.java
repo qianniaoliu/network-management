@@ -4,17 +4,23 @@ import com.network.management.agent.DeviceMonitorContext;
 import com.network.management.agent.collector.Collector;
 import com.network.management.common.exception.Assert;
 import com.network.management.domain.bo.DataBo;
+import com.network.management.domain.bo.DeviceStatusResultBo;
 import com.network.management.domain.dao.Equipment;
 import com.network.management.domain.enums.DeviceTypeEnum;
+import com.network.management.domain.search.EquipmentStatusSearch;
+import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.mapper.EquipmentMapper;
+import com.network.management.service.DeviceStatueHandler;
 import com.network.management.service.EquipmentService;
 import com.network.management.service.converter.DeviceConverter;
 import com.network.management.service.converter.DeviceStatusVoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author yusheng
@@ -24,8 +30,11 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     private final EquipmentMapper equipmentMapper;
 
-    public EquipmentServiceImpl(EquipmentMapper equipmentMapper) {
+    private final DeviceStatueHandler deviceStatueHandler;
+
+    public EquipmentServiceImpl(EquipmentMapper equipmentMapper, DeviceStatueHandler deviceStatueHandler) {
         this.equipmentMapper = equipmentMapper;
+        this.deviceStatueHandler = deviceStatueHandler;
     }
 
     @Autowired
@@ -70,36 +79,43 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public DeviceStatusVo<?> queryStatus(Integer id) {
-        Assert.notNull(id, "设备ip不能为空");
+        Assert.notNull(id, "设备id不能为空");
         Equipment equipment = get(id);
         String deviceType = DeviceTypeEnum.getTypeKey(Objects.isNull(equipment) ? null : equipment.getEquipmentType());
         Collector collector = deviceMonitorContext.getCollector(deviceType);
         if (Objects.nonNull(collector)) {
             DataBo<?> dataBo = collector.collect(deviceConverter.convert(equipment));
             DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(dataBo);
-            fillDeviceStatusVo(deviceStatusVo, equipment);
+            deviceStatusVo.fillEquipment(equipment);
             return deviceStatusVo;
         }
         throw new IllegalArgumentException("设备类型错误id:" + id);
     }
 
-
-    /**
-     * 填充DeviceStatusVo对象
-     *
-     * @param deviceStatusVo {@link DeviceStatusVo<?>}
-     * @param equipment      {@link Equipment}
-     */
-    private void fillDeviceStatusVo(DeviceStatusVo<?> deviceStatusVo, Equipment equipment) {
-        deviceStatusVo.setBordInformationId(equipment.getBordInformationId());
-        deviceStatusVo.setIp(equipment.getIp());
-        deviceStatusVo.setEquipmentType(equipment.getEquipmentType());
-        deviceStatusVo.setInternalTime(equipment.getInternalTime());
-        deviceStatusVo.setName(equipment.getName());
-        deviceStatusVo.setPosition(equipment.getPosition());
-//        deviceStatusVo.setPassword(equipment.getPassword());
-//        deviceStatusVo.setUsername(equipment.getUsername());
-        deviceStatusVo.setX(equipment.getX());
-        deviceStatusVo.setY(equipment.getY());
+    @Override
+    public Page<DeviceStatusVo> searchDeviceStatus(EquipmentStatusSearch param) {
+        Page<DeviceStatusVo> result = new Page<>();
+        result.setCurrentPage(param.getCurrentPage());
+        result.setPageSize(param.getPageSize());
+        result.setCount(0);
+        if(!Objects.isNull(param.getIp())) {
+            Equipment equipment = equipmentMapper.getByIp(param.getIp());
+            if (Objects.isNull(equipment)) {
+                return result;
+            }
+            Integer equipmentType = equipment.getEquipmentType();
+            Assert.notNull(equipmentType, "设备类型不能为空!");
+            if (!equipmentType.equals(param.getEquipmentType())) {
+                return result;
+            }
+        }
+        DeviceStatusResultBo deviceStatusResultBo = deviceStatueHandler.search(param);
+        Assert.notNull(deviceStatusResultBo, "设备类型不合法!");
+        if (CollectionUtils.isEmpty(deviceStatusResultBo.getData())) {
+            return result;
+        }
+        result.setData(deviceStatusResultBo.getData());
+        result.setCount(deviceStatusResultBo.getCount());
+        return result;
     }
 }

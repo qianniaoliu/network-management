@@ -1,6 +1,6 @@
 package com.network.management.mapper;
 
-import com.network.management.domain.UserSearch;
+import com.network.management.domain.search.UserSearch;
 import com.network.management.domain.dao.User;
 
 import java.util.List;

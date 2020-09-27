@@ -1,13 +1,23 @@
 package com.network.management.web.controller;
 
 import com.google.common.collect.Sets;
+import com.network.management.common.CommonUtils;
+import com.network.management.common.exception.IllegalParamException;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.service.EquipmentService;
 import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * 设备信息控制器
@@ -89,6 +99,50 @@ public class EquipmentController {
     @ApiImplicitParam(name = "equipmentId", value = "设备id", required = true)
     public Result queryStatus(@RequestParam("equipmentId") Integer equipmentId) {
         return Result.success(equipmentService.queryStatus(equipmentId));
+    }
+
+    /**
+     * 自定义上传设备图标
+     *
+     * @param equipmentFile 设备图标
+     * @return 前端返回信息
+     */
+    @PostMapping("/file/upload")
+    @ApiOperation("上传设备图标")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "equipmentFile", value = "设备图标")
+    })
+    public Result<String> uploadFile(@RequestParam(value = "equipmentFile") MultipartFile equipmentFile) {
+        String equipmentFileUrl = null;
+        if (Objects.nonNull(equipmentFile)) {
+            String imgDirPath = CommonUtils.getImgDirPath();
+            String rootPath = imgDirPath + "/static/img/";
+            File imgDir = new File(rootPath);
+            if (!imgDir.exists()) {
+                imgDir.mkdirs();
+            }
+            String bordFileName = "equipment-" + new Date().getTime() + ".jpg";
+            File imgFile = new File(imgDir, bordFileName);
+            try {
+                equipmentFile.transferTo(imgFile);
+                equipmentFileUrl = "/" + bordFileName;
+            } catch (IOException e) {
+                throw new IllegalParamException("上传图片失败!");
+            }
+        }
+        return Result.success(equipmentFileUrl);
+    }
+
+    /**
+     * 搜索设备状态信息
+     * @param search 分页查询条件
+     * @return 返回
+     */
+    @PostMapping("/status/search")
+    @ApiOperation("搜索设备状态信息")
+    public Result search(@RequestBody EquipmentStatusSearch search){
+        search.checkParams();
+        return Result.success(equipmentService.searchDeviceStatus(search));
     }
 
 }

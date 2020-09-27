@@ -1,6 +1,7 @@
 package com.network.management.mapper;
 
 import com.network.management.domain.dao.OtherDeviceStatus;
+import com.network.management.domain.search.EquipmentStatusSearch;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ public interface OtherDeviceStatusMapper {
 
     OtherDeviceStatus getLatestByIp(String ip);
 
-    List<OtherDeviceStatus> getByConditions(Map<String, String> conditions);
+    List<OtherDeviceStatus> getByConditions(EquipmentStatusSearch condition);
+
+    Integer count(EquipmentStatusSearch condition);
 
 }

@@ -3,6 +3,8 @@ package com.network.management.service;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.search.EquipmentStatusSearch;
+import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.service.config.TestConfig;
 import org.junit.Assert;
@@ -31,7 +33,7 @@ public class EquipmentServiceTests {
         Equipment equipment = new Equipment();
         equipment.setBordInformationId(5);
         equipment.setIp("127.0.0.98");
-        equipment.setName("6G信号发射台");
+        equipment.setName("7G信号发射台");
         equipment.setEquipmentType(1);
         equipment.setInternalTime(110000L);
         equipment.setX(100);
@@ -39,6 +41,7 @@ public class EquipmentServiceTests {
         equipment.setUsername("test1");
         equipment.setPassword("test1");
         equipment.setPosition("美国旧金山");
+        equipment.setEquipmentImgUrl("/equipment-3213532.jpg");
         Integer equipmentId = equipmentService.add(equipment);
         Assert.assertNotNull(equipmentId);
     }
@@ -46,9 +49,9 @@ public class EquipmentServiceTests {
     @Test
     public void testUpdate(){
         Equipment equipment = new Equipment();
-        equipment.setId(61);
+        equipment.setId(86);
         equipment.setIp("127.0.0.7");
-        equipment.setName("6G信号发射台");
+        equipment.setName("7G信号发射台");
         equipment.setEquipmentType(3);
         equipment.setInternalTime(210000L);
         equipment.setX(100);
@@ -56,6 +59,7 @@ public class EquipmentServiceTests {
         equipment.setUsername("test");
         equipment.setPassword("test");
         equipment.setPosition("美国曼哈顿");
+        equipment.setEquipmentImgUrl("/equipment-110110.jpg");
         equipmentService.update(equipment);
     }
 
@@ -82,6 +86,17 @@ public class EquipmentServiceTests {
     public void testQueryStatus(){
         DeviceStatusVo<?> deviceStatusVo = equipmentService.queryStatus(3);
         Assert.assertNotNull(deviceStatusVo);
+    }
+
+    @Test
+    public void testSearchDeviceStatus(){
+        EquipmentStatusSearch param = new EquipmentStatusSearch();
+        param.setCurrentPage(1);
+        param.setPageSize(20);
+        param.setIp("127.0.0.98");
+        param.setEquipmentType(1);
+        Page<DeviceStatusVo> data = equipmentService.searchDeviceStatus(param);
+        Assert.assertNotNull(data);
     }
 
 }

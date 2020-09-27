@@ -80,7 +80,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
 
-    <select id="count" parameterType="com.network.management.domain.UserSearch" resultType="java.lang.Integer">
+    <select id="count" parameterType="com.network.management.domain.search.UserSearch" resultType="java.lang.Integer">
         select
         COUNT(1)
         from user
@@ -90,7 +90,7 @@
         </if>
     </select>
 
-    <select id="search" parameterType="com.network.management.domain.UserSearch" resultMap="BaseResultMap">
+    <select id="search" parameterType="com.network.management.domain.search.UserSearch" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from user

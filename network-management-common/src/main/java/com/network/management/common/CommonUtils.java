@@ -25,4 +25,16 @@ public class CommonUtils {
         }
         return null;
     }
+
+    /**
+     * 获取图片存储路径
+     * @return 默认返回System.getProperty('use.dir')
+     */
+    public static String getImgDirPath(){
+        String imgDirPath = System.getProperty("bord.img.dir");
+        if(StringUtils.isBlank(imgDirPath)){
+            imgDirPath = System.getProperty("user.dir");
+        }
+        return imgDirPath;
+    }
 }

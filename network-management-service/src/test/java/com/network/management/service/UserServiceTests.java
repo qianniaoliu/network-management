@@ -1,7 +1,7 @@
 package com.network.management.service;
 
-import com.network.management.domain.Page;
-import com.network.management.domain.UserSearch;
+import com.network.management.domain.search.Page;
+import com.network.management.domain.search.UserSearch;
 import com.network.management.domain.dao.User;
 import com.network.management.domain.vo.RegistryVo;
 import com.network.management.service.config.TestConfig;

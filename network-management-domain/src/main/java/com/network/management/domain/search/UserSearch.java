@@ -1,4 +1,4 @@
-package com.network.management.domain;
+package com.network.management.domain.search;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

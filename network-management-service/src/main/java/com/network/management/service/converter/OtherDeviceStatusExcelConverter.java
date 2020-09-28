@@ -20,6 +20,7 @@ public class OtherDeviceStatusExcelConverter implements Converter<DeviceStatusVo
         result.setName(deviceStatusVo.getName());
         result.setPosition(deviceStatusVo.getPosition());
         result.setStatus(otherDeviceStatusVo.getStatus());
+        result.setCreated(otherDeviceStatusVo.getCreated());
         return result;
     }
 

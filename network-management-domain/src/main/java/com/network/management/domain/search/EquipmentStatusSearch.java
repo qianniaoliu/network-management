@@ -1,5 +1,6 @@
 package com.network.management.domain.search;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.network.management.common.exception.IllegalParamException;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -33,12 +34,14 @@ public class EquipmentStatusSearch {
      * 开始时间
      */
     @ApiModelProperty("开始时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date startTime;
 
     /**
      * 结束时间
      */
     @ApiModelProperty("结束时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;
 
     /**

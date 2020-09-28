@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * flash界面基站状态数据
  * @author yyc
@@ -42,4 +44,10 @@ public class FlashStationStatusVo{
      */
     @ApiModelProperty("小区状态")
     private Integer cellStatus;
+
+    /**
+     * 创建时间
+     */
+    @ApiModelProperty("创建时间")
+    private Date created;
 }

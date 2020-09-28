@@ -3,6 +3,7 @@ package com.network.management.service;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.excel.DeviceStatusData;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -95,7 +97,20 @@ public class EquipmentServiceTests {
         param.setPageSize(20);
         param.setIp("127.0.0.98");
         param.setEquipmentType(1);
+        param.setStartTime(new Date());
         Page<DeviceStatusVo> data = equipmentService.searchDeviceStatus(param);
+        Assert.assertNotNull(data);
+    }
+
+    @Test
+    public void testSearchExportData(){
+        EquipmentStatusSearch param = new EquipmentStatusSearch();
+        param.setCurrentPage(1);
+        param.setPageSize(20);
+        param.setIp("127.0.0.98");
+        param.setEquipmentType(1);
+        param.setStartTime(new Date());
+        DeviceStatusData data = equipmentService.searchExportData(param);
         Assert.assertNotNull(data);
     }
 

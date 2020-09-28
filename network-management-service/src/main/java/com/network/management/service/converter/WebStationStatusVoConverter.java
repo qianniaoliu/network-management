@@ -27,6 +27,7 @@ public class WebStationStatusVoConverter implements Converter<StationStatus, Web
             webStationStatusVo.setTimeClockStatus(stationStatus.getTimeClockStatus());
             webStationStatusVo.setUcStatus(stationStatus.getUcStatus());
             webStationStatusVo.setWanStatus(stationStatus.getWanStatus());
+            webStationStatusVo.setCreated(stationStatus.getCreated());
             return webStationStatusVo;
         }
         return null;

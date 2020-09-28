@@ -27,6 +27,7 @@ public class WebStationStatusExcelConverter implements Converter<DeviceStatusVo,
         result.setTimeClockStatus(webStationStatusVo.getTimeClockStatus());
         result.setUcStatus(webStationStatusVo.getUcStatus());
         result.setWanStatus(webStationStatusVo.getWanStatus());
+        result.setCreated(webStationStatusVo.getCreated());
         return result;
     }
 

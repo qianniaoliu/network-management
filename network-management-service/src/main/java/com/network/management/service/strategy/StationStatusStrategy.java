@@ -7,13 +7,12 @@ import com.network.management.domain.dao.StationStatus;
 import com.network.management.domain.enums.DeviceTypeEnum;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.domain.vo.DeviceStatusVo;
-import com.network.management.domain.vo.FlashStationStatusVo;
-import com.network.management.domain.vo.WebStationStatusVo;
 import com.network.management.mapper.EquipmentMapper;
 import com.network.management.mapper.StationStatusMapper;
 import com.network.management.service.DeviceStatusStrategy;
 import com.network.management.service.converter.FlashStationStatusVoConverter;
 import com.network.management.service.converter.WebStationStatusVoConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -30,6 +29,12 @@ public class StationStatusStrategy implements DeviceStatusStrategy {
     private final StationStatusMapper stationStatusMapper;
 
     private final EquipmentMapper equipmentMapper;
+
+    @Autowired
+    private WebStationStatusVoConverter webStationStatusVoConverter;
+
+    @Autowired
+    private FlashStationStatusVoConverter flashStationStatusVoConverter;
 
     public StationStatusStrategy(StationStatusMapper stationStatusMapper, EquipmentMapper equipmentMapper) {
         this.stationStatusMapper = stationStatusMapper;
@@ -48,9 +53,9 @@ public class StationStatusStrategy implements DeviceStatusStrategy {
                 .map(stationStatus -> {
                     DeviceStatusVo<Object> deviceStatusVo = new DeviceStatusVo();
                     if(search.getEquipmentType().equals(DeviceTypeEnum.WEB_STATION.getType())){
-                        deviceStatusVo.setStatusObj(new WebStationStatusVoConverter().convert(stationStatus));
+                        deviceStatusVo.setStatusObj(webStationStatusVoConverter.convert(stationStatus));
                     }else {
-                        deviceStatusVo.setStatusObj(new FlashStationStatusVoConverter().convert(stationStatus));
+                        deviceStatusVo.setStatusObj(flashStationStatusVoConverter.convert(stationStatus));
                     }
                     equipmentMap.computeIfAbsent(stationStatus.getIp(), ip -> equipmentMapper.getByIp(ip));
                     deviceStatusVo.fillEquipment(equipmentMap.get(stationStatus.getIp()));

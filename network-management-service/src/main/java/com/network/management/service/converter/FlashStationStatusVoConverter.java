@@ -26,6 +26,7 @@ public class FlashStationStatusVoConverter implements Converter<StationStatus, F
             statusVo.setS1Status(stationStatus.getS1Status());
             statusVo.setWanInternet(stationStatus.getWanInternet());
             statusVo.setWanStatus(stationStatus.getWanStatus());
+            statusVo.setCreated(stationStatus.getCreated());
             return statusVo;
         }
         return null;

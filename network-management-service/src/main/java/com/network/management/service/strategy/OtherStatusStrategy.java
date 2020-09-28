@@ -45,6 +45,7 @@ public class OtherStatusStrategy implements DeviceStatusStrategy {
                 .map(otherDeviceStatus -> {
                     DeviceStatusVo<OtherDeviceStatusVo> deviceStatusVo = new DeviceStatusVo<>();
                     OtherDeviceStatusVo otherDeviceStatusVo = new OtherDeviceStatusVo(otherDeviceStatus.getStatus());
+                    otherDeviceStatusVo.setCreated(otherDeviceStatus.getCreated());
                     deviceStatusVo.setStatusObj(otherDeviceStatusVo);
                     equipmentMap.computeIfAbsent(otherDeviceStatus.getIp(), ip -> equipmentMapper.getByIp(ip));
                     deviceStatusVo.fillEquipment(equipmentMap.get(otherDeviceStatus.getIp()));

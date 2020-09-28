@@ -3,6 +3,8 @@ package com.network.management.domain.excel;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author yusheng
  */
@@ -72,4 +74,10 @@ public class WebStationStatusExcel {
      */
     @ExcelProperty("C820状态")
     private Integer ucStatus;
+
+    /**
+     * 创建时间
+     */
+    @ExcelProperty("创建时间")
+    private Date created;
 }

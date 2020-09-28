@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * web界面基站状态数据
  * @author yyc
@@ -57,4 +59,10 @@ public class WebStationStatusVo{
      */
     @ApiModelProperty("C820状态")
     private Integer ucStatus;
+
+    /**
+     * 创建时间
+     */
+    @ApiModelProperty("创建时间")
+    private Date created;
 }

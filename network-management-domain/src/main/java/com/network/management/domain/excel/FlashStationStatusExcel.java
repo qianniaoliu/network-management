@@ -40,16 +40,6 @@ public class FlashStationStatusExcel {
     @ExcelProperty("wan口连接状态")
     private Integer wanInternet;
     /**
-     * ipsec开关状态
-     */
-    @ExcelProperty("ipsec开关状态")
-    private Integer ipSecSwitch;
-    /**
-     * ipsec状态
-     */
-    @ExcelProperty("ipsec状态")
-    private Integer ipSecStatus;
-    /**
      * s1状态
      */
     @ExcelProperty("s1状态")

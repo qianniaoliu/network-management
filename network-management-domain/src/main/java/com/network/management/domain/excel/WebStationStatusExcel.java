@@ -40,11 +40,6 @@ public class WebStationStatusExcel {
     @ExcelProperty("SCTP链路状态")
     private Integer sctpStatus;
     /**
-     * IPSec状态
-     */
-    @ExcelProperty("IPSec状态")
-    private Integer ipSecStatus;
-    /**
      * 小区状态
      */
     @ExcelProperty("小区状态")
@@ -69,11 +64,6 @@ public class WebStationStatusExcel {
      */
     @ExcelProperty("AP状态")
     private Integer apStatus;
-    /**
-     * C820状态
-     */
-    @ExcelProperty("C820状态")
-    private Integer ucStatus;
 
     /**
      * 创建时间

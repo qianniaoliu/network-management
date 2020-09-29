@@ -20,12 +20,10 @@ public class WebStationStatusExcelConverter implements Converter<DeviceStatusVo,
         result.setPosition(deviceStatusVo.getPosition());
         result.setApStatus(webStationStatusVo.getApStatus());
         result.setCellStatus(webStationStatusVo.getCellStatus());
-        result.setIpSecStatus(webStationStatusVo.getIpSecStatus());
         result.setNetManagerStatus(webStationStatusVo.getNetManagerStatus());
         result.setRfStatus(webStationStatusVo.getRfStatus());
         result.setSctpStatus(webStationStatusVo.getSctpStatus());
         result.setTimeClockStatus(webStationStatusVo.getTimeClockStatus());
-        result.setUcStatus(webStationStatusVo.getUcStatus());
         result.setWanStatus(webStationStatusVo.getWanStatus());
         result.setCreated(webStationStatusVo.getCreated());
         return result;

@@ -19,8 +19,6 @@ public class FlashStationStatusExcelConverter implements Converter<DeviceStatusV
         result.setName(deviceStatusVo.getName());
         result.setPosition(deviceStatusVo.getPosition());
         result.setCellStatus(flashStationStatusVo.getCellStatus());
-        result.setIpSecStatus(flashStationStatusVo.getIpSecStatus());
-        result.setIpSecSwitch(flashStationStatusVo.getIpSecSwitch());
         result.setS1Status(flashStationStatusVo.getS1Status());
         result.setWanInternet(flashStationStatusVo.getWanInternet());
         result.setWanStatus(flashStationStatusVo.getWanStatus());

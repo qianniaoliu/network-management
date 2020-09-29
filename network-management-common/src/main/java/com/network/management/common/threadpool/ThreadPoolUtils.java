@@ -19,7 +19,7 @@ public class ThreadPoolUtils {
     /**
      * 核心线程数
      */
-    private static final int CORE_POOL_SIZE = 20;
+    private static final int CORE_POOL_SIZE = 30;
     /**
      * 最大线程数
      */

@@ -30,4 +30,10 @@ public interface StationStatusMapper {
      */
     Integer count(EquipmentStatusSearch condition);
 
+    /**
+     * 删除当前时间30天前的数据
+     * @return
+     */
+    Integer deleteBefore30Days();
+
 }

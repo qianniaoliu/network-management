@@ -94,4 +94,9 @@
       LIMIT #{startIndex}, #{pageSize}
     </if>
   </select>
+
+  <delete id="deleteBefore30Days" parameterType="java.lang.Integer">
+    delete from station_status
+    where (TO_DAYS(NOW()) - TO_DAYS(created))>=30
+  </delete>
 </mapper>

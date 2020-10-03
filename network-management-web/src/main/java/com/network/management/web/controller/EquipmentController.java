@@ -18,7 +18,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -166,9 +165,6 @@ public class EquipmentController {
     public void export(@RequestBody EquipmentStatusSearch search, HttpServletResponse response) throws Exception{
         search.checkExportParams();
         DeviceStatusData deviceStatusData = equipmentService.searchExportData(search);
-        if(CollectionUtils.isEmpty(deviceStatusData.getData())){
-            return;
-        }
         response.setContentType("application/vnd.ms-excel");
         response.setCharacterEncoding("utf-8");
         String fileName = URLEncoder.encode("设备状态数据", "UTF-8");

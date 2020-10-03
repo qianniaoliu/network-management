@@ -33,22 +33,22 @@ public class FlashStationStatusExcel {
      * wan口状态
      */
     @ExcelProperty("wan口状态")
-    private Integer wanStatus;
+    private String wanStatus;
     /**
      * wan口连接状态
      */
     @ExcelProperty("wan口连接状态")
-    private Integer wanInternet;
+    private String wanInternet;
     /**
      * s1状态
      */
     @ExcelProperty("s1状态")
-    private Integer s1Status;
+    private String s1Status;
     /**
      * 小区状态
      */
     @ExcelProperty("小区状态")
-    private Integer cellStatus;
+    private String cellStatus;
 
     /**
      * 创建时间

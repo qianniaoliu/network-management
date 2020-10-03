@@ -133,9 +133,6 @@ public class EquipmentServiceImpl implements EquipmentService {
         DeviceStatusData deviceStatusData = new DeviceStatusData();
         Page<DeviceStatusVo> pageData = searchDeviceStatus(param);
         List<DeviceStatusVo> deviceStatusVoList = pageData.getData();
-        if (CollectionUtils.isEmpty(deviceStatusVoList)) {
-            return deviceStatusData;
-        }
         if (DeviceTypeEnum.OTHER_STATION.getType().equals(param.getEquipmentType())) {
             deviceStatusData.setClazz(OtherDeviceStatusExcel.class);
             deviceStatusData.setData(otherDeviceStatusExcelConverter.convertToList(deviceStatusVoList));

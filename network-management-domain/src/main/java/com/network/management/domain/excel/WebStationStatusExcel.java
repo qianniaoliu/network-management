@@ -33,37 +33,37 @@ public class WebStationStatusExcel {
      * RF状态
      */
     @ExcelProperty("RF状态")
-    private Integer rfStatus;
+    private String rfStatus;
     /**
      * SCTP链路状态
      */
     @ExcelProperty("SCTP链路状态")
-    private Integer sctpStatus;
+    private String sctpStatus;
     /**
      * 小区状态
      */
     @ExcelProperty("小区状态")
-    private Integer cellStatus;
+    private String cellStatus;
     /**
      * WAN口状态
      */
     @ExcelProperty("WAN口状态")
-    private Integer wanStatus;
+    private String wanStatus;
     /**
      * 网管连接状态
      */
     @ExcelProperty("网管连接状态")
-    private Integer netManagerStatus;
+    private String netManagerStatus;
     /**
      * 时钟状态
      */
     @ExcelProperty("时钟状态")
-    private Integer timeClockStatus;
+    private String timeClockStatus;
     /**
      * AP状态
      */
     @ExcelProperty("AP状态")
-    private Integer apStatus;
+    private String apStatus;
 
     /**
      * 创建时间

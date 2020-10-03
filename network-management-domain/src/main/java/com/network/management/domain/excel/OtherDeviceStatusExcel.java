@@ -33,7 +33,7 @@ public class OtherDeviceStatusExcel {
      * ping连接状态 {@link com.network.management.domain.enums.YnEnum}
      */
     @ExcelProperty("ping连接状态")
-    private Integer status;
+    private String status;
 
     /**
      * 创建时间

@@ -1,6 +1,10 @@
 package com.network.management.service.converter;
 
 import com.network.management.common.convert.Converter;
+import com.network.management.domain.enums.ActivationEnum;
+import com.network.management.domain.enums.ConnectionEnum;
+import com.network.management.domain.enums.CreationEnum;
+import com.network.management.domain.enums.TimepieceEnum;
 import com.network.management.domain.excel.WebStationStatusExcel;
 import com.network.management.domain.vo.DeviceStatusVo;
 import com.network.management.domain.vo.WebStationStatusVo;
@@ -18,13 +22,13 @@ public class WebStationStatusExcelConverter implements Converter<DeviceStatusVo,
         result.setIp(deviceStatusVo.getIp());
         result.setName(deviceStatusVo.getName());
         result.setPosition(deviceStatusVo.getPosition());
-        result.setApStatus(webStationStatusVo.getApStatus());
-        result.setCellStatus(webStationStatusVo.getCellStatus());
-        result.setNetManagerStatus(webStationStatusVo.getNetManagerStatus());
-        result.setRfStatus(webStationStatusVo.getRfStatus());
-        result.setSctpStatus(webStationStatusVo.getSctpStatus());
-        result.setTimeClockStatus(webStationStatusVo.getTimeClockStatus());
-        result.setWanStatus(webStationStatusVo.getWanStatus());
+        result.setApStatus(CreationEnum.getByKey(webStationStatusVo.getApStatus()).getDesc());
+        result.setCellStatus(CreationEnum.getByKey(webStationStatusVo.getCellStatus()).getDesc());
+        result.setNetManagerStatus(ConnectionEnum.getByKey(webStationStatusVo.getNetManagerStatus()).getDesc());
+        result.setRfStatus(ActivationEnum.getByKey(webStationStatusVo.getRfStatus()).getDesc());
+        result.setSctpStatus(ConnectionEnum.getByKey(webStationStatusVo.getSctpStatus()).getDesc());
+        result.setTimeClockStatus(TimepieceEnum.getByKey(webStationStatusVo.getTimeClockStatus()).getDesc());
+        result.setWanStatus(ConnectionEnum.getByKey(webStationStatusVo.getWanStatus()).getDesc());
         result.setCreated(webStationStatusVo.getCreated());
         return result;
     }

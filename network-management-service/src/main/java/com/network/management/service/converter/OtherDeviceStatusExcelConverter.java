@@ -1,6 +1,7 @@
 package com.network.management.service.converter;
 
 import com.network.management.common.convert.Converter;
+import com.network.management.domain.enums.IntercommunicationEnum;
 import com.network.management.domain.excel.FlashStationStatusExcel;
 import com.network.management.domain.excel.OtherDeviceStatusExcel;
 import com.network.management.domain.vo.DeviceStatusVo;
@@ -19,7 +20,7 @@ public class OtherDeviceStatusExcelConverter implements Converter<DeviceStatusVo
         result.setIp(deviceStatusVo.getIp());
         result.setName(deviceStatusVo.getName());
         result.setPosition(deviceStatusVo.getPosition());
-        result.setStatus(otherDeviceStatusVo.getStatus());
+        result.setStatus(IntercommunicationEnum.getByKey(otherDeviceStatusVo.getStatus()).getDesc());
         result.setCreated(otherDeviceStatusVo.getCreated());
         return result;
     }

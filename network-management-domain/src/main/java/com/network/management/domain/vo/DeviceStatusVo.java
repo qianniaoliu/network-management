@@ -87,6 +87,12 @@ public class DeviceStatusVo<T> {
     private T statusObj;
 
     /**
+     * 设备状态，1：使用红色图标，2：使用黄色图标，3：使用绿色图标
+     */
+    @ApiModelProperty("设备状态（1：使用红色图标，2：使用黄色图标，3：使用绿色图标）")
+    private Integer status;
+
+    /**
      * 填充DeviceStatusVo对象
      *
      * @param equipment      {@link Equipment}

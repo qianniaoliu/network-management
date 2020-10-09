@@ -5,8 +5,11 @@ import com.network.management.agent.collector.Collector;
 import com.network.management.common.exception.Assert;
 import com.network.management.domain.bo.DataBo;
 import com.network.management.domain.bo.DeviceStatusResultBo;
+import com.network.management.domain.bo.OtherDeviceStatusBo;
 import com.network.management.domain.dao.Equipment;
 import com.network.management.domain.enums.DeviceTypeEnum;
+import com.network.management.domain.enums.EquipmentStatusEnum;
+import com.network.management.domain.enums.YnEnum;
 import com.network.management.domain.excel.DeviceStatusData;
 import com.network.management.domain.excel.FlashStationStatusExcel;
 import com.network.management.domain.excel.OtherDeviceStatusExcel;
@@ -14,6 +17,8 @@ import com.network.management.domain.excel.WebStationStatusExcel;
 import com.network.management.domain.search.EquipmentStatusSearch;
 import com.network.management.domain.search.Page;
 import com.network.management.domain.vo.DeviceStatusVo;
+import com.network.management.domain.vo.FlashStationStatusVo;
+import com.network.management.domain.vo.WebStationStatusVo;
 import com.network.management.mapper.EquipmentMapper;
 import com.network.management.service.DeviceStatueHandler;
 import com.network.management.service.EquipmentService;
@@ -90,13 +95,47 @@ public class EquipmentServiceImpl implements EquipmentService {
     public DeviceStatusVo<?> queryStatus(Integer id) {
         Assert.notNull(id, "设备id不能为空");
         Equipment equipment = get(id);
-        String deviceType = DeviceTypeEnum.getTypeKey(Objects.isNull(equipment) ? null : equipment.getEquipmentType());
-        Collector collector = deviceMonitorContext.getCollector(deviceType);
-        if (Objects.nonNull(collector)) {
-            DataBo<?> dataBo = collector.collect(deviceConverter.convert(equipment));
-            DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(dataBo);
-            deviceStatusVo.fillEquipment(equipment);
-            return deviceStatusVo;
+        Collector pingCollector = deviceMonitorContext.getCollector(DeviceTypeEnum.OTHER_STATION.getTypeKey());
+        if (Objects.nonNull(pingCollector)) {
+            //首先ping一下ip是否连通
+            DataBo<?> pingDataBo = pingCollector.collect(deviceConverter.convert(equipment));
+            OtherDeviceStatusBo otherDeviceStatusBo = (OtherDeviceStatusBo) pingDataBo.getDataObj();
+            //如果未连通或者设备本身是其他类型的设备，则不需要获取真实状态，直接返回
+            if (otherDeviceStatusBo.getStatus().equals(YnEnum.NO.getCode())
+                    || DeviceTypeEnum.OTHER_STATION.getTypeKey().equals(equipment.getEquipmentType())) {
+                DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(pingDataBo);
+                deviceStatusVo.fillEquipment(equipment);
+                //如果是连通状态，则使用绿色图标，否则使用红色图标
+                if(otherDeviceStatusBo.getStatus().equals(YnEnum.YES.getCode())){
+                    deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
+                }else {
+                    deviceStatusVo.setStatus(EquipmentStatusEnum.ONE.getCode());
+                }
+                return deviceStatusVo;
+            } else {
+                String deviceType = DeviceTypeEnum.getTypeKey(Objects.isNull(equipment) ? null : equipment.getEquipmentType());
+                Collector collector = deviceMonitorContext.getCollector(deviceType);
+                if (Objects.nonNull(collector)) {
+                    DataBo<?> dataBo = collector.collect(deviceConverter.convert(equipment));
+                    DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(dataBo);
+                    deviceStatusVo.fillEquipment(equipment);
+                    deviceStatusVo.setStatus(EquipmentStatusEnum.TWO.getCode());
+                    if(Objects.nonNull(deviceStatusVo.getStatusObj())){
+                        Integer status = YnEnum.NO.getCode();
+                        if(DeviceTypeEnum.FLASH_STATION.getType().equals(equipment.getEquipmentType())){
+                            FlashStationStatusVo flashStationStatusVo = (FlashStationStatusVo) deviceStatusVo.getStatusObj();
+                            status = flashStationStatusVo.getCellStatus();
+                        }else if(DeviceTypeEnum.WEB_STATION.getType().equals(equipment.getEquipmentType())) {
+                            WebStationStatusVo webStationStatusVo = (WebStationStatusVo) deviceStatusVo.getStatusObj();
+                            status = webStationStatusVo.getCellStatus();
+                        }
+                        if(status.equals(YnEnum.YES.getCode())){
+                            deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
+                        }
+                    }
+                    return deviceStatusVo;
+                }
+            }
         }
         throw new IllegalArgumentException("设备类型错误id:" + id);
     }

@@ -165,10 +165,8 @@ public class EquipmentController {
     public void export(@RequestBody EquipmentStatusSearch search, HttpServletResponse response) throws Exception{
         search.checkExportParams();
         DeviceStatusData deviceStatusData = equipmentService.searchExportData(search);
-        response.setContentType("application/vnd.ms-excel");
-        response.setCharacterEncoding("utf-8");
-        String fileName = URLEncoder.encode("设备状态数据", "UTF-8");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName + ".xlsx");
+        response.setContentType("application/vnd.ms-excel;charset=utf-8");
+        response.setHeader("Content-Disposition", "attachment;filename=" + new String("device_status_data.xlsx".getBytes(), "iso-8859-1"));
 
         // 头的策略
         WriteCellStyle headWriteCellStyle = new WriteCellStyle();

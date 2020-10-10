@@ -101,5 +101,7 @@ public class EquipmentStatusSearch {
         if(endTime.after(next30)){
             throw new IllegalParamException("只能导出一个月的数据!");
         }
+        this.setCurrentPage(null);
+        this.setPageSize(null);
     }
 }

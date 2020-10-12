@@ -18,8 +18,8 @@
     <result column="ipspec_switch_status" jdbcType="TINYINT" property="ipSecSwitchStatus" />
     <result column="s1_status" jdbcType="TINYINT" property="s1Status" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
-    <result column="modified" jdbcType="DATE" property="modified" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
     id, ip, equipment_type, rf_status, sctp_status, ipspec_status, cell_status, wan_status, manager_status,

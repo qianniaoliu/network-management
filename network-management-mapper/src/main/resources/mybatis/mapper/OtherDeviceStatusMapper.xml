@@ -7,8 +7,8 @@
     <result column="equipment_type" jdbcType="TINYINT" property="type" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
-    <result column="modified" jdbcType="DATE" property="modified" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
     id, ip, equipment_type, status, yn, modified, created

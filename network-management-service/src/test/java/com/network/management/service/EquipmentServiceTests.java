@@ -107,9 +107,9 @@ public class EquipmentServiceTests {
         EquipmentStatusSearch param = new EquipmentStatusSearch();
         param.setCurrentPage(1);
         param.setPageSize(20);
-        param.setIp("127.0.0.98");
+        param.setIp("172.16.11.106");
         param.setEquipmentType(1);
-        param.setStartTime(new Date());
+//        param.setStartTime(new Date());
         DeviceStatusData data = equipmentService.searchExportData(param);
         Assert.assertNotNull(data);
     }

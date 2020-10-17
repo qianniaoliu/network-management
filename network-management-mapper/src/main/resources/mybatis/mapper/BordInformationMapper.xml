@@ -5,13 +5,14 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="core_ip" jdbcType="VARCHAR" property="coreIp" />
     <result column="extend_info" jdbcType="LONGVARCHAR" property="extendInfo" />
     <result column="yn" jdbcType="TINYINT" property="yn" />
     <result column="modified" jdbcType="TIMESTAMP" property="modified" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, url, extend_info, yn, modified, created
+    id, name, url, core_ip, extend_info, yn, modified, created
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,9 +30,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="BordInformation" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-    insert into bord_information (name, url, extend_info,
+    insert into bord_information (name, url, core_ip, extend_info,
       yn, modified, created)
-    values (#{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{extendInfo,jdbcType=LONGVARCHAR},
+    values (#{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{coreIp,jdbcType=VARCHAR}, #{extendInfo,jdbcType=LONGVARCHAR},
       #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="BordInformation">
@@ -45,6 +46,9 @@
       </if>
       <if test="url != null">
         url,
+      </if>
+      <if test="coreIp != null">
+        core_ip,
       </if>
       <if test="yn != null">
         yn,
@@ -66,6 +70,9 @@
       <if test="url != null">
         #{url,jdbcType=VARCHAR},
       </if>
+      <if test="coreIp != null">
+        #{coreIp,jdbcType=VARCHAR},
+      </if>
       <if test="yn != null">
         #{yn,jdbcType=TINYINT},
       </if>
@@ -85,6 +92,9 @@
       </if>
       <if test="url != null">
         url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="coreIp != null">
+        core_ip = #{coreIp,jdbcType=VARCHAR},
       </if>
       <if test="extendInfo != null">
         extend_info = #{extendInfo,jdbcType=LONGVARCHAR},

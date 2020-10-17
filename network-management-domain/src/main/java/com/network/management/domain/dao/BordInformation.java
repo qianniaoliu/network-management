@@ -39,6 +39,11 @@ public class BordInformation {
      */
     @ApiModelProperty("有效状态")
     private Integer yn;
+    /**
+     * 核心网ip
+     */
+    @ApiModelProperty("核心网ip")
+    private String coreIp;
 
     /**
      * 巷道图扩展信息

@@ -30,7 +30,7 @@ public class BordInformationServiceTests {
     @Test
     public void testSave(){
         BordInformation bordInformation = new BordInformation();
-        bordInformation.setName("测试唯一巷道图名称");
+        bordInformation.setCoreIp("172.16.11.12");
         bordInformationService.save(bordInformation);
     }
 

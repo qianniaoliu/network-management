@@ -17,6 +17,10 @@ public class ThreadPoolUtils {
      */
     private static ExecutorService collectExecutor;
     /**
+     * 机车线程池
+     */
+    private static ExecutorService locomotiveExecutor;
+    /**
      * 核心线程数
      */
     private static final int CORE_POOL_SIZE = 30;
@@ -24,6 +28,23 @@ public class ThreadPoolUtils {
      * 最大线程数
      */
     private static final int MAX_POOL_SIZE = 50;
+
+    /**
+     * 机车核心线程数
+     */
+    private static final int LOCOMOTIVE_CORE_POOL_SIZE = 16;
+    /**
+     * 机车最大线程数
+     */
+    private static final int LOCOMOTIVE_MAX_POOL_SIZE = 30;
+    /**
+     * 机车线程名称
+     */
+    private static final String LOCOMOTIVE_THREAD_POOL_NAME = "locomotive_collect_";
+    /**
+     * 机车线程池队列数
+     */
+    private static final int LOCOMOTIVE_QUEUE_NUMBER = 100;
     /**
      * 保存时间
      */
@@ -44,5 +65,18 @@ public class ThreadPoolUtils {
                     new ThreadPoolExecutor.AbortPolicy());
         }
         return collectExecutor;
+    }
+
+    /**
+     * 获取线程池
+     * @return {@link ExecutorService}
+     */
+    public synchronized static ExecutorService getLocomotiveExecutor() {
+        if (Objects.isNull(locomotiveExecutor)) {
+            locomotiveExecutor = ThreadPoolExecutors.getExecutorService(LOCOMOTIVE_CORE_POOL_SIZE, LOCOMOTIVE_MAX_POOL_SIZE,
+                    KEEP_TIME, new LinkedBlockingQueue<Runnable>(LOCOMOTIVE_QUEUE_NUMBER), LOCOMOTIVE_THREAD_POOL_NAME,
+                    new ThreadPoolExecutor.AbortPolicy());
+        }
+        return locomotiveExecutor;
     }
 }

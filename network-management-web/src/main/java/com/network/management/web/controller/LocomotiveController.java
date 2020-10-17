@@ -76,7 +76,7 @@ public class LocomotiveController {
     }
 
     /**
-     * 查询所有机车数据
+     * 分页查询机车数据
      * @return
      */
     @PostMapping("/search")

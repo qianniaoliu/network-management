@@ -37,6 +37,13 @@ public interface LocomotiveMapper {
     void deleteByPrimaryKey(Integer id);
 
     /**
+     * 根据条件获取数量
+     * @param search {@link LocomotiveSearch}
+     * @return
+     */
+    Integer count(LocomotiveSearch search);
+
+    /**
      * 分页查询机车信息
      * @param search {@link LocomotiveSearch}
      * @return {@link List<Locomotive>}

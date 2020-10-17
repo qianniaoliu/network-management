@@ -101,7 +101,40 @@ public class LocomotiveServiceImpl implements LocomotiveService {
 
             }
         }
+        locomotiveMap.putAll(getTestLocomotiveVoMap());
         return locomotiveMap;
+    }
+
+    private Map<String, List<LocomotiveVo>> getTestLocomotiveVoMap(){
+        Map<String, List<LocomotiveVo>> testLocomotiveVoMap = new HashMap<>();
+        testLocomotiveVoMap.put("172.16.11.101", getLocomotiveVos1());
+        testLocomotiveVoMap.put("172.16.11.119", getLocomotiveVos2());
+        return testLocomotiveVoMap;
+    }
+
+    private List<LocomotiveVo> getLocomotiveVos1(){
+        List<LocomotiveVo> locomotiveVos = new ArrayList<>();
+        locomotiveVos.add(getLocomotiveVo(1, "10.10.10.21", 1, "test1", 0, "172.16.11.101"));
+        locomotiveVos.add(getLocomotiveVo(2, "10.10.10.22", 2, "test2", 1, "172.16.11.101"));
+        return locomotiveVos;
+    }
+
+    private List<LocomotiveVo> getLocomotiveVos2(){
+        List<LocomotiveVo> locomotiveVos = new ArrayList<>();
+        locomotiveVos.add(getLocomotiveVo(3, "10.10.10.23", 5, "test6", 0, "172.16.11.119"));
+        locomotiveVos.add(getLocomotiveVo(6, "10.10.10.25", 8, "test9", 1, "172.16.11.119"));
+        return locomotiveVos;
+    }
+
+    private LocomotiveVo getLocomotiveVo(Integer id, String ueIp, Integer num, String desc, Integer status, String eNodeBIP){
+        LocomotiveVo locomotiveVo = new LocomotiveVo();
+        locomotiveVo.setId(id);
+        locomotiveVo.setDesc(desc);
+        locomotiveVo.setENodeBIP(eNodeBIP);
+        locomotiveVo.setUeIp(ueIp);
+        locomotiveVo.setNum(num);
+        locomotiveVo.setStatus(status);
+        return locomotiveVo;
     }
 
     @Override
@@ -149,7 +182,13 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         }
         locomotiveVoPage.setCurrentPage(search.getCurrentPage());
         locomotiveVoPage.setPageSize(search.getPageSize());
-        locomotiveVoPage.setData(locomotiveConverter.reverseConvertToList(locomotiveMapper.getByConditions(search)));
+        Integer count = locomotiveMapper.count(search);
+        locomotiveVoPage.setCount(count);
+        if(Objects.nonNull(count) && count > 0){
+            locomotiveVoPage.setData(locomotiveConverter.reverseConvertToList(locomotiveMapper.getByConditions(search)));
+        }else {
+            locomotiveVoPage.setData(Lists.newArrayList());
+        }
         return locomotiveVoPage;
     }
 

@@ -79,8 +79,8 @@ public class LocomotiveController {
      * 查询所有机车数据
      * @return
      */
-    @GetMapping("/search")
-    @ApiOperation("查询所有机车")
+    @PostMapping("/search")
+    @ApiOperation("分页查询机车")
     public Result search(@RequestBody LocomotiveSearch search){
         return Result.success(locomotiveService.search(search));
     }

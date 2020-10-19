@@ -101,7 +101,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
 
             }
         }
-        locomotiveMap.putAll(getTestLocomotiveVoMap());
+        log.info("基站与机车关系:{}", JSON.toJSONString(locomotiveMap));
         return locomotiveMap;
     }
 

@@ -18,6 +18,7 @@ import com.network.management.service.converter.LocomotiveConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -47,6 +48,10 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     private LocomotiveConverter locomotiveConverter;
     @Autowired
     private BordInformationMapper bordInformationMapper;
+    /**
+     * 前一次机车及状态信息
+     */
+    private static Map<String, LocomotiveVo>  preLocomotiveVoMap = new HashMap<>();
     /**
      * 核心网获取基站与机车ip对应关系的url
      */
@@ -86,7 +91,8 @@ public class LocomotiveServiceImpl implements LocomotiveService {
             if (Objects.nonNull(bordInformation) && StringUtils.isNotEmpty(bordInformation.getCoreIp())) {
                 List<Locomotive> locomotives = locomotiveMapper.queryAllLocomotives();
                 List<LocomotiveVo> locomotiveVos = getLocomotiveVos(bordInformation.getCoreIp(), locomotives);
-                ListUtils.emptyIfNull(locomotiveVos)
+                List<LocomotiveVo> allLocomotiveVos = getAllLocomotiveVos(locomotiveVos);
+                ListUtils.emptyIfNull(allLocomotiveVos)
                         .stream()
                         .filter(Objects::nonNull)
                         .forEach(locomotiveVo -> {
@@ -101,40 +107,37 @@ public class LocomotiveServiceImpl implements LocomotiveService {
 
             }
         }
-        log.info("基站与机车关系:{}", JSON.toJSONString(locomotiveMap));
         return locomotiveMap;
     }
 
-    private Map<String, List<LocomotiveVo>> getTestLocomotiveVoMap(){
-        Map<String, List<LocomotiveVo>> testLocomotiveVoMap = new HashMap<>();
-        testLocomotiveVoMap.put("172.16.11.101", getLocomotiveVos1());
-        testLocomotiveVoMap.put("172.16.11.119", getLocomotiveVos2());
-        return testLocomotiveVoMap;
-    }
-
-    private List<LocomotiveVo> getLocomotiveVos1(){
-        List<LocomotiveVo> locomotiveVos = new ArrayList<>();
-        locomotiveVos.add(getLocomotiveVo(1, "10.10.10.21", 1, "test1", 0, "172.16.11.101"));
-        locomotiveVos.add(getLocomotiveVo(2, "10.10.10.22", 2, "test2", 1, "172.16.11.101"));
-        return locomotiveVos;
-    }
-
-    private List<LocomotiveVo> getLocomotiveVos2(){
-        List<LocomotiveVo> locomotiveVos = new ArrayList<>();
-        locomotiveVos.add(getLocomotiveVo(3, "10.10.10.23", 5, "test6", 0, "172.16.11.119"));
-        locomotiveVos.add(getLocomotiveVo(6, "10.10.10.25", 8, "test9", 1, "172.16.11.119"));
-        return locomotiveVos;
-    }
-
-    private LocomotiveVo getLocomotiveVo(Integer id, String ueIp, Integer num, String desc, Integer status, String eNodeBIP){
-        LocomotiveVo locomotiveVo = new LocomotiveVo();
-        locomotiveVo.setId(id);
-        locomotiveVo.setDesc(desc);
-        locomotiveVo.setENodeBIP(eNodeBIP);
-        locomotiveVo.setUeIp(ueIp);
-        locomotiveVo.setNum(num);
-        locomotiveVo.setStatus(status);
-        return locomotiveVo;
+    /**
+     * 对比前一次机车及状态，填充前一次的机车信息
+     * @param locomotiveVos {@link List<LocomotiveVo>}
+     * @return {@link List<LocomotiveVo>}
+     */
+    private List<LocomotiveVo> getAllLocomotiveVos(List<LocomotiveVo> locomotiveVos){
+        List<LocomotiveVo> newLocomotiveVos = new ArrayList<>();
+        Map<String, LocomotiveVo> newLocomotiveVoMap = new HashMap<>(preLocomotiveVoMap);
+        ListUtils.emptyIfNull(locomotiveVos)
+                .stream()
+                .filter(Objects::nonNull)
+                .forEach(locomotiveVo -> {
+                    preLocomotiveVoMap.put(locomotiveVo.getUeIp(), locomotiveVo);
+                    newLocomotiveVos.add(locomotiveVo);
+                    newLocomotiveVoMap.remove(locomotiveVo.getUeIp());
+                });
+        if(MapUtils.isNotEmpty(newLocomotiveVoMap)){
+            for(Map.Entry<String, LocomotiveVo> entry : newLocomotiveVoMap.entrySet()){
+                if(Objects.nonNull(entry) && StringUtils.isNotEmpty(entry.getKey())
+                        && Objects.nonNull(entry.getValue())){
+                    LocomotiveVo locomotiveVo = entry.getValue();
+                    locomotiveVo.setStatus(YnEnum.NO.getCode());
+                    newLocomotiveVos.add(locomotiveVo);
+                    preLocomotiveVoMap.put(entry.getKey(), locomotiveVo);
+                }
+            }
+        }
+        return newLocomotiveVos;
     }
 
     @Override

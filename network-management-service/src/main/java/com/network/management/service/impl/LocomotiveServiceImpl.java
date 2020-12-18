@@ -56,6 +56,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      * 核心网获取基站与机车ip对应关系的url
      */
     private static final String CORE_NETWORK_URL = "http://%s/UEInfo.html?ueIp=%s&msisdn=&enodebIp=&registed=100&online=20";
+    private static final String RELOAD_URL = "http://%s/UEInfo.html?action=load";
 
     private static final String TABLE_CSS_QUERY = "table[class=table table-bordered]";
     private static final String TR_CSS_QUERY = "tr";
@@ -89,6 +90,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         if (CollectionUtils.isNotEmpty(bordInformations)) {
             BordInformation bordInformation = bordInformations.get(0);
             if (Objects.nonNull(bordInformation) && StringUtils.isNotEmpty(bordInformation.getCoreIp())) {
+                reloadRemoteData(bordInformation.getCoreIp());
                 List<Locomotive> locomotives = locomotiveMapper.queryAllLocomotives();
                 List<LocomotiveVo> locomotiveVos = getLocomotiveVos(bordInformation.getCoreIp(), locomotives);
                 List<LocomotiveVo> allLocomotiveVos = getAllLocomotiveVos(locomotiveVos);
@@ -108,6 +110,20 @@ public class LocomotiveServiceImpl implements LocomotiveService {
             }
         }
         return locomotiveMap;
+    }
+
+    /**
+     * reload远端数据
+     * @param coreIp 核心网ip
+     */
+    private void reloadRemoteData(String coreIp) {
+        try {
+            String url = String.format(RELOAD_URL, coreIp);
+            HttpClientUtils.doGet(url, Integer.parseInt(timeOut));
+            log.info("reload success!url:{}", url);
+        }catch (Exception ex){
+            log.error("reload error!", ex);
+        }
     }
 
     /**

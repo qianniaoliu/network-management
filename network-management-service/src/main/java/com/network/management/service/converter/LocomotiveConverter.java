@@ -24,6 +24,7 @@ public class LocomotiveConverter implements Converter<LocomotiveVo, Locomotive> 
             locomotive.setNum(locomotiveVo.getNum());
             locomotive.setUeIp(locomotiveVo.getUeIp());
             locomotive.setYn(YnEnum.YES.getCode());
+            locomotive.setImsi(locomotiveVo.getImsi());
             return locomotive;
         }
         return null;
@@ -37,6 +38,7 @@ public class LocomotiveConverter implements Converter<LocomotiveVo, Locomotive> 
             locomotiveVo.setId(locomotive.getId());
             locomotiveVo.setDesc(locomotive.getDesc());
             locomotiveVo.setUeIp(locomotive.getUeIp());
+            locomotiveVo.setImsi(locomotive.getImsi());
             return locomotiveVo;
         }
         return null;

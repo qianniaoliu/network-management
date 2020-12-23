@@ -28,6 +28,12 @@ public class Locomotive {
      * 描述
      */
     private String desc;
+
+    /**
+     * imsi
+     */
+    private String imsi;
+
     /**
      * 是否有效
      */
@@ -41,5 +47,7 @@ public class Locomotive {
      * 创建时间
      */
     private Date created;
+
+
 
 }

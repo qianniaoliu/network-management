@@ -5,13 +5,14 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="ue_ip" jdbcType="VARCHAR" property="ueIp" />
         <result column="description" jdbcType="VARCHAR" property="desc" />
+        <result column="imsi" jdbcType="VARCHAR" property="imsi" />
         <result column="num" jdbcType="INTEGER" property="num" />
         <result column="yn" jdbcType="TINYINT" property="yn" />
         <result column="modified" jdbcType="TIMESTAMP" property="modified" />
         <result column="created" jdbcType="TIMESTAMP" property="created" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, ue_ip, description, num, yn, modified, created
+        id, ue_ip, description, imsi, num, yn, modified, created
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -25,15 +26,16 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="Locomotive">
-        insert into locomotive (id, ue_ip, description, num, yn, modified, created)
+        insert into locomotive (id, ue_ip, description, imsi, num, yn, modified, created)
         values (#{id,jdbcType=INTEGER}, #{ueIp,jdbcType=VARCHAR},
-        #{desc,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER},#{yn,jdbcType=TINYINT},
+        #{desc,jdbcType=VARCHAR},#{imsi,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER},#{yn,jdbcType=TINYINT},
         #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
     </insert>
     <update id="updateByPrimaryKey" parameterType="Locomotive">
         update locomotive
         set ue_ip = #{ueIp,jdbcType=VARCHAR},
             description = #{desc,jdbcType=VARCHAR},
+            imsi = #{imsi,jdbcType=VARCHAR},
             num = #{num,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>

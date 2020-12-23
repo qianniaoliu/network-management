@@ -46,4 +46,10 @@ public class LocomotiveVo {
      */
     @ApiModelProperty("基站ip")
     private String eNodeBIP;
+
+    /**
+     * 机车imsi
+     */
+    @ApiModelProperty("机车imsi")
+    private String imsi;
 }

@@ -56,7 +56,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      * 核心网获取基站与机车ip对应关系的url
      */
     private static final String CORE_NETWORK_URL = "http://%s/UEInfo.html?ueIp=%s&msisdn=&enodebIp=&registed=100&online=20";
-    private static final String RELOAD_URL = "http://%s/UEInfo.html?action=load";
+    private static final String RELOAD_URL = "http://%s/subsStatus.html?imsi=%s";
 
     private static final String TABLE_CSS_QUERY = "table[class=table table-bordered]";
     private static final String TR_CSS_QUERY = "tr";
@@ -90,7 +90,6 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         if (CollectionUtils.isNotEmpty(bordInformations)) {
             BordInformation bordInformation = bordInformations.get(0);
             if (Objects.nonNull(bordInformation) && StringUtils.isNotEmpty(bordInformation.getCoreIp())) {
-                reloadRemoteData(bordInformation.getCoreIp());
                 List<Locomotive> locomotives = locomotiveMapper.queryAllLocomotives();
                 List<LocomotiveVo> locomotiveVos = getLocomotiveVos(bordInformation.getCoreIp(), locomotives);
                 List<LocomotiveVo> allLocomotiveVos = getAllLocomotiveVos(locomotiveVos);
@@ -110,20 +109,6 @@ public class LocomotiveServiceImpl implements LocomotiveService {
             }
         }
         return locomotiveMap;
-    }
-
-    /**
-     * reload远端数据
-     * @param coreIp 核心网ip
-     */
-    private void reloadRemoteData(String coreIp) {
-        try {
-            String url = String.format(RELOAD_URL, coreIp);
-            HttpClientUtils.doGet(url, Integer.parseInt(timeOut));
-            log.info("reload success!url:{}", url);
-        }catch (Exception ex){
-            log.error("reload error!", ex);
-        }
     }
 
     /**
@@ -255,7 +240,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      */
     private LocomotiveVo queryLocomotiveStatus(String coreNetIp, Locomotive locomotive) {
         try {
-            String result = HttpClientUtils.doGet(String.format(CORE_NETWORK_URL, coreNetIp, locomotive.getUeIp()), Integer.parseInt(timeOut));
+            String result = HttpClientUtils.doGet(String.format(RELOAD_URL, coreNetIp, locomotive.getImsi()), Integer.parseInt(timeOut));
             return parseHtmlContent(result, locomotive);
         } catch (Exception e) {
             log.error("机车请求ip数据失败", e);
@@ -271,6 +256,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      * @return {@link LocomotiveVo}
      */
     private LocomotiveVo parseHtmlContent(String htmlContent, Locomotive locomotive) {
+        log.info("htmlContent:{}", htmlContent);
         if (StringUtils.isNotEmpty(htmlContent)) {
             Document doc = Jsoup.parse(htmlContent);
             Elements rows = doc.select(TABLE_CSS_QUERY).get(0).select(TR_CSS_QUERY);

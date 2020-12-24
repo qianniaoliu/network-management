@@ -1,5 +1,6 @@
 package com.network.management.common.httpclient;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
@@ -85,6 +86,7 @@ public class HttpClientUtils {
                 request.setEntity(entity);
             }
             httpResponse = HttpClientManager.getInstance().getCloseableHttpClient().execute(request);
+            log.info("远程调用request:{},httpResponse:{}", JSONObject.toJSONString(request), JSONObject.toJSONString(httpResponse));
             if (httpResponse != null &&
                     (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK
                             || httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY)) {

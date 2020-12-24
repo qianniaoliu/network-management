@@ -1,6 +1,7 @@
 package com.network.management.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.network.management.common.httpclient.HttpClientUtils;
 import com.network.management.common.threadpool.ThreadPoolUtils;
@@ -46,6 +47,8 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 public class LocomotiveServiceImpl implements LocomotiveService {
     public static final String ENODEB_IP = "enodeb-ip";
+    public static final String IMSI = "imsi";
+    public static final String IMS_ISHOW = "IMSIshow";
     @Autowired
     private LocomotiveMapper locomotiveMapper;
     @Autowired
@@ -246,8 +249,8 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     private LocomotiveVo queryLocomotiveStatus(String coreNetIp, Locomotive locomotive) {
         try {
             Map<String, String> bodyMap = new HashMap<>();
-            bodyMap.put("IMSIshow", "Show");
-            bodyMap.put("imsi", "460060000005021");
+            bodyMap.put(IMS_ISHOW, "Show");
+            bodyMap.put(IMSI, "460060000005021");
             HttpEntity entity =  new StringEntity(JSON.toJSONString(bodyMap), ContentType.APPLICATION_FORM_URLENCODED);
             String result = HttpClientUtils.doPost(String.format(RELOAD_URL, coreNetIp), entity, Integer.parseInt(timeOut));
             return parseHtmlContent(result, locomotive);
@@ -281,6 +284,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
                             locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
                             locomotiveVo.setENodeBIP(eNodeBIP);
                         }
+                        log.info("当前转换的locomotiveVo:{}", JSONObject.toJSONString(locomotiveVo));
                         return locomotiveVo;
                     }
                 }

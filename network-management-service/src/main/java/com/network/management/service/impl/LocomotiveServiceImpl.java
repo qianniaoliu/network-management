@@ -20,6 +20,9 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,6 +45,7 @@ import java.util.concurrent.CountDownLatch;
 @Service
 @Slf4j
 public class LocomotiveServiceImpl implements LocomotiveService {
+    public static final String ENODEB_IP = "enodeb-ip";
     @Autowired
     private LocomotiveMapper locomotiveMapper;
     @Autowired
@@ -56,12 +60,11 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      * 核心网获取基站与机车ip对应关系的url
      */
     private static final String CORE_NETWORK_URL = "http://%s/UEInfo.html?ueIp=%s&msisdn=&enodebIp=&registed=100&online=20";
-    private static final String RELOAD_URL = "http://%s/subsStatus.html?imsi=%s";
+    private static final String RELOAD_URL = "http://%s/subsStatus.html";
 
-    private static final String TABLE_CSS_QUERY = "table[class=container panelGap]";
+    private static final String TABLE_CSS_QUERY = "table[class=table table-condensed table-bordered]";
     private static final String TR_CSS_QUERY = "tr";
     private static final String TD_CSS_QUERY = "td";
-    private static final String DIV_CSS_QUERY = "div[class=row]";
     /**
      * 默认ip
      */
@@ -242,8 +245,11 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      */
     private LocomotiveVo queryLocomotiveStatus(String coreNetIp, Locomotive locomotive) {
         try {
-            HttpEn
-            String result = HttpClientUtils.doPost(String.format(RELOAD_URL, coreNetIp), null, Integer.parseInt(timeOut));
+            Map<String, String> bodyMap = new HashMap<>();
+            bodyMap.put("IMSIshow", "Show");
+            bodyMap.put("imsi", "460060000005021");
+            HttpEntity entity =  new StringEntity(JSON.toJSONString(bodyMap), ContentType.APPLICATION_FORM_URLENCODED);
+            String result = HttpClientUtils.doPost(String.format(RELOAD_URL, coreNetIp), entity, Integer.parseInt(timeOut));
             return parseHtmlContent(result, locomotive);
         } catch (Exception e) {
             log.error("机车请求ip数据失败", e);
@@ -262,16 +268,23 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         log.info("htmlContent:{}", htmlContent);
         if (StringUtils.isNotEmpty(htmlContent)) {
             Document doc = Jsoup.parse(htmlContent);
-            Element row = doc.select(TABLE_CSS_QUERY).get(0).select(DIV_CSS_QUERY).get(1).select(TR_CSS_QUERY).get(6);
-            String ueIp = row.select(TD_CSS_QUERY).get(1).text();
-            String eNodeBIP = row.select(TD_CSS_QUERY).get(3).text();
-            boolean isReachable = isReachable(ueIp);
-            LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
-            if (Objects.nonNull(locomotiveVo)) {
-                locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
-                locomotiveVo.setENodeBIP(eNodeBIP);
+            Elements rows = doc.select(TABLE_CSS_QUERY).get(0).select(TR_CSS_QUERY);
+            if(Objects.nonNull(rows) && rows.size() > 0) {
+                for(Element row : rows) {
+                    String enodeb = row.select(TD_CSS_QUERY).get(2).text();
+                    if(StringUtils.isNotBlank(enodeb) && enodeb.equals(ENODEB_IP)) {
+                        String ueIp = row.select(TD_CSS_QUERY).get(1).text();
+                        String eNodeBIP = row.select(TD_CSS_QUERY).get(3).text();
+                        boolean isReachable = isReachable(ueIp);
+                        LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
+                        if (Objects.nonNull(locomotiveVo)) {
+                            locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
+                            locomotiveVo.setENodeBIP(eNodeBIP);
+                        }
+                        return locomotiveVo;
+                    }
+                }
             }
-            return locomotiveVo;
         }
         return null;
     }

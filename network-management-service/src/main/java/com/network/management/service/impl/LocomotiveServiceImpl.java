@@ -51,16 +51,17 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     /**
      * 前一次机车及状态信息
      */
-    private static Map<String, LocomotiveVo>  preLocomotiveVoMap = new HashMap<>();
+    private static Map<String, LocomotiveVo> preLocomotiveVoMap = new HashMap<>();
     /**
      * 核心网获取基站与机车ip对应关系的url
      */
     private static final String CORE_NETWORK_URL = "http://%s/UEInfo.html?ueIp=%s&msisdn=&enodebIp=&registed=100&online=20";
     private static final String RELOAD_URL = "http://%s/subsStatus.html?imsi=%s";
 
-    private static final String TABLE_CSS_QUERY = "table[class=table table-bordered]";
+    private static final String TABLE_CSS_QUERY = "table[class=container panelGap]";
     private static final String TR_CSS_QUERY = "tr";
     private static final String TD_CSS_QUERY = "td";
+    private static final String DIV_CSS_QUERY = "div[class=row]";
     /**
      * 默认ip
      */
@@ -113,10 +114,11 @@ public class LocomotiveServiceImpl implements LocomotiveService {
 
     /**
      * 对比前一次机车及状态，填充前一次的机车信息
+     *
      * @param locomotiveVos {@link List<LocomotiveVo>}
      * @return {@link List<LocomotiveVo>}
      */
-    private List<LocomotiveVo> getAllLocomotiveVos(List<LocomotiveVo> locomotiveVos){
+    private List<LocomotiveVo> getAllLocomotiveVos(List<LocomotiveVo> locomotiveVos) {
         List<LocomotiveVo> newLocomotiveVos = new ArrayList<>();
         Map<String, LocomotiveVo> newLocomotiveVoMap = new HashMap<>(preLocomotiveVoMap);
         ListUtils.emptyIfNull(locomotiveVos)
@@ -127,10 +129,10 @@ public class LocomotiveServiceImpl implements LocomotiveService {
                     newLocomotiveVos.add(locomotiveVo);
                     newLocomotiveVoMap.remove(locomotiveVo.getUeIp());
                 });
-        if(MapUtils.isNotEmpty(newLocomotiveVoMap)){
-            for(Map.Entry<String, LocomotiveVo> entry : newLocomotiveVoMap.entrySet()){
-                if(Objects.nonNull(entry) && StringUtils.isNotEmpty(entry.getKey())
-                        && Objects.nonNull(entry.getValue())){
+        if (MapUtils.isNotEmpty(newLocomotiveVoMap)) {
+            for (Map.Entry<String, LocomotiveVo> entry : newLocomotiveVoMap.entrySet()) {
+                if (Objects.nonNull(entry) && StringUtils.isNotEmpty(entry.getKey())
+                        && Objects.nonNull(entry.getValue())) {
                     LocomotiveVo locomotiveVo = entry.getValue();
                     locomotiveVo.setStatus(YnEnum.NO.getCode());
                     newLocomotiveVos.add(locomotiveVo);
@@ -175,22 +177,22 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     @Override
     public Page<LocomotiveVo> search(LocomotiveSearch search) {
         Page<LocomotiveVo> locomotiveVoPage = new Page<LocomotiveVo>();
-        if(Objects.isNull(search)){
+        if (Objects.isNull(search)) {
             search = new LocomotiveSearch();
         }
-        if(Objects.isNull(search.getCurrentPage())){
+        if (Objects.isNull(search.getCurrentPage())) {
             search.setCurrentPage(1);
         }
-        if(Objects.isNull(search.getPageSize())){
+        if (Objects.isNull(search.getPageSize())) {
             search.setPageSize(10);
         }
         locomotiveVoPage.setCurrentPage(search.getCurrentPage());
         locomotiveVoPage.setPageSize(search.getPageSize());
         Integer count = locomotiveMapper.count(search);
         locomotiveVoPage.setCount(count);
-        if(Objects.nonNull(count) && count > 0){
+        if (Objects.nonNull(count) && count > 0) {
             locomotiveVoPage.setData(locomotiveConverter.reverseConvertToList(locomotiveMapper.getByConditions(search)));
-        }else {
+        } else {
             locomotiveVoPage.setData(Lists.newArrayList());
         }
         return locomotiveVoPage;
@@ -240,7 +242,8 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      */
     private LocomotiveVo queryLocomotiveStatus(String coreNetIp, Locomotive locomotive) {
         try {
-            String result = HttpClientUtils.doGet(String.format(RELOAD_URL, coreNetIp, locomotive.getImsi()), Integer.parseInt(timeOut));
+            HttpEn
+            String result = HttpClientUtils.doPost(String.format(RELOAD_URL, coreNetIp), null, Integer.parseInt(timeOut));
             return parseHtmlContent(result, locomotive);
         } catch (Exception e) {
             log.error("机车请求ip数据失败", e);
@@ -259,24 +262,16 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         log.info("htmlContent:{}", htmlContent);
         if (StringUtils.isNotEmpty(htmlContent)) {
             Document doc = Jsoup.parse(htmlContent);
-            Elements rows = doc.select(TABLE_CSS_QUERY).get(0).select(TR_CSS_QUERY);
-            if (Objects.nonNull(rows) && rows.size() > 1) {
-                for (int i = 1; i < rows.size(); i++) {
-                    Element row = rows.get(i);
-                    String ueIp = row.select(TD_CSS_QUERY).get(0).text();
-                    String status = row.select(TD_CSS_QUERY).get(1).text();
-                    String eNodeBIP = row.select(TD_CSS_QUERY).get(3).text();
-                    if (isValid(ueIp, status, eNodeBIP)) {
-                        boolean isReachable = isReachable(ueIp);
-                        LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
-                        if (Objects.nonNull(locomotiveVo)) {
-                            locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
-                            locomotiveVo.setENodeBIP(eNodeBIP);
-                        }
-                        return locomotiveVo;
-                    }
-                }
+            Element row = doc.select(TABLE_CSS_QUERY).get(0).select(DIV_CSS_QUERY).get(1).select(TR_CSS_QUERY).get(6);
+            String ueIp = row.select(TD_CSS_QUERY).get(1).text();
+            String eNodeBIP = row.select(TD_CSS_QUERY).get(3).text();
+            boolean isReachable = isReachable(ueIp);
+            LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
+            if (Objects.nonNull(locomotiveVo)) {
+                locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
+                locomotiveVo.setENodeBIP(eNodeBIP);
             }
+            return locomotiveVo;
         }
         return null;
     }

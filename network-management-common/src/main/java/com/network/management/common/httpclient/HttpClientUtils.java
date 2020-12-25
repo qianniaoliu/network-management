@@ -86,7 +86,6 @@ public class HttpClientUtils {
                 request.setEntity(entity);
             }
             httpResponse = HttpClientManager.getInstance().getCloseableHttpClient().execute(request);
-            log.info("远程调用request:{},httpResponse:{}", JSONObject.toJSONString(request), JSONObject.toJSONString(httpResponse));
             if (httpResponse != null &&
                     (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK
                             || httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY)) {

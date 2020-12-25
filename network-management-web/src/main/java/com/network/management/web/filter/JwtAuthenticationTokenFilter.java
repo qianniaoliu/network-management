@@ -59,7 +59,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 }
             }
         }
-        logger.info("开始验证用户 ");
         if(!StringUtils.isEmpty(token) && SecurityContextHolder.getContext().getAuthentication() == null){
             SysUser sysUser = jwtTokenUtil.getToken(token);
             if(sysUser != null){
@@ -69,7 +68,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     UsernamePasswordAuthenticationToken authenticationToken =
                             new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    logger.info("数据用户 " + username + " 成功通过验证");
+                    logger.debug("数据用户 " + username + " 成功通过验证");
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
             }

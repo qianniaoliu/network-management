@@ -21,7 +21,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpEntity;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.jsoup.Jsoup;
@@ -30,7 +29,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -55,6 +61,8 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     private LocomotiveConverter locomotiveConverter;
     @Autowired
     private BordInformationMapper bordInformationMapper;
+    @Autowired
+    private RestTemplate restTemplate;
     /**
      * 前一次机车及状态信息
      */
@@ -248,12 +256,14 @@ public class LocomotiveServiceImpl implements LocomotiveService {
      */
     private LocomotiveVo queryLocomotiveStatus(String coreNetIp, Locomotive locomotive) {
         try {
-            Map<String, String> bodyMap = new HashMap<>();
-            bodyMap.put(IMS_ISHOW, "Show");
-            bodyMap.put(IMSI, "460060000005021");
-            HttpEntity entity =  new StringEntity(JSON.toJSONString(bodyMap), ContentType.APPLICATION_FORM_URLENCODED);
-            String result = HttpClientUtils.doPost(String.format(RELOAD_URL, coreNetIp), entity, Integer.parseInt(timeOut));
-            return parseHtmlContent(result, locomotive);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            MultiValueMap bodyMap = new LinkedMultiValueMap();
+            bodyMap.add(IMS_ISHOW, "Show");
+            bodyMap.add(IMSI, locomotive.getImsi());
+            HttpEntity requestBody = new HttpEntity(bodyMap, headers);
+            ResponseEntity<String> responseEntity = restTemplate.postForEntity(String.format(RELOAD_URL, coreNetIp), requestBody, String.class);
+            return parseHtmlContent(responseEntity.getBody(), locomotive);
         } catch (Exception e) {
             log.error("机车请求ip数据失败", e);
         }

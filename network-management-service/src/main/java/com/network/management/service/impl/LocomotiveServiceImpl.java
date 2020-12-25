@@ -117,16 +117,21 @@ public class LocomotiveServiceImpl implements LocomotiveService {
     }
 
     private List<LocomotiveVo> convertLocomotiveVo(List<Locomotive> locomotives, Map<String, String> ueNodeMapping) {
-        return ListUtils.emptyIfNull(locomotives)
-                .stream().map(locomotive -> {
+        List<LocomotiveVo> locomotiveVos = new ArrayList<>();
+        if(CollectionUtils.isNotEmpty(locomotives)){
+            for(Locomotive locomotive : locomotives){
+                if(ueNodeMapping.containsKey(locomotive.getUeIp())){
                     boolean isReachable = isReachable(locomotive.getUeIp());
                     LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
                     if (Objects.nonNull(locomotiveVo)) {
                         locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
                         locomotiveVo.setENodeBIP(ueNodeMapping.get(locomotive.getUeIp()));
+                        locomotiveVos.add(locomotiveVo);
                     }
-                    return locomotiveVo;
-                }).collect(Collectors.toList());
+                }
+            }
+        }
+        return locomotiveVos;
     }
 
     /**

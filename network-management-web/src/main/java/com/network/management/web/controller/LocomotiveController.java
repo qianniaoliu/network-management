@@ -3,10 +3,12 @@ package com.network.management.web.controller;
 import com.network.management.domain.search.LocomotiveSearch;
 import com.network.management.domain.vo.LocomotiveVo;
 import com.network.management.service.LocomotiveService;
+import com.network.management.service.LocomotiveStatisticsService;
 import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,9 +22,11 @@ import org.springframework.web.bind.annotation.*;
 public class LocomotiveController {
 
     private final LocomotiveService locomotiveService;
+    private final LocomotiveStatisticsService locomotiveStatisticsService;
 
-    public LocomotiveController(LocomotiveService locomotiveService) {
+    public LocomotiveController(LocomotiveService locomotiveService, LocomotiveStatisticsService locomotiveStatisticsService) {
         this.locomotiveService = locomotiveService;
+        this.locomotiveStatisticsService = locomotiveStatisticsService;
     }
 
     /**
@@ -83,5 +87,16 @@ public class LocomotiveController {
     @ApiOperation("分页查询机车")
     public Result search(@RequestBody LocomotiveSearch search){
         return Result.success(locomotiveService.search(search));
+    }
+
+    /**
+     * 查询机车统计数量
+     *
+     * @return 前端渲染对象
+     */
+    @GetMapping("/queryLocomotiveStatisticsNumbers")
+    @ApiOperation("查询机车统计数量")
+    public Result queryLocomotiveStatisticsNumbers() {
+        return Result.success(locomotiveStatisticsService.queryLocomotiveStatisticsNumbers());
     }
 }

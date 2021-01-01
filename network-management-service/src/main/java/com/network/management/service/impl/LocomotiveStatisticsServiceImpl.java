@@ -28,7 +28,7 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
     /**
      * 机车统计数量URL
      */
-    private static final String LOCOMOTIVE_STATISTICS_NUMBER = "http://172.16.11.17/federal-api/api/alarm-date/dashboard/overview";
+    private static final String LOCOMOTIVE_STATISTICS_NUMBER = "http://172.16.11.17/federal-api/api/alarm-data/dashboard/overview";
     /**
      * 查询机车统计返回结果key
      */

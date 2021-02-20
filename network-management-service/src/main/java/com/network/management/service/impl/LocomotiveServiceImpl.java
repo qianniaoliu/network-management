@@ -3,7 +3,6 @@ package com.network.management.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.network.management.common.httpclient.HttpClientUtils;
-import com.network.management.common.threadpool.ThreadPoolUtils;
 import com.network.management.domain.dao.BordInformation;
 import com.network.management.domain.dao.Locomotive;
 import com.network.management.domain.enums.LocomotiveConnectEnum;
@@ -31,8 +30,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.stream.Collectors;
 
 /**
  * 机车服务实现类
@@ -163,9 +160,12 @@ public class LocomotiveServiceImpl implements LocomotiveService {
                 .stream()
                 .filter(Objects::nonNull)
                 .forEach(locomotiveVo -> {
-                    preLocomotiveVoMap.put(locomotiveVo.getUeIp(), locomotiveVo);
-                    newLocomotiveVos.add(locomotiveVo);
-                    newLocomotiveVoMap.remove(locomotiveVo.getUeIp());
+                    if(StringUtils.isNotEmpty(locomotiveVo.getUeIp()) && StringUtils.isNotEmpty(locomotiveVo.getENodeBIP())
+                            && Objects.nonNull(locomotiveVo.getNum())){
+                        preLocomotiveVoMap.put(locomotiveVo.getUeIp(), locomotiveVo);
+                        newLocomotiveVos.add(locomotiveVo);
+                        newLocomotiveVoMap.remove(locomotiveVo.getUeIp());
+                    }
                 });
         if (MapUtils.isNotEmpty(newLocomotiveVoMap)) {
             for (Map.Entry<String, LocomotiveVo> entry : newLocomotiveVoMap.entrySet()) {

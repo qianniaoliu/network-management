@@ -5,12 +5,14 @@
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <result column="profession_id" jdbcType="INTEGER" property="professionId" />
         <result column="yn" jdbcType="TINYINT" property="yn" />
         <result column="modified" jdbcType="TIMESTAMP" property="modified" />
         <result column="created" jdbcType="TIMESTAMP" property="created" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, username, password, yn, modified, created
+        id, username, password, department_id, profession_id, yn, modified, created
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -31,9 +33,10 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        insert into user (username, password, yn, modified, created
+        insert into user (username, password, department_id, profession_id, yn, modified, created
         )
         values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{departmentId,jdbcType=INTEGER}, #{professionId,jdbcType=INTEGER},
         #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="User">
@@ -48,6 +51,12 @@
             <if test="password != null">
                 password,
             </if>
+            <if test="departmentId != null">
+                department_id,
+            </if>
+            <if test="professionId != null">
+                profession_id,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -58,6 +67,12 @@
             </if>
             <if test="password != null">
                 #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="departmentId != null">
+                #{departmentId,jdbcType=INTEGER},
+            </if>
+            <if test="professionId != null">
+                #{professionId,jdbcType=INTEGER},
             </if>
         </trim>
     </insert>
@@ -70,6 +85,12 @@
             <if test="password != null">
                 password = #{password,jdbcType=VARCHAR},
             </if>
+            <if test="departmentId != null">
+                department_id = #{departmentId,jdbcType=INTEGER},
+            </if>
+            <if test="professionId != null">
+                profession_id = #{professionId,jdbcType=INTEGER},
+            </if>
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
@@ -77,6 +98,8 @@
         update user
         set username = #{username,jdbcType=VARCHAR},
             password = #{password,jdbcType=VARCHAR}
+            department_id = #{departmentId,jdbcType=INTEGER}
+            profession_id = #{professionId,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
     </update>
 

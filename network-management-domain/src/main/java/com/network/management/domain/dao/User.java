@@ -26,6 +26,14 @@ public class User {
      * 密码
      */
     private String password;
+    /**
+     * 部门id
+     */
+    private Integer departmentId;
+    /**
+     * 职位id
+     */
+    private Integer professionId;
 
     /**
      * 有效状态

@@ -14,6 +14,8 @@ public class UserConverter implements Converter<RegistryVo, User> {
         user.setId(source.getId());
         user.setUsername(source.getUsername());
         user.setPassword(source.getPassword());
+        user.setProfessionId(source.getProfessionId());
+        user.setDepartmentId(source.getDepartmentId());
         return user;
     }
 

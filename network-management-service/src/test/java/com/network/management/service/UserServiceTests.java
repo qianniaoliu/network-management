@@ -1,8 +1,8 @@
 package com.network.management.service;
 
+import com.network.management.domain.dao.User;
 import com.network.management.domain.search.Page;
 import com.network.management.domain.search.UserSearch;
-import com.network.management.domain.dao.User;
 import com.network.management.domain.vo.RegistryVo;
 import com.network.management.service.config.TestConfig;
 import org.junit.Assert;
@@ -26,22 +26,24 @@ public class UserServiceTests {
     @Test
     public void testRegistry() {
         RegistryVo registryVo = new RegistryVo();
-        registryVo.setUsername("athena");
-        registryVo.setPassword("athena");
-        registryVo.setConfirmPassword("athena");
+        registryVo.setUsername("bigtiger");
+        registryVo.setPassword("bigtiger");
+        registryVo.setConfirmPassword("bigtiger");
+        registryVo.setDepartmentId(2);
+        registryVo.setProfessionId(1);
         userService.add(registryVo);
     }
 
     @Test
     public void testQueryByName() {
-        User user = userService.queryByName("athena");
+        User user = userService.queryByName("bigtiger");
         Assert.assertNotNull("user不能为空", user);
     }
 
     @Test
     public void testSearch() {
         UserSearch userSearch = new UserSearch();
-//        userSearch.setUsername("test");
+        userSearch.setUsername("bigtiger");
         userSearch.setPageSize(2);
         userSearch.setCurrentPage(1);
         Page<User> page = userService.search(userSearch);
@@ -49,24 +51,27 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testDelete(){
-        userService.delete(5);
-    }
-
-    @Test
     public void testUpdate(){
         RegistryVo registryVo = new RegistryVo();
-        registryVo.setId(1);
-        registryVo.setUsername("athena");
-        registryVo.setPassword("athena1");
-        registryVo.setConfirmPassword("athena");
+        registryVo.setId(11);
+        registryVo.setUsername("bigtiger");
+        registryVo.setPassword("bigtiger1");
+        registryVo.setConfirmPassword("bigtiger1");
+        registryVo.setDepartmentId(3);
+        registryVo.setProfessionId(5);
         userService.update(registryVo);
     }
 
     @Test
     public void testGet(){
-        User user = userService.get(1);
+        User user = userService.get(11);
         Assert.assertNotNull("用户信息不能为空", user);
+    }
+
+
+    @Test
+    public void testDelete(){
+        userService.delete(11);
     }
 
 

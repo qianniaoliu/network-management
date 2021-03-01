@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Objects;
+
 /**
  * @author yusheng
  */
@@ -36,6 +38,16 @@ public class RegistryVo {
      */
     @ApiModelProperty("二次密码")
     private String confirmPassword;
+    /**
+     * 部门id
+     */
+    @ApiModelProperty("部门id")
+    private Integer departmentId;
+    /**
+     * 职位id
+     */
+    @ApiModelProperty("职位id")
+    private Integer professionId;
 
 
     public void check(){
@@ -53,6 +65,12 @@ public class RegistryVo {
 
         if(!this.password.equals(this.confirmPassword)){
             throw new IllegalParamException("两次输入的密码不相等");
+        }
+        if(Objects.isNull(departmentId)){
+            throw new IllegalParamException("部门不能为空");
+        }
+        if(Objects.isNull(professionId)){
+            throw new IllegalParamException("职位不能为空");
         }
     }
 

@@ -118,11 +118,11 @@ public class LocomotiveServiceImpl implements LocomotiveService {
         if(CollectionUtils.isNotEmpty(locomotives)){
             for(Locomotive locomotive : locomotives){
                 if(ueNodeMapping.containsKey(locomotive.getUeIp())){
-                    boolean isReachable = isReachable(locomotive.getUeIp());
+//                    boolean isReachable = isReachable(locomotive.getUeIp());
                     LocomotiveVo locomotiveVo = locomotiveConverter.reverseConvert(locomotive);
                     String ueNodeIp = ueNodeMapping.get(locomotive.getUeIp());
                     if (Objects.nonNull(locomotiveVo) && StringUtils.isNotBlank(ueNodeIp)) {
-                        locomotiveVo.setStatus(isReachable ? YnEnum.YES.getCode() : YnEnum.NO.getCode());
+                        locomotiveVo.setStatus(YnEnum.YES.getCode());
                         locomotiveVo.setENodeBIP(ueNodeIp);
                         locomotiveVos.add(locomotiveVo);
                     }

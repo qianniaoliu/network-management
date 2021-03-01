@@ -30,6 +30,10 @@
         <typeAlias alias="OtherDeviceStatus" type="com.network.management.domain.dao.OtherDeviceStatus"/>
         <typeAlias alias="StationStatus" type="com.network.management.domain.dao.StationStatus"/>
         <typeAlias alias="Locomotive" type="com.network.management.domain.dao.Locomotive"/>
+        <typeAlias alias="Department" type="com.network.management.domain.dao.Department"/>
+        <typeAlias alias="Profession" type="com.network.management.domain.dao.Profession"/>
+        <typeAlias alias="AddressBook" type="com.network.management.domain.dao.AddressBook"/>
+        <typeAlias alias="SipBook" type="com.network.management.domain.dao.SipBook"/>
     </typeAliases>
 
     <mappers>
@@ -40,5 +44,9 @@
         <mapper resource="mybatis/mapper/OtherDeviceStatusMapper.xml"/>
         <mapper resource="mybatis/mapper/StationStatusMapper.xml"/>
         <mapper resource="mybatis/mapper/LocomotiveMapper.xml"/>
+        <mapper resource="mybatis/mapper/DepartmentMapper.xml"/>
+        <mapper resource="mybatis/mapper/ProfessionMapper.xml"/>
+        <mapper resource="mybatis/mapper/AddressBookMapper.xml"/>
+        <mapper resource="mybatis/mapper/SipBookMapper.xml"/>
     </mappers>
 </configuration>

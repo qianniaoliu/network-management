@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.ProfessionMapper">
+    <resultMap id="BaseResultMap" type="Profession">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="profession_name" jdbcType="VARCHAR" property="professionName" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="level" jdbcType="INTEGER" property="level" />
+        <result column="priority" jdbcType="INTEGER" property="priority" />
+        <result column="yn" jdbcType="TINYINT" property="yn" />
+        <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+        <result column="created" jdbcType="TIMESTAMP" property="created" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, profession_name, description, level, priority, yn, modified, created
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from profession
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from profession
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="Profession" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into profession (profession_name, level, priority, description, yn, modified, created
+        )
+        values (#{professionName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER},  #{priority,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR},
+        #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="Profession">
+        insert into profession
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="professionName != null">
+                profession_name,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="priority != null">
+                priority,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="professionName != null">
+                #{professionName,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="priority != null">
+                #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="Profession">
+        update profession
+        <set>
+            <if test="professionName != null">
+                profession_name = #{professionName,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="priority != null">
+                priority = #{priority,jdbcType=INTEGER},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="Profession">
+        update profession
+        set profession_name = #{professionName,jdbcType=VARCHAR},
+            level = #{level,jdbcType=INTEGER},
+            priority = #{priority,jdbcType=INTEGER},
+            description = #{description,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="count" parameterType="com.network.management.domain.search.ProfessionSearch" resultType="java.lang.Integer">
+        select
+        COUNT(1)
+        from profession
+        where 1 = 1
+        <if test="professionName != null">
+            AND profession_name = #{professionName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="search" parameterType="com.network.management.domain.search.ProfessionSearch" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from profession
+        where 1 = 1
+        <if test="professionName != null">
+            AND profession_name = #{professionName,jdbcType=VARCHAR}
+        </if>
+        LIMIT #{startIndex}, #{pageSize}
+    </select>
+
+    <select id="selectByProfessionName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from profession
+        where profession_name = #{professionName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryAllProfession" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from profession
+    </select>
+</mapper>

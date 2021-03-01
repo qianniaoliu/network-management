@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.SipBookMapper">
+    <resultMap id="BaseResultMap" type="SipBook">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="book_id" jdbcType="INTEGER" property="addressBookId" />
+        <result column="sip" jdbcType="INTEGER" property="sip" />
+        <result column="sip_name" jdbcType="VARCHAR" property="sipName" />
+        <result column="yn" jdbcType="TINYINT" property="yn" />
+        <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+        <result column="created" jdbcType="TIMESTAMP" property="created" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, book_id, sip, sip_name, yn, modified, created
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sip_book
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sip_book
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="SipBook" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into sip_book (book_id, sip, sip_name, yn, modified, created
+        )
+        values (#{addressBookId,jdbcType=INTEGER}, #{sip,jdbcType=INTEGER}, #{sipName,jdbcType=VARCHAR},
+        #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="SipBook">
+        update sip_book
+        <set>
+            <if test="addressBookId != null">
+                book_id = #{addressBookId,jdbcType=VARCHAR},
+            </if>
+            <if test="sip != null">
+                sip = #{sip,jdbcType=INTEGER},
+            </if>
+            <if test="sipName != null">
+                sip_name = #{sipName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="SipBook">
+        update sip_book
+        set book_id = #{addressBookId,jdbcType=INTEGER},
+            sip = #{sip,jdbcType=INTEGER},
+            sip_name = #{sipName,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryAllSip" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sip_book
+    </select>
+
+    <select id="querySipByBookId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sip_book
+        where book_id = #{bookId,jdbcType=INTEGER}
+    </select>
+
+    <select id="querySipBookBySip" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sip_book
+        where sip = #{sip,jdbcType=INTEGER}
+    </select>
+</mapper>

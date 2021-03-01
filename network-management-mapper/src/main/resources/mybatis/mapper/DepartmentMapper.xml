@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.DepartmentMapper">
+    <resultMap id="BaseResultMap" type="Department">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+        <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+        <result column="yn" jdbcType="TINYINT" property="yn" />
+        <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+        <result column="created" jdbcType="TIMESTAMP" property="created" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, department_name, parent_id, yn, modified, created
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from department
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from department
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="Department" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into department (department_name, parent_id, yn, modified, created
+        )
+        values (#{departmentName,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
+        #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="Department">
+        insert into department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="departmentName != null">
+                department_name,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="departmentName != null">
+                #{departmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="Department">
+        update department
+        <set>
+            <if test="departmentName != null">
+                department_name = #{departmentName,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="Department">
+        update department
+        set department_name = #{departmentName,jdbcType=VARCHAR},
+            parent_id = #{parentId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="count" parameterType="com.network.management.domain.search.DepartmentSearch" resultType="java.lang.Integer">
+        select
+        COUNT(1)
+        from department
+        where 1 = 1
+        <if test="departmentName != null">
+            AND department_name = #{departmentName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="search" parameterType="com.network.management.domain.search.DepartmentSearch" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from department
+        where 1 = 1
+        <if test="departmentName != null">
+            AND department_name = #{departmentName,jdbcType=VARCHAR}
+        </if>
+        LIMIT #{startIndex}, #{pageSize}
+    </select>
+
+    <select id="selectByDepartmentName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from department
+        where department_name = #{departmentName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryAllDepartment" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from department
+    </select>
+</mapper>

@@ -2,6 +2,7 @@ package com.network.management.auth;
 
 import com.alibaba.fastjson.JSONObject;
 import com.network.management.auth.jwt.JwtTokenUtil;
+import com.network.management.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private UserService userService;
+
     public JwtAuthenticationSuccessHandler() {
     }
 
@@ -56,15 +60,15 @@ public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
         response.setHeader(header, token);
         Cookie cookie = new Cookie(header, token);
         response.addCookie(cookie);
-        this.handler(request, response, authentication);
+        this.handler(request, response, authentication, username);
     }
 
-    public void handler(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void handler(HttpServletRequest request, HttpServletResponse response, Authentication authentication, String username) throws IOException, ServletException {
         OutputStream outputStream = response.getOutputStream();
         response.setHeader("content-type", "application/json");
         JSONObject jo = new JSONObject();
         jo.put("code", 200);
-        jo.put("data", true);
+        jo.put("data", userService.queryByName(username));
         byte[] bytes = jo.toJSONString().getBytes();
         outputStream.write(bytes);
         this.clearAuthenticationAttributes(request);

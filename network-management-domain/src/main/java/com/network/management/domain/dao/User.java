@@ -50,6 +50,16 @@ public class User {
      */
     private Date created;
 
+    /**
+     * 部门名称
+     */
+    private String departmentName;
+
+    /**
+     * 职位名称
+     */
+    private String professionName;
+
     public void initCreateInfo(){
         setYn(YnEnum.YES.getCode());
         setCreated(new Date());

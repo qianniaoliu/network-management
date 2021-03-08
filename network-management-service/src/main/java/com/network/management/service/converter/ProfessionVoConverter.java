@@ -25,6 +25,8 @@ public class ProfessionVoConverter implements Converter<Profession, ProfessionVo
             professionVo.setPriority(profession.getPriority());
             professionVo.setDescription(profession.getDescription());
             professionVo.setProfessionName(profession.getProfessionName());
+            professionVo.setCreated(profession.getCreated());
+            professionVo.setModified(profession.getModified());
             return professionVo;
         }
         return null;

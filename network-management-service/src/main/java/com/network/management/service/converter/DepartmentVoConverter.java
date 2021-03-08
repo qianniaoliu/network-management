@@ -23,6 +23,8 @@ public class DepartmentVoConverter implements Converter<Department, DepartmentVo
             departmentVo.setId(department.getId());
             departmentVo.setDepartmentName(department.getDepartmentName());
             departmentVo.setParentId(department.getParentId());
+            departmentVo.setCreated(department.getCreated());
+            departmentVo.setModified(department.getModified());
             return departmentVo;
         }
         return null;

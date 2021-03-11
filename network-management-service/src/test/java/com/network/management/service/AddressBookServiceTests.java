@@ -41,7 +41,7 @@ public class AddressBookServiceTests {
 
     @Test
     public void testQueryAddressBookByDepartmentId(){
-        AddressBookVo addressBookVo = addressBookService.queryAddressBookByDepartmentId(3);
+        AddressBookVo addressBookVo = addressBookService.queryAddressBookByDepartmentId(2);
         Assert.assertNotNull("通讯录数据不为空", addressBookVo);
     }
 

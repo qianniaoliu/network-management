@@ -34,6 +34,8 @@
         <typeAlias alias="Profession" type="com.network.management.domain.dao.Profession"/>
         <typeAlias alias="AddressBook" type="com.network.management.domain.dao.AddressBook"/>
         <typeAlias alias="SipBook" type="com.network.management.domain.dao.SipBook"/>
+        <typeAlias alias="Authority" type="com.network.management.domain.dao.Authority"/>
+        <typeAlias alias="AuthorityRelation" type="com.network.management.domain.dao.AuthorityRelation"/>
     </typeAliases>
 
     <mappers>
@@ -48,5 +50,7 @@
         <mapper resource="mybatis/mapper/ProfessionMapper.xml"/>
         <mapper resource="mybatis/mapper/AddressBookMapper.xml"/>
         <mapper resource="mybatis/mapper/SipBookMapper.xml"/>
+        <mapper resource="mybatis/mapper/AuthorityMapper.xml"/>
+        <mapper resource="mybatis/mapper/AuthorityRelationMapper.xml"/>
     </mappers>
 </configuration>

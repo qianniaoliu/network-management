@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.AuthorityRelationMapper">
+    <resultMap id="BaseResultMap" type="AuthorityRelation">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="authority_id" jdbcType="INTEGER" property="authorityId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="yn" jdbcType="TINYINT" property="yn" />
+        <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+        <result column="created" jdbcType="TIMESTAMP" property="created" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, authority_id, user_id, yn, modified, created
+    </sql>
+    <delete id="deleteByUserId" parameterType="java.lang.Integer">
+        delete from authority_relation
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="AuthorityRelation" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into authority_relation (authority_id, user_id, yn, modified, created
+        )
+        values (#{authorityId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER},
+        #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
+    </insert>
+
+    <select id="queryAuthorityRelationByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from authority_relation
+        where user_id = #{userId,jdbcType=INTEGER}
+    </select>
+</mapper>

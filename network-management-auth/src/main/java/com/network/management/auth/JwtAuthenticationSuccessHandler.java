@@ -2,7 +2,11 @@ package com.network.management.auth;
 
 import com.alibaba.fastjson.JSONObject;
 import com.network.management.auth.jwt.JwtTokenUtil;
+import com.network.management.domain.dao.User;
+import com.network.management.domain.vo.AuthorityRelationVo;
+import com.network.management.service.AuthorityRelationService;
 import com.network.management.service.UserService;
+import org.apache.commons.collections4.ListUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.security.web.savedrequest.DefaultSavedRequest;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -21,6 +26,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author yusheng
@@ -42,6 +51,9 @@ public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthorityRelationService authorityRelationService;
 
     public JwtAuthenticationSuccessHandler() {
     }
@@ -68,7 +80,16 @@ public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
         response.setHeader("content-type", "application/json");
         JSONObject jo = new JSONObject();
         jo.put("code", 200);
-        jo.put("data", userService.queryByName(username));
+        Map<String, Object> data = new HashMap<>();
+        User user = userService.queryByName(username);
+        data.put("username", user.getUsername());
+        data.put("departmentId", user.getDepartmentId());
+        data.put("professionId", user.getProfessionId());
+        List<AuthorityRelationVo> authorityRelationVos = authorityRelationService.queryAllAuthorityRelationVos(user.getId());
+        List<Integer> authorityIds = ListUtils.emptyIfNull(authorityRelationVos)
+                .stream().map(AuthorityRelationVo::getAuthorityId).collect(Collectors.toList());
+        data.put("authorityIds", authorityIds);
+        jo.put("data", data);
         byte[] bytes = jo.toJSONString().getBytes();
         outputStream.write(bytes);
         this.clearAuthenticationAttributes(request);

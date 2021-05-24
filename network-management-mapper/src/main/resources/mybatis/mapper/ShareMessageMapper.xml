@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.network.management.mapper.ShareMessageMapper">
+    <resultMap id="BaseResultMap" type="ShareMessage">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="caller" jdbcType="VARCHAR" property="caller"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="file_size" jdbcType="VARCHAR" property="fileSize"/>
+        <result column="file_path" jdbcType="VARCHAR" property="filePath"/>
+        <result column="video_path" jdbcType="VARCHAR" property="videoPath"/>
+        <result column="file_name" jdbcType="VARCHAR" property="fileName"/>
+        <result column="callee_name" jdbcType="VARCHAR" property="calleeName"/>
+        <result column="caller_name" jdbcType="VARCHAR" property="callerName"/>
+        <result column="time_name" jdbcType="TIMESTAMP" property="timeName"/>
+        <result column="callee" jdbcType="VARCHAR" property="callee"/>
+        <result column="send_status" jdbcType="INTEGER" property="sendStatus"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, caller, content, file_size, file_path, video_path, file_name, callee_name,
+        caller_name,time_name,callee,send_status
+    </sql>
+
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into share_message (caller, content, file_size, file_path, video_path, file_name, callee_name,
+        caller_name,time_name,callee,send_status
+        )
+        values (#{caller,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+        #{fileSize,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR},
+        #{videoPath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR},
+        #{calleeName,jdbcType=VARCHAR}, #{callerName,jdbcType=VARCHAR},
+        #{timeName,jdbcType=TIMESTAMP}, #{callee,jdbcType=VARCHAR},
+        #{sendStatus,jdbcType=INTEGER})
+    </insert>
+
+    <select id="search" parameterType="com.network.management.domain.search.ShareMessageSearch" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from share_message
+        where 1 = 1
+        LIMIT #{startIndex}, #{pageSize}
+    </select>
+</mapper>

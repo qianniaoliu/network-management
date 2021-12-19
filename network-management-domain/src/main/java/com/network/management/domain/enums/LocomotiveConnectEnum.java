@@ -22,7 +22,7 @@ public enum LocomotiveConnectEnum {
     private String desc;
 
     public static Boolean isConnect(String status){
-        return StringUtils.isNotEmpty(status) && (status.startsWith(LocomotiveConnectEnum.CONNECTED.getStatus()) || status
-                .startsWith(LocomotiveConnectEnum.IDLE.getStatus()));
+        return StringUtils.isNotEmpty(status) && (status.startsWith(LocomotiveConnectEnum.CONNECTED.getStatus())
+                || status.startsWith(LocomotiveConnectEnum.IDLE.getStatus()));
     }
 }

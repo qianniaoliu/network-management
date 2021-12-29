@@ -17,10 +17,12 @@
     <result column="yn" jdbcType="TINYINT" property="yn" />
     <result column="modified" jdbcType="TIMESTAMP" property="modified" />
     <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="power_ip" jdbcType="VARCHAR" property="powerIp" />
+    <result column="power_port" jdbcType="INTEGER" property="powerPort" />
   </resultMap>
   <sql id="Base_Column_List">
     id, bord_information_id, ip, name, equipment_type, internal_time, x, y, username, 
-    password, position, equipment_img_url, yn, modified, created
+    password, position, equipment_img_url, yn, modified, created, power_ip, power_port
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -36,12 +38,13 @@
     insert into equipment (bord_information_id, ip,
       name, equipment_type, internal_time, 
       x, y, username, password, position, equipment_img_url,
-      yn, modified, created)
+      yn, modified, created, power_ip, power_port)
     values (#{bordInformationId,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR},
       #{name,jdbcType=VARCHAR}, #{equipmentType,jdbcType=TINYINT}, #{internalTime,jdbcType=BIGINT},
       #{x,jdbcType=VARCHAR}, #{y,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{position,jdbcType=VARCHAR}, #{equipmentImgUrl,jdbcType=VARCHAR},
-      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
+      #{yn,jdbcType=TINYINT}, #{modified,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP},
+      #{powerIp,jdbcType=VARCHAR}, #{powerPort,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="Equipment">
     insert into equipment
@@ -184,6 +187,12 @@
       </if>
       <if test="created != null">
         created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="powerIp != null">
+        power_ip = #{powerIp,jdbcType=VARCHAR},
+      </if>
+      <if test="powerPort != null">
+        power_port = #{powerPort,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

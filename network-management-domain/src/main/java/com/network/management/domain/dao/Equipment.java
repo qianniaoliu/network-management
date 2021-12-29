@@ -107,6 +107,18 @@ public class Equipment {
     @ApiModelProperty("创建时间")
     private Date created;
 
+    /**
+     * 电源ip
+     */
+    @ApiModelProperty("电源ip")
+    private String powerIp;
+
+    /**
+     * 电源端口
+     */
+    @ApiModelProperty("电源端口")
+    private Integer powerPort;
+
     public void initCreateInfo(){
         setYn(YnEnum.YES.getCode());
         setCreated(new Date());

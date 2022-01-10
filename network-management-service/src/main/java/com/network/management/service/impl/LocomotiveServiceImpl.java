@@ -118,7 +118,7 @@ public class LocomotiveServiceImpl implements LocomotiveService {
                             if (MapUtils.isNotEmpty(ueNodeMap))
                                 ueMap.putAll(ueNodeMap);
                         } catch (Exception e) {
-                            log.error("查询机车映射关系失败", JSON.toJSONString(locomotive), e);
+                            log.error("查询机车映射关系失败:{},errorMessage:{}", JSON.toJSONString(locomotive), e.getMessage());
                         }
                     });
         return ueMap;

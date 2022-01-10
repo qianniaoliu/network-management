@@ -79,10 +79,11 @@ public class WebStationCollector implements Collector {
             }
             result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), Integer.parseInt(timeOut));
         } catch (Exception e) {
-            log.error("web界面基站http请求状态数据失败", e);
+            log.error("web界面基站http请求状态数据失败,ip:{},errorMessage:{}", deviceBo.getIp(), e.getMessage());
         }
         return getDataBo(getJSONObject(result), deviceBo);
     }
+
 
     /**
      * 获取NameValuePair列表
@@ -148,6 +149,7 @@ public class WebStationCollector implements Collector {
      * @return {@link DataBo<WebStationStatusBo>}
      */
     private DataBo<WebStationStatusBo> getDataBo(JSONObject jsonObject, DeviceBo deviceBo) {
+        log.info("查询WebStation类型设备信息，ip:{},result:{}", deviceBo.getIp(), jsonObject.toJSONString());
         DataBo<WebStationStatusBo> dataBo = null;
         if (Objects.nonNull(jsonObject) && !jsonObject.isEmpty()) {
             dataBo = getStationStatusDataBo(jsonObject, deviceBo);

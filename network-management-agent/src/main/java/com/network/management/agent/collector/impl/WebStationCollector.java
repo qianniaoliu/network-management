@@ -27,9 +27,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,12 +70,16 @@ public class WebStationCollector implements Collector {
         Assert.notNull(deviceBo.getEquipmentType(), "设备类型信息不能为空.");
         String result = null;
         try {
+            String authorization = deviceBo.getUsername() + ":" + deviceBo.getPassword();
+            byte[] rel = Base64.getEncoder().encode(authorization.getBytes());
+            Map<String, String> headers = new HashMap<>();
+            headers.put("Authorization", "Basic " + new String(rel));
             if(StringUtils.isEmpty(caffeineCache.get(deviceBo.getIp()))){
                 UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(getUrlEncodedFormEntity(deviceBo.getUsername(), deviceBo.getPassword()), HTTP.UTF_8);
-                HttpClientUtils.doPost(String.format(LOGIN_URL, deviceBo.getIp()), urlEncodedFormEntity, Integer.parseInt(timeOut));
+                HttpClientUtils.doPost(String.format(LOGIN_URL, deviceBo.getIp()), headers, urlEncodedFormEntity, Integer.parseInt(timeOut));
                 caffeineCache.put(deviceBo.getIp(), deviceBo.getIp());
             }
-            result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), Integer.parseInt(timeOut));
+            result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), headers, Integer.parseInt(timeOut), HTTP.UTF_8);
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败,ip:{},errorMessage:{}", deviceBo.getIp(), e.getMessage());
         }

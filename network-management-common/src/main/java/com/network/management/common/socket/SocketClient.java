@@ -50,7 +50,7 @@ public class SocketClient {
             }
             strReturn = readBytes(is);
         } catch (Exception e) {
-            log.error("网络套接字发送信息失败:{}", e);
+            log.error("网络套接字发送信息失败:{}");
         }finally {
             try{
                 if(Objects.nonNull(is)){

@@ -1,22 +1,22 @@
 package com.network.management.common.httpclient;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;
 import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * 支持高并发http/https请求的工具类
@@ -66,7 +66,7 @@ public class HttpClientUtils {
      *
      * @param url
      * @param headers
-     * @param body
+     * @param entity
      * @return
      * @throws HttpException
      */
@@ -91,6 +91,12 @@ public class HttpClientUtils {
                             || httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_MOVED_TEMPORARILY)) {
                 httpEntity = httpResponse.getEntity();
                 response = EntityUtils.toString(httpEntity);
+            }else {
+                int statusCode = Optional.ofNullable(httpResponse)
+                        .map(CloseableHttpResponse::getStatusLine)
+                        .map(StatusLine::getStatusCode)
+                        .orElse(0000000);
+                log.info("current get request url:{},headers:{},responseStatus:{}", url, headers, statusCode);
             }
         } catch (Exception e) {
             throw new HttpException("httpPost meet error, the url:" + url, e);
@@ -138,6 +144,12 @@ public class HttpClientUtils {
                     httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 httpEntity = httpResponse.getEntity();
                 response = EntityUtils.toString(httpEntity, StringUtils.isEmpty(encodeStr) ? HTTP.UTF_8 : encodeStr);
+            }else {
+                int statusCode = Optional.ofNullable(httpResponse)
+                        .map(CloseableHttpResponse::getStatusLine)
+                        .map(StatusLine::getStatusCode)
+                        .orElse(0000000);
+                log.info("current get request url:{},headers:{},responseStatus:{}", url, headers, statusCode);
             }
         } catch (Exception e) {
             throw new HttpException("httpGet meet error, the url:" + url, e);

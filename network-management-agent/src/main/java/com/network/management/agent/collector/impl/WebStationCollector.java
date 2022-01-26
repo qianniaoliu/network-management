@@ -137,7 +137,7 @@ public class WebStationCollector implements Collector {
             try {
                 return JSON.parseObject(dataStr.substring(dataStr.indexOf("=") + 3, dataStr.length() - 2));
             } catch (Exception e) {
-                log.error("JSON.parseObject error:{}", dataStr, e);
+                log.error("JSON.parseObject error:{}", dataStr);
             }
         }
         return null;
@@ -151,7 +151,7 @@ public class WebStationCollector implements Collector {
      * @return {@link DataBo<WebStationStatusBo>}
      */
     private DataBo<WebStationStatusBo> getDataBo(JSONObject jsonObject, DeviceBo deviceBo) {
-        log.info("查询WebStation类型设备信息，ip:{},result:{}", deviceBo.getIp(), jsonObject.toJSONString());
+        log.info("查询WebStation类型设备信息，ip:{},result:{}", deviceBo.getIp(), JSONObject.toJSONString(jsonObject));
         DataBo<WebStationStatusBo> dataBo = null;
         if (Objects.nonNull(jsonObject) && !jsonObject.isEmpty()) {
             dataBo = getStationStatusDataBo(jsonObject, deviceBo);

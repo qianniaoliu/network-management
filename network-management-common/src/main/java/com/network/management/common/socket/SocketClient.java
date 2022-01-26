@@ -1,12 +1,12 @@
 package com.network.management.common.socket;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Objects;
 
 /**
  * 网络套接字客户端
@@ -16,9 +16,9 @@ import java.util.Objects;
 @Slf4j
 public class SocketClient {
     public static void main(String args[]) {
-        String cmdInfor = "5A 5A 7E E7 FB 46 06 01 94 D8";
-//        String returnString  = send(cmdInfor);
-//        System.out.println("PowerClient result:" + returnString);
+        //String cmdInfor = "5A 5A 7E E7 FB 46 06 01 94 D8";
+        //String returnString  = send(cmdInfor);
+        //System.out.println("PowerClient result:" + returnString);
     }
 
     /**
@@ -52,22 +52,10 @@ public class SocketClient {
         } catch (Exception e) {
             log.error("网络套接字发送信息失败");
         }finally {
-            try{
-                if(Objects.nonNull(is)){
-                    is.close();
-                }
-                if(Objects.nonNull(pw)){
-                    pw.close();
-                }
-                if(Objects.nonNull(os)){
-                    os.close();
-                }
-                if(Objects.nonNull(clientSocket)){
-                    clientSocket.close();
-                }
-            }catch (Exception e){
-                log.error("io close failed", e);
-            }
+            IOUtils.closeQuietly(is);
+            IOUtils.closeQuietly(pw);
+            IOUtils.closeQuietly(os);
+            IOUtils.closeQuietly(clientSocket);
         }
         return strReturn;
     }

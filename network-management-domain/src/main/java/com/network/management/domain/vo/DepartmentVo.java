@@ -3,7 +3,6 @@ package com.network.management.domain.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
 import java.util.Date;
 
 /**
@@ -29,6 +28,7 @@ public class DepartmentVo {
      */
     @ApiModelProperty("父部门id")
     private Integer parentId;
+
 
     /**
      * 创建时间

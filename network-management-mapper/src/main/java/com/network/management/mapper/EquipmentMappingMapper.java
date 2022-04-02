@@ -14,7 +14,6 @@ public interface EquipmentMappingMapper {
     /**
      * 新增设备映射关系
      * @param equipmentMapping
-     * @return 主键id
      */
     Integer insert(EquipmentMapping equipmentMapping);
 

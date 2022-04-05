@@ -8,8 +8,13 @@ import com.network.management.web.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.stereotype.Service;
+import org.apache.commons.collections4.ListUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Objects;
 
 /**
  * 机车管理
@@ -21,12 +26,23 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "机车数据管理")
 public class LocomotiveController {
 
-    private final LocomotiveService locomotiveService;
-    private final LocomotiveStatisticsService locomotiveStatisticsService;
+    @Value("${locomotive_type:1}")
+    private String locomotiveType;
+    @Autowired
+    private List<LocomotiveService> locomotiveServices;
+    @Autowired
+    private LocomotiveStatisticsService locomotiveStatisticsService;
 
-    public LocomotiveController(LocomotiveService locomotiveService, LocomotiveStatisticsService locomotiveStatisticsService) {
-        this.locomotiveService = locomotiveService;
-        this.locomotiveStatisticsService = locomotiveStatisticsService;
+    /**
+     * 获取机车服务对象
+     * @return {@link LocomotiveService}
+     */
+    private LocomotiveService getLocomotiveService(){
+        return ListUtils.emptyIfNull(locomotiveServices)
+                .stream()
+                .filter(s -> Objects.nonNull(s) && s.isSupport(locomotiveType))
+                .findAny()
+                .orElse(null);
     }
 
     /**
@@ -38,7 +54,7 @@ public class LocomotiveController {
     @PostMapping("/save")
     @ApiOperation("新增机车基本信息")
     public Result saveLocomotive(@RequestBody LocomotiveVo locomotiveVo) {
-        return Result.success(locomotiveService.saveLocomotive(locomotiveVo));
+        return Result.success(getLocomotiveService().saveLocomotive(locomotiveVo));
     }
 
     /**
@@ -50,7 +66,7 @@ public class LocomotiveController {
     @PostMapping("/modify")
     @ApiOperation("修改机车基本信息")
     public Result modifyLocomotive(@RequestBody LocomotiveVo locomotiveVo) {
-        locomotiveService.updateLocomotive(locomotiveVo);
+        getLocomotiveService().updateLocomotive(locomotiveVo);
         return Result.success(true);
     }
 
@@ -64,7 +80,7 @@ public class LocomotiveController {
     @ApiOperation("删除机车信息")
     @ApiImplicitParam(name = "locomotiveId", value = "机车id", required = true)
     public Result deleteLocomotive(@RequestParam("locomotiveId") Integer locomotiveId) {
-        locomotiveService.delete(locomotiveId);
+        getLocomotiveService().delete(locomotiveId);
         return Result.success(true);
     }
 
@@ -76,7 +92,7 @@ public class LocomotiveController {
     @GetMapping("/queryLocomotiveStatus")
     @ApiOperation("查询基站对应机车数据以及机车状态")
     public Result queryLocomotiveStatus() {
-        return Result.success(locomotiveService.queryLocomotiveStatus());
+        return Result.success(getLocomotiveService().queryLocomotiveStatus());
     }
 
     /**
@@ -86,7 +102,7 @@ public class LocomotiveController {
     @PostMapping("/search")
     @ApiOperation("分页查询机车")
     public Result search(@RequestBody LocomotiveSearch search){
-        return Result.success(locomotiveService.search(search));
+        return Result.success(getLocomotiveService().search(search));
     }
 
     /**

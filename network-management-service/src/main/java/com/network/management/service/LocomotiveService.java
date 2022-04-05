@@ -13,6 +13,13 @@ import java.util.Map;
  * @date 2020/10/14 22:39
  */
 public interface LocomotiveService {
+
+    /**
+     * 判断机车类型是否支持
+     * @param type 类型
+     * @return
+     */
+    boolean isSupport(String type);
     /**
      * 查询基站下机车状态
      * coreNetIp 核心网ip

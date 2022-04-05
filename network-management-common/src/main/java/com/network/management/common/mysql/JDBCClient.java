@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.sql.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.Executors;
 
 @Slf4j
 public class JDBCClient {
@@ -17,6 +18,10 @@ public class JDBCClient {
     private static final String EPC_ENB_IP_ADDR = "epcEnbIpAddr";
     private static final String EPC_UC_STATE = "epcUeState";
     private static final String EPC_SUB_SCRIPTION_IMSI = "epcSubScriptionImsi";
+
+    private static final Integer SOCKET_TIME_OUT =10000;
+    private static final Integer READ_TIME_OUT = 10;
+
 
     /**
      * 获取数据库连接
@@ -55,8 +60,12 @@ public class JDBCClient {
                 log.error("获取数据库连接失败url->{},userName->{}", url, userName);
                 return locomotiveBos;
             }
+            //设置网络超时时间
+            connection.setNetworkTimeout(Executors.newSingleThreadExecutor(), SOCKET_TIME_OUT);
             //获取发送sql指令执行sql对象
             statement = connection.prepareStatement(sql);
+            //设置查询超时时间
+            statement.setQueryTimeout(READ_TIME_OUT);
             //填充sql变量
             fillStatement(statement, ueIps);
             //返回查询结果集用于保存数据库查询内容

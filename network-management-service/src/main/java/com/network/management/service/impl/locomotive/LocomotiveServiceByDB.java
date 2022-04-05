@@ -68,6 +68,11 @@ public class LocomotiveServiceByDB extends AbstractLocomotiveServiceImpl{
 
     @Override
     public boolean isSupport(String type) {
-        return Objects.nonNull(LocomotiveTypeEnum.getType(type));
+        return getType().equals(type);
+    }
+
+    @Override
+    public String getType() {
+        return LocomotiveTypeEnum.DB_QUERY.getType();
     }
 }

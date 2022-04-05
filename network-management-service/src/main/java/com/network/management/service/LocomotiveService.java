@@ -20,6 +20,12 @@ public interface LocomotiveService {
      * @return
      */
     boolean isSupport(String type);
+
+    /**
+     * 获取机车数据来源类型
+     * @return
+     */
+    String getType();
     /**
      * 查询基站下机车状态
      * coreNetIp 核心网ip

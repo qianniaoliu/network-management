@@ -23,6 +23,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.network.management</groupId>
+            <artifactId>network-management-websocket</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
 
     </dependencies>
 

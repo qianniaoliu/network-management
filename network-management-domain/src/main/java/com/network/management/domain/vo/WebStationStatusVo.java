@@ -3,8 +3,10 @@ package com.network.management.domain.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * web界面基站状态数据
@@ -13,6 +15,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel("web界面基站状态数据")
+@ToString
 public class WebStationStatusVo{
     /**
      * RF状态
@@ -65,4 +68,21 @@ public class WebStationStatusVo{
      */
     @ApiModelProperty("创建时间")
     private Date created;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
+        WebStationStatusVo that = (WebStationStatusVo) o;
+        return Objects.equals(rfStatus, that.rfStatus) && Objects.equals(sctpStatus, that.sctpStatus) && Objects
+                .equals(ipSecStatus, that.ipSecStatus) && Objects.equals(cellStatus, that.cellStatus) && Objects.equals(
+                wanStatus, that.wanStatus) && Objects.equals(netManagerStatus, that.netManagerStatus) && Objects.equals(
+                timeClockStatus, that.timeClockStatus) && Objects.equals(apStatus, that.apStatus) && Objects.equals(
+                ucStatus, that.ucStatus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rfStatus, sctpStatus, ipSecStatus, cellStatus, wanStatus, netManagerStatus, timeClockStatus, apStatus, ucStatus);
+    }
 }

@@ -5,8 +5,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * 获取其他设备状态数据
@@ -16,6 +18,7 @@ import java.util.Date;
 @Data
 @ApiModel("获取其他设备状态数据")
 @NoArgsConstructor
+@ToString
 public class OtherDeviceStatusVo{
     /**
      * ping连接状态 {@link com.network.management.domain.enums.YnEnum}
@@ -31,5 +34,18 @@ public class OtherDeviceStatusVo{
 
     public OtherDeviceStatusVo(Integer status){
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
+        OtherDeviceStatusVo that = (OtherDeviceStatusVo) o;
+        return Objects.equals(status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status);
     }
 }

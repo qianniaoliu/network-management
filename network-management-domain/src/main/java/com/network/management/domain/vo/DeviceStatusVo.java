@@ -4,6 +4,7 @@ import com.network.management.domain.dao.Equipment;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Objects;
 
@@ -14,12 +15,19 @@ import java.util.Objects;
  */
 @Data
 @ApiModel("前端设备状态信息")
+@ToString
 public class DeviceStatusVo<T> {
     /**
      * 设备关联巷道图id
      */
     @ApiModelProperty("设备关联巷道图id")
     private Integer bordInformationId;
+
+    /**
+     * 设备id
+     */
+    @ApiModelProperty("设备id")
+    private Integer equipmentId;
 
     /**
      * 设备ip
@@ -102,6 +110,7 @@ public class DeviceStatusVo<T> {
             return;
         }
         this.setBordInformationId(equipment.getBordInformationId());
+        this.setEquipmentId(equipment.getId());
         this.setIp(equipment.getIp());
         this.setEquipmentType(equipment.getEquipmentType());
         this.setInternalTime(equipment.getInternalTime());
@@ -112,5 +121,19 @@ public class DeviceStatusVo<T> {
         this.setX(equipment.getX());
         this.setY(equipment.getY());
         this.setEquipmentImgUrl(equipment.getEquipmentImgUrl());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
+        DeviceStatusVo<?> that = (DeviceStatusVo<?>) o;
+        return Objects.equals(ip, that.ip) && Objects.equals(statusObj, that.statusObj) && Objects.equals(status,
+                that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ip, statusObj, status);
     }
 }

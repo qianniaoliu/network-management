@@ -3,8 +3,10 @@ package com.network.management.domain.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * flash界面基站状态数据
@@ -13,6 +15,7 @@ import java.util.Date;
  */
 @Data
 @ApiModel("flash界面基站状态数据")
+@ToString
 public class FlashStationStatusVo{
     /**
      * wan口状态
@@ -50,4 +53,19 @@ public class FlashStationStatusVo{
      */
     @ApiModelProperty("创建时间")
     private Date created;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
+        FlashStationStatusVo that = (FlashStationStatusVo) o;
+        return Objects.equals(wanStatus, that.wanStatus) && Objects.equals(wanInternet, that.wanInternet)
+                && Objects.equals(ipSecSwitch, that.ipSecSwitch) && Objects.equals(ipSecStatus, that.ipSecStatus)
+                && Objects.equals(s1Status, that.s1Status) && Objects.equals(cellStatus, that.cellStatus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wanStatus, wanInternet, ipSecSwitch, ipSecStatus, s1Status, cellStatus);
+    }
 }

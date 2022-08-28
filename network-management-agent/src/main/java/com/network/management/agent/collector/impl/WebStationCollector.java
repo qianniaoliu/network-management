@@ -79,7 +79,7 @@ public class WebStationCollector implements Collector {
                 HttpClientUtils.doPost(String.format(LOGIN_URL, deviceBo.getIp()), headers, urlEncodedFormEntity, Integer.parseInt(timeOut));
                 caffeineCache.put(deviceBo.getIp(), deviceBo.getIp());
             }
-            result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), headers, Integer.parseInt(timeOut), HTTP.UTF_8);
+            result = HttpClientUtils.doGet(String.format(DATA_URL, deviceBo.getIp()), headers, null, Integer.parseInt(timeOut), HTTP.UTF_8);
         } catch (Exception e) {
             log.error("web界面基站http请求状态数据失败,ip:{},errorMessage:{}", deviceBo.getIp(), e.getMessage());
         }

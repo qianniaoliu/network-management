@@ -4,12 +4,18 @@
  */
 package com.network.management.websocket;
 
+import com.network.management.domain.dao.Equipment;
+import com.network.management.domain.enums.PowerCmdEnum;
 import com.network.management.domain.vo.BordInformationAggregation;
 import com.network.management.domain.vo.DeviceStatusVo;
+import com.network.management.domain.vo.PowerReqVo;
+import com.network.management.domain.vo.PowerStatusVo;
 import com.network.management.service.BordInformationService;
 import com.network.management.service.EquipmentService;
+import com.network.management.service.PowerStatusService;
 import com.network.management.websocket.event.EquipmentStatusEvent;
 import com.network.management.websocket.event.EquipmentStatusEventPublisher;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,7 +40,7 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
 
     private ExecutorService equipmentStatusQueryExecutorService = Executors.newFixedThreadPool(4);
 
-    private final ConcurrentMap<Integer, DeviceStatusVo<?>> deviceStatusMapping = new ConcurrentHashMap<>();
+    private final ConcurrentMap<Integer, EquipmentStatusCombination> equipmentStatusCombinationMapping = new ConcurrentHashMap<>();
 
     @Autowired
     private EquipmentService equipmentService;
@@ -45,6 +51,9 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
     @Autowired
     private EquipmentStatusEventPublisher publisher;
 
+    @Autowired
+    private PowerStatusService powerStatusService;
+
     public void start() {
         scheduledExecutorService.scheduleAtFixedRate(() -> {
             BordInformationAggregation bordInformationAggregation = bordInformationService.getAll();
@@ -53,15 +62,17 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
                 equipmentStatusQueryExecutorService.execute(() -> {
                     Integer equipmentId = equipment.getId();
                     DeviceStatusVo<?> deviceStatusVo = equipmentService.queryStatus(equipmentId);
-                    if (deviceStatusMapping.containsKey(equipment.getId())) {
-                        DeviceStatusVo<?> existDeviceStatusVo = deviceStatusMapping.get(equipmentId);
-                        if (Objects.equals(deviceStatusVo, existDeviceStatusVo)) {
-                            deviceStatusMapping.remove(equipmentId);
+                    PowerStatusVo powerStatusVo = queryPowerStatus(equipment);
+                    EquipmentStatusCombination equipmentStatusCombination = new EquipmentStatusCombination(deviceStatusVo, powerStatusVo);
+                    if (equipmentStatusCombinationMapping.containsKey(equipment.getId())) {
+                        EquipmentStatusCombination existEquipmentStatusCombination = equipmentStatusCombinationMapping.get(equipmentId);
+                        if (Objects.equals(equipmentStatusCombination, existEquipmentStatusCombination)) {
+                            equipmentStatusCombinationMapping.remove(equipmentId);
                         } else {
-                            deviceStatusMapping.put(equipment.getId(), deviceStatusVo);
+                            equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
                         }
                     } else {
-                        deviceStatusMapping.put(equipment.getId(), deviceStatusVo);
+                        equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
                     }
                     countDownLatch.countDown();
                 });
@@ -70,11 +81,29 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
                 countDownLatch.await();
             } catch (InterruptedException e) {
             }
-            if (!deviceStatusMapping.isEmpty()) {
+            if (!equipmentStatusCombinationMapping.isEmpty()) {
                 //当所有基站信息都查询完成后，基站信息推送给前端进行展示
-                publisher.publish(new EquipmentStatusEvent(deviceStatusMapping.values()));
+                publisher.publish(new EquipmentStatusEvent(equipmentStatusCombinationMapping));
             }
         }, 1, 10, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 查询电源状态
+     *
+     * @param equipment 设备信息
+     * @return {@link PowerStatusVo}
+     */
+    private PowerStatusVo queryPowerStatus(Equipment equipment) {
+        if (StringUtils.isAnyBlank(equipment.getPowerIp())
+                || Objects.isNull(equipment.getPowerPort())) {
+            return null;
+        }
+        PowerReqVo powerReqVo = new PowerReqVo();
+        powerReqVo.setIp(equipment.getPowerIp());
+        powerReqVo.setPort(equipment.getPowerPort());
+        powerReqVo.setType(PowerCmdEnum.CMD_QUERY.getType());
+        return powerStatusService.queryPowerStatus(powerReqVo);
     }
 
     @Override

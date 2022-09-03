@@ -4,7 +4,10 @@
  */
 package com.network.management.websocket.event;
 
+import com.network.management.websocket.EquipmentStatusCombination;
+
 import java.util.EventObject;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * 设备状态事件
@@ -18,7 +21,7 @@ public class EquipmentStatusEvent extends EventObject {
      * @param source The object on which the Event initially occurred.
      * @throws IllegalArgumentException if source is null.
      */
-    public EquipmentStatusEvent(Object source) {
+    public EquipmentStatusEvent(ConcurrentMap<Integer, EquipmentStatusCombination> source) {
         super(source);
     }
 }

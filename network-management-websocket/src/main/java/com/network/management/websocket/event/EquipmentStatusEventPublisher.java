@@ -12,8 +12,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -30,7 +30,7 @@ public class EquipmentStatusEventPublisher {
     /**
      * 缓存所有客户端连接
      */
-    private Map<Integer, WebSocketSession> webSocketSessionMapping = new HashMap<>();
+    private List<WebSocketSession> webSocketSessions = new ArrayList<>();
 
     /**
      * 缓存上次事件数据，用于新连接用户使用
@@ -42,10 +42,10 @@ public class EquipmentStatusEventPublisher {
      *
      * @param session
      */
-    public void addSession(String equipmentId, WebSocketSession session) {
-        webSocketSessionMapping.put(Integer.valueOf(equipmentId), session);
+    public void addSession(WebSocketSession session) {
+        webSocketSessions.add(session);
         // 新连接客户需立即获取到最新数据
-        doSendMessage(session, this.cacheData.get(Integer.valueOf(equipmentId)));
+        doSendMessage(session, this.cacheData.values());
     }
 
     /**
@@ -54,12 +54,7 @@ public class EquipmentStatusEventPublisher {
      * @param session
      */
     public void removeSession(WebSocketSession session) {
-        Map.Entry<Integer, WebSocketSession> webSocketSessionEntry = webSocketSessionMapping.entrySet().stream().filter(
-                        entry -> Objects.equals(entry.getValue().getId(), session.getId()))
-                .findFirst().orElse(null);
-        if (Objects.nonNull(webSocketSessionEntry)) {
-            webSocketSessionMapping.remove(webSocketSessionEntry.getKey());
-        }
+        webSocketSessions.remove(session);
     }
 
     /**
@@ -70,8 +65,8 @@ public class EquipmentStatusEventPublisher {
     public void publish(EquipmentStatusEvent event) {
         ConcurrentMap<Integer, EquipmentStatusCombination> source = (ConcurrentMap<Integer, EquipmentStatusCombination>) event.getSource();
         this.cacheData = source;
-        webSocketSessionMapping.entrySet().forEach(session -> {
-            doSendMessage(session.getValue(), source.get(session.getKey()));
+        webSocketSessions.forEach(session -> {
+            doSendMessage(session, source.values());
         });
     }
 

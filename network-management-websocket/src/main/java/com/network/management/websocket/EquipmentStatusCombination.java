@@ -20,6 +20,11 @@ import lombok.Data;
 public class EquipmentStatusCombination {
 
     /**
+     * 设备id
+     */
+    private Integer equipmentId;
+
+    /**
      * 设备状态
      */
     private DeviceStatusVo<?> deviceStatusVo;

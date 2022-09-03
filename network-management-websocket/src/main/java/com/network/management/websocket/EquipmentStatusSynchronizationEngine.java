@@ -63,7 +63,8 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
                     Integer equipmentId = equipment.getId();
                     DeviceStatusVo<?> deviceStatusVo = equipmentService.queryStatus(equipmentId);
                     PowerStatusVo powerStatusVo = queryPowerStatus(equipment);
-                    EquipmentStatusCombination equipmentStatusCombination = new EquipmentStatusCombination(deviceStatusVo, powerStatusVo);
+                    EquipmentStatusCombination equipmentStatusCombination = new EquipmentStatusCombination(equipmentId, deviceStatusVo,
+                            powerStatusVo);
                     if (equipmentStatusCombinationMapping.containsKey(equipment.getId())) {
                         EquipmentStatusCombination existEquipmentStatusCombination = equipmentStatusCombinationMapping.get(equipmentId);
                         if (Objects.equals(equipmentStatusCombination, existEquipmentStatusCombination)) {

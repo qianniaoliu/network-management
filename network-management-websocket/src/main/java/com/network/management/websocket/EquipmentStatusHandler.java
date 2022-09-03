@@ -26,11 +26,12 @@ public class EquipmentStatusHandler implements WebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         log.info("新连接加入，sessionId:{}", session.getId());
+        publisher.addSession(session);
     }
 
     @Override
     public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-        publisher.addSession(String.valueOf(message.getPayload()), session);
+
     }
 
     @Override

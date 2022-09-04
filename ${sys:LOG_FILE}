@@ -7767,3 +7767,1097 @@ java.io.IOException: Broken pipe
 2022-09-03 23:09:56.141  INFO 23012 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
 2022-09-03 23:09:56.149  INFO 23012 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
 2022-09-03 23:09:56.169  INFO 23012 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 21:30:16.584  WARN 31749 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:30:11.575  INFO 31749 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 31749 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:30:21.602  INFO 31749 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:30:23.731  INFO 31749 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:30:23.751  INFO 31749 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:30:23.751  INFO 31749 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:30:24.069  INFO 31749 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:30:24.069  INFO 31749 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2402 ms
+2022-09-04 21:30:24.924  INFO 31749 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:30:25.669  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:30:25.669  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:30:25.669  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:30:25.669  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:30:25.670  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:30:25.670  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:30:25.670  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:30:25.704  INFO 31749 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ac685ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@6d617b07, org.springframework.security.web.header.HeaderWriterFilter@18faaff6, org.springframework.security.web.authentication.logout.LogoutFilter@1530d0f2, com.network.management.web.filter.JwtAuthenticationTokenFilter@374c3975, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2acca224, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6cee903a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@223cbf0d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1da53f4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@137a4b54, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b1ff8cd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a4ff5ed, org.springframework.security.web.session.SessionManagementFilter@760a2b6e, org.springframework.security.web.access.ExceptionTranslationFilter@40538370, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ae66c98]
+2022-09-04 21:30:25.737  INFO 31749 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:30:25.780  INFO 31749 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:30:25.799  INFO 31749 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:30:25.923  INFO 31749 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:30:26.293  INFO 31749 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:30:26.294  INFO 31749 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:30:26.317  INFO 31749 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:30:26.361  INFO 31749 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:30:26.606  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:30:26.609  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:30:26.612  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:30:26.615  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:30:26.631  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:30:26.634  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:30:26.637  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:30:26.648  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:30:26.673  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:30:26.675  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:30:26.678  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:30:26.680  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:30:26.701  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:30:26.704  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:30:26.719  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:30:26.730  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:30:26.733  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:30:26.734  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:30:26.736  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:30:26.737  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:30:26.740  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:30:26.746  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:30:26.748  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:30:26.750  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:30:26.751  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:30:26.754  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:30:26.755  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:30:26.758  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:30:26.762  INFO 31749 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:30:26.789  INFO 31749 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 35.694 seconds (JVM running for 52.698)
+2022-09-04 21:30:59.764  INFO 31749 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:30:59.766  INFO 31749 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:30:59.766  INFO 31749 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:32:26.314  WARN 31827 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:32:21.307  INFO 31827 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 31827 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:32:31.331  INFO 31827 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:32:32.934  INFO 31827 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:32:32.947  INFO 31827 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:32:32.948  INFO 31827 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:32:33.100  INFO 31827 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:32:33.101  INFO 31827 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1717 ms
+2022-09-04 21:32:33.879  INFO 31827 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:32:34.541  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:32:34.541  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:32:34.541  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:32:34.542  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:32:34.542  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:32:34.542  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:32:34.542  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:32:34.571  INFO 31827 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@be616f0, org.springframework.security.web.context.SecurityContextPersistenceFilter@69c33ea2, org.springframework.security.web.header.HeaderWriterFilter@2ceb68a1, org.springframework.security.web.authentication.logout.LogoutFilter@24018c8b, com.network.management.web.filter.JwtAuthenticationTokenFilter@2b7facc7, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@498e41a4, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7b3c0ecb, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1f5d7fd5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@50672905, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@59e0d521, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@241d1052, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cf08c97, org.springframework.security.web.session.SessionManagementFilter@6de33fde, org.springframework.security.web.access.ExceptionTranslationFilter@78b9155e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@51141f64]
+2022-09-04 21:32:34.597  INFO 31827 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:32:34.626  INFO 31827 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:32:34.642  INFO 31827 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:32:34.719  INFO 31827 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:32:35.066  INFO 31827 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:32:35.067  INFO 31827 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:32:35.090  INFO 31827 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:32:35.136  INFO 31827 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:32:35.354  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:32:35.356  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:32:35.358  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:32:35.360  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:32:35.370  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:32:35.372  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:32:35.375  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:32:35.388  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:32:35.412  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:32:35.414  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:32:35.417  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:32:35.418  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:32:35.436  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:32:35.439  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:32:35.452  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:32:35.460  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:32:35.463  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:32:35.466  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:32:35.467  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:32:35.468  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:32:35.472  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:32:35.479  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:32:35.481  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:32:35.482  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:32:35.483  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:32:35.486  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:32:35.487  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:32:35.491  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:32:35.495  INFO 31827 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:32:35.522  INFO 31827 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.611 seconds (JVM running for 50.632)
+2022-09-04 21:33:34.253  INFO 31827 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:33:34.254  INFO 31827 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:33:34.254  INFO 31827 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:34:29.138  WARN 31865 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:34:24.129  INFO 31865 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 31865 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:34:34.150  INFO 31865 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:34:35.772  INFO 31865 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:34:35.785  INFO 31865 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:34:35.786  INFO 31865 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:34:35.945  INFO 31865 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:34:35.946  INFO 31865 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1743 ms
+2022-09-04 21:34:36.731  INFO 31865 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:34:37.395  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:34:37.396  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:34:37.396  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:34:37.396  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:34:37.396  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:34:37.396  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:34:37.397  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:34:37.426  INFO 31865 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37c87fcc, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ad0c70a, org.springframework.security.web.header.HeaderWriterFilter@59e0d521, org.springframework.security.web.authentication.logout.LogoutFilter@64665781, com.network.management.web.filter.JwtAuthenticationTokenFilter@734ce281, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@cf08c97, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4fd37449, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@ca2be53, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3220c28, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a16d4dc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3006bfb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@78f5cbc5, org.springframework.security.web.session.SessionManagementFilter@2e3900dc, org.springframework.security.web.access.ExceptionTranslationFilter@69c33ea2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d13379e]
+2022-09-04 21:34:37.451  INFO 31865 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:34:37.485  INFO 31865 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:34:37.502  INFO 31865 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:34:37.582  INFO 31865 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:34:37.910  INFO 31865 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:34:37.912  INFO 31865 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:34:37.929  INFO 31865 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:34:37.975  INFO 31865 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:34:38.198  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:34:38.201  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:34:38.203  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:34:38.205  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:34:38.216  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:34:38.218  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:34:38.220  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:34:38.232  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:34:38.259  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:34:38.262  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:34:38.265  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:34:38.266  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:34:38.283  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:34:38.286  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:34:38.300  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:34:38.310  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:34:38.313  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:34:38.315  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:34:38.316  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:34:38.317  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:34:38.321  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:34:38.327  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:34:38.329  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:34:38.331  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:34:38.332  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:34:38.335  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:34:38.336  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:34:38.339  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:34:38.342  INFO 31865 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:34:38.369  INFO 31865 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.632 seconds (JVM running for 50.69)
+2022-09-04 21:35:00.028  INFO 31865 --- [SockJS-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 21:35:00.566  INFO 31865 --- [SockJS-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 21:35:01.059  INFO 31865 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 21:35:01.059  INFO 31865 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 21:35:01.069  INFO 31865 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 10 ms
+2022-09-04 21:35:01.189  INFO 31865 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:36:05.826  INFO 31865 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:36:05.827  INFO 31865 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:36:05.828  INFO 31865 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:36:05.831  INFO 31865 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 21:36:05.845  INFO 31865 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 21:37:00.517  WARN 31906 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:36:55.511  INFO 31906 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 31906 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:37:05.528  INFO 31906 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:37:07.188  INFO 31906 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:37:07.208  INFO 31906 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:37:07.209  INFO 31906 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:37:07.551  INFO 31906 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:37:07.551  INFO 31906 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1969 ms
+2022-09-04 21:37:08.556  INFO 31906 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:37:09.583  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:37:09.583  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:37:09.583  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:37:09.584  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:37:09.584  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:37:09.584  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:37:09.584  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:37:09.615  INFO 31906 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11bfd751, org.springframework.security.web.context.SecurityContextPersistenceFilter@8debe42, org.springframework.security.web.header.HeaderWriterFilter@2f73f0c7, org.springframework.security.web.authentication.logout.LogoutFilter@5bde6148, com.network.management.web.filter.JwtAuthenticationTokenFilter@7f2b39a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@11adab6d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@11015ca0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@29519337, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@10d905c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70c31b17, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c2bea52, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2152fde5, org.springframework.security.web.session.SessionManagementFilter@4fdac2a7, org.springframework.security.web.access.ExceptionTranslationFilter@3129299f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@129b69b2]
+2022-09-04 21:37:09.655  INFO 31906 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:37:09.691  INFO 31906 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:37:09.709  INFO 31906 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:37:09.787  INFO 31906 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:37:10.225  INFO 31906 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:37:10.226  INFO 31906 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:37:10.245  INFO 31906 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:37:10.289  INFO 31906 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:37:10.511  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:37:10.514  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:37:10.516  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:37:10.518  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:37:10.527  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:37:10.530  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:37:10.532  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:37:10.544  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:37:10.568  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:37:10.570  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:37:10.573  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:37:10.574  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:37:10.592  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:37:10.595  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:37:10.609  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:37:10.620  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:37:10.622  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:37:10.624  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:37:10.626  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:37:10.627  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:37:10.630  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:37:10.637  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:37:10.638  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:37:10.640  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:37:10.641  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:37:10.644  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:37:10.645  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:37:10.649  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:37:10.652  INFO 31906 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:37:10.678  INFO 31906 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 35.556 seconds (JVM running for 51.594)
+2022-09-04 21:38:26.351  INFO 31906 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:38:26.353  INFO 31906 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:38:26.354  INFO 31906 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:43:34.174  WARN 32158 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:43:29.166  INFO 32158 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32158 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:43:39.189  INFO 32158 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:43:40.792  INFO 32158 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:43:40.813  INFO 32158 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:43:40.813  INFO 32158 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:43:40.986  INFO 32158 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:43:40.986  INFO 32158 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1738 ms
+2022-09-04 21:43:41.741  INFO 32158 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:43:42.391  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:43:42.391  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:43:42.392  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:43:42.392  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:43:42.392  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:43:42.392  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:43:42.392  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:43:42.424  INFO 32158 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36871e98, org.springframework.security.web.context.SecurityContextPersistenceFilter@1131aead, org.springframework.security.web.header.HeaderWriterFilter@35ab4260, org.springframework.security.web.authentication.logout.LogoutFilter@1f3c5308, com.network.management.web.filter.JwtAuthenticationTokenFilter@1201769d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a7a6d34, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@20a9f5fb, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@70d687b8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6fd7aba8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76ffc17c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@760a2b6e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6533629, org.springframework.security.web.session.SessionManagementFilter@38667005, org.springframework.security.web.access.ExceptionTranslationFilter@22cd8ec2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7b1c501d]
+2022-09-04 21:43:42.455  INFO 32158 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:43:42.488  INFO 32158 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:43:42.504  INFO 32158 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:43:42.590  INFO 32158 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:43:42.894  INFO 32158 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:43:42.895  INFO 32158 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:43:42.922  INFO 32158 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:43:42.936  INFO 32158 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 21:43:42.977  INFO 32158 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:43:43.160  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:43:43.163  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:43:43.166  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:43:43.167  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:43:43.177  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:43:43.179  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:43:43.180  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:43:43.192  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:43:43.217  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:43:43.219  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:43:43.222  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:43:43.223  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:43:43.245  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:43:43.249  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:43:43.268  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:43:43.279  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:43:43.281  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:43:43.283  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:43:43.285  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:43:43.286  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:43:43.290  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:43:43.297  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:43:43.299  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:43:43.301  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:43:43.302  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:43:43.305  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:43:43.306  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:43:43.310  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:43:43.314  INFO 32158 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:43:43.350  INFO 32158 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.603 seconds (JVM running for 51.004)
+2022-09-04 21:43:43.578  INFO 32158 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 21:43:44.064  INFO 32158 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 21:43:44.064  INFO 32158 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 21:43:44.075  INFO 32158 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 10 ms
+2022-09-04 21:43:44.193  INFO 32158 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:44:47.691  INFO 32158 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:44:47.691  INFO 32158 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:44:47.692  INFO 32158 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:44:47.695  INFO 32158 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 21:44:47.705  INFO 32158 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 21:45:36.082  WARN 32191 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:45:31.074  INFO 32191 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32191 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:45:41.094  INFO 32191 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:45:42.583  INFO 32191 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:45:42.596  INFO 32191 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:45:42.597  INFO 32191 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:45:42.735  INFO 32191 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:45:42.735  INFO 32191 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1590 ms
+2022-09-04 21:45:43.491  INFO 32191 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:45:44.184  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:45:44.185  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:45:44.185  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:45:44.185  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:45:44.185  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:45:44.185  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:45:44.186  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:45:44.233  INFO 32191 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60e47aab, org.springframework.security.web.context.SecurityContextPersistenceFilter@78f5cbc5, org.springframework.security.web.header.HeaderWriterFilter@37c87fcc, org.springframework.security.web.authentication.logout.LogoutFilter@846b47, com.network.management.web.filter.JwtAuthenticationTokenFilter@2674d4f6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5342eec5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@eb1d475, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@261a66b8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@10d4b573, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70697478, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12be4f83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@adc8683, org.springframework.security.web.session.SessionManagementFilter@ca2be53, org.springframework.security.web.access.ExceptionTranslationFilter@cf08c97, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e9e0c6]
+2022-09-04 21:45:44.273  INFO 32191 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:45:44.314  INFO 32191 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:45:44.336  INFO 32191 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:45:44.439  INFO 32191 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:45:44.680  INFO 32191 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 21:45:44.740  INFO 32191 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:45:44.741  INFO 32191 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:45:44.762  INFO 32191 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:45:44.819  INFO 32191 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:45:45.036  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:45:45.038  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:45:45.041  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:45:45.044  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:45:45.054  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:45:45.056  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:45:45.060  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:45:45.075  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:45:45.109  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:45:45.111  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:45:45.116  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:45:45.118  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:45:45.156  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:45:45.164  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:45:45.188  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:45:45.204  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:45:45.208  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:45:45.212  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:45:45.214  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:45:45.217  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:45:45.221  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:45:45.231  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:45:45.233  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:45:45.235  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:45:45.237  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:45:45.243  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:45:45.246  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:45:45.252  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:45:45.259  INFO 32191 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:45:45.300  INFO 32191 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.611 seconds (JVM running for 50.634)
+2022-09-04 21:45:45.405  INFO 32191 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 21:45:46.014  INFO 32191 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 21:45:46.014  INFO 32191 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 21:45:46.023  INFO 32191 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 21:45:46.175  INFO 32191 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:47:02.294 ERROR 32191 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 21:47:02.325  INFO 32191 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 21:47:02.325  WARN 32191 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:47:02.325  WARN 32191 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:47:39.439  WARN 32191 --- [HikariPool-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=48s315ms).
+2022-09-04 21:47:39.468  INFO 32191 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:48:55.596 ERROR 32191 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 21:48:55.597  INFO 32191 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 21:48:55.597  WARN 32191 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:48:55.597  WARN 32191 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:49:25.465  WARN 32191 --- [HikariPool-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46s24ms).
+2022-09-04 21:49:25.489  INFO 32191 --- [pool-3-thread-2] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:49:28.687  INFO 32191 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:49:28.687  INFO 32191 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 21:49:28.688  INFO 32191 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:49:28.690  INFO 32191 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 21:49:28.701  INFO 32191 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 21:57:29.489  WARN 32428 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 21:57:24.483  INFO 32428 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32428 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 21:57:34.502  INFO 32428 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 21:57:35.885  INFO 32428 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 21:57:35.897  INFO 32428 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 21:57:35.897  INFO 32428 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 21:57:36.046  INFO 32428 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 21:57:36.047  INFO 32428 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1496 ms
+2022-09-04 21:57:36.719  INFO 32428 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 21:57:37.328  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 21:57:37.328  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 21:57:37.328  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 21:57:37.329  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 21:57:37.329  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 21:57:37.329  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 21:57:37.329  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 21:57:37.362  INFO 32428 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d13379e, org.springframework.security.web.context.SecurityContextPersistenceFilter@78b9155e, org.springframework.security.web.header.HeaderWriterFilter@53525379, org.springframework.security.web.authentication.logout.LogoutFilter@70c31b17, com.network.management.web.filter.JwtAuthenticationTokenFilter@2c60ce47, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@35ceec81, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4fedf908, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c8df667, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c2bea52, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2ceb68a1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13d984ee, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@498e41a4, org.springframework.security.web.session.SessionManagementFilter@1be3f8f8, org.springframework.security.web.access.ExceptionTranslationFilter@60a6840c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4cd5fc46]
+2022-09-04 21:57:37.390  INFO 32428 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 21:57:37.417  INFO 32428 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 21:57:37.432  INFO 32428 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 21:57:37.502  INFO 32428 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 21:57:37.747  INFO 32428 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 21:57:37.748  INFO 32428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 21:57:37.767  INFO 32428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 21:57:37.809  INFO 32428 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 21:57:37.847  INFO 32428 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 21:57:37
+2022-09-04 21:57:37.874  INFO 32428 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 21:57:37.973  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 21:57:37.976  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 21:57:37.979  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 21:57:37.981  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 21:57:37.996  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 21:57:38.000  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 21:57:38.003  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 21:57:38.017  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 21:57:38.041  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 21:57:38.043  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 21:57:38.047  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 21:57:38.048  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 21:57:38.069  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 21:57:38.073  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 21:57:38.085  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 21:57:38.094  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 21:57:38.096  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 21:57:38.098  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 21:57:38.099  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 21:57:38.100  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 21:57:38.104  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 21:57:38.112  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 21:57:38.114  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 21:57:38.115  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 21:57:38.116  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 21:57:38.119  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 21:57:38.121  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 21:57:38.124  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 21:57:38.128  INFO 32428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 21:57:38.157  INFO 32428 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.042 seconds (JVM running for 49.861)
+2022-09-04 21:57:38.431  INFO 32428 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 21:57:38.892  INFO 32428 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 21:57:38.892  INFO 32428 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 21:57:38.901  INFO 32428 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 21:57:39.005  INFO 32428 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 21:58:55.115 ERROR 32428 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 21:58:55.145  INFO 32428 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 21:58:55.145  WARN 32428 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:58:55.145  WARN 32428 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 21:58:55.145  INFO 32428 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 21:58:55
+2022-09-04 21:58:58.367  INFO 32428 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:00:00.012  INFO 32428 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:01:35.920  INFO 32428 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:01:35.920  INFO 32428 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:01:35.921  INFO 32428 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:01:35.924  INFO 32428 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:01:35.935  INFO 32428 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:08:36.124  WARN 32666 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5006 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:08:31.114  INFO 32666 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32666 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:08:41.142  INFO 32666 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:08:42.664  INFO 32666 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:08:42.682  INFO 32666 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:08:42.684  INFO 32666 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:08:42.850  INFO 32666 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:08:42.850  INFO 32666 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1654 ms
+2022-09-04 22:08:43.638  INFO 32666 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:08:44.216  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:08:44.217  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:08:44.251  INFO 32666 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@391d28ea, org.springframework.security.web.context.SecurityContextPersistenceFilter@18faaff6, org.springframework.security.web.header.HeaderWriterFilter@26d73519, org.springframework.security.web.authentication.logout.LogoutFilter@6fd7aba8, com.network.management.web.filter.JwtAuthenticationTokenFilter@43c39321, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1aaf46e6, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6a2badb1, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@23df7fad, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@62de73eb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@760a2b6e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@dc8b2ff, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4ab455e2, org.springframework.security.web.session.SessionManagementFilter@40538370, org.springframework.security.web.access.ExceptionTranslationFilter@76ffc17c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6533629]
+2022-09-04 22:08:44.278  INFO 32666 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:08:44.311  INFO 32666 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:08:44.330  INFO 32666 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:08:44.434  INFO 32666 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:08:44.742  INFO 32666 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:08:44.743  INFO 32666 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:08:44.763  INFO 32666 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:08:44.777  INFO 32666 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:08:44
+2022-09-04 22:08:44.803  INFO 32666 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:08:44.809  INFO 32666 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:08:44.986  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:08:44.989  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:08:44.991  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:08:44.992  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:08:45.003  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:08:45.005  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:08:45.007  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:08:45.020  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:08:45.043  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:08:45.045  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:08:45.048  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:08:45.050  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:08:45.068  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:08:45.071  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:08:45.084  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:08:45.092  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:08:45.095  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:08:45.097  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:08:45.098  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:08:45.099  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:08:45.102  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:08:45.108  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:08:45.109  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:08:45.111  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:08:45.112  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:08:45.114  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:08:45.116  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:08:45.119  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:08:45.123  INFO 32666 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:08:45.152  INFO 32666 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.458 seconds (JVM running for 50.432)
+2022-09-04 22:08:45.381  INFO 32666 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:08:45.894  INFO 32666 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:08:45.894  INFO 32666 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:08:45.902  INFO 32666 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 8 ms
+2022-09-04 22:08:46.010  INFO 32666 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:10:00.017  INFO 32666 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:10:02.152 ERROR 32666 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:10:02.185  INFO 32666 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:10:02.185  WARN 32666 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:10:02.186  WARN 32666 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:10:02.186  INFO 32666 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:10:02
+2022-09-04 22:10:02.186  INFO 32666 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:15:00.012  INFO 32666 --- [collect-device-status3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:16:22.642  INFO 32666 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:16:22.642  INFO 32666 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:16:22.643  INFO 32666 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:16:22.646  INFO 32666 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:16:22.657  INFO 32666 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:17:11.701  WARN 32854 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:17:06.694  INFO 32854 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32854 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:17:16.716  INFO 32854 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:17:18.004  INFO 32854 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:17:18.014  INFO 32854 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:17:18.015  INFO 32854 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:17:18.145  INFO 32854 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:17:18.146  INFO 32854 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1379 ms
+2022-09-04 22:17:18.747  INFO 32854 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:17:19.265  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:17:19.289  INFO 32854 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22c29aa8, org.springframework.security.web.context.SecurityContextPersistenceFilter@3006bfb, org.springframework.security.web.header.HeaderWriterFilter@7b3c0ecb, org.springframework.security.web.authentication.logout.LogoutFilter@40c28b0d, com.network.management.web.filter.JwtAuthenticationTokenFilter@5345dfe8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2e0652ab, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@8debe42, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@129b69b2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@67e11bda, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fd37449, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4fdac2a7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@12be4f83, org.springframework.security.web.session.SessionManagementFilter@5bb99d1d, org.springframework.security.web.access.ExceptionTranslationFilter@241d1052, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@70697478]
+2022-09-04 22:17:19.311  INFO 32854 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:17:19.334  INFO 32854 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:17:19.346  INFO 32854 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:17:19.406  INFO 32854 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:17:19.591  INFO 32854 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:17:19.592  INFO 32854 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:17:19.606  INFO 32854 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:17:19.639  INFO 32854 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:17:19.761  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:17:19.763  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:17:19.765  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:17:19.766  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:17:19.773  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:17:19.775  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:17:19.777  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:17:19.785  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:17:19.806  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:17:19.807  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:17:19.809  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:17:19.811  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:17:19.826  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:17:19.829  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:17:19.840  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:17:19.847  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:17:19.849  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:17:19.851  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:17:19.852  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:17:19.853  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:17:19.856  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:17:19.861  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:17:19.862  INFO 32854 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:17:19
+2022-09-04 22:17:32.698  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:17:32.701  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:17:32.703  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:17:32.708  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:17:32.710  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:17:32.714  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:17:32.719  INFO 32854 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:17:32.726  INFO 32854 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:17:32.744  INFO 32854 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 46.421 seconds (JVM running for 62.289)
+2022-09-04 22:17:33.210  INFO 32854 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:17:33.649  INFO 32854 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:17:33.650  INFO 32854 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:17:33.659  INFO 32854 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 22:17:33.762  INFO 32854 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:18:49.866 ERROR 32854 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:18:49.897  INFO 32854 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:18:49.898  WARN 32854 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:18:49.898  WARN 32854 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:18:49.898  INFO 32854 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:18:49
+2022-09-04 22:18:49.898  INFO 32854 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:19:20.184  INFO 32854 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:19:20.185  INFO 32854 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:19:20.185  INFO 32854 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:19:20.188  INFO 32854 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:19:20.199  INFO 32854 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:20:11.635  WARN 32911 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5001 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:20:06.630  INFO 32911 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 32911 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:20:16.650  INFO 32911 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:20:18.002  INFO 32911 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:20:18.015  INFO 32911 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:20:18.015  INFO 32911 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:20:18.154  INFO 32911 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:20:18.154  INFO 32911 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1449 ms
+2022-09-04 22:20:18.790  INFO 32911 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:20:19.393  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:20:19.393  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:20:19.393  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:20:19.394  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:20:19.394  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:20:19.394  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:20:19.394  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:20:19.434  INFO 32911 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@129b69b2, org.springframework.security.web.context.SecurityContextPersistenceFilter@5402612e, org.springframework.security.web.header.HeaderWriterFilter@3006bfb, org.springframework.security.web.authentication.logout.LogoutFilter@cf984d9, com.network.management.web.filter.JwtAuthenticationTokenFilter@59328218, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@22c29aa8, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@70c31b17, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@12be4f83, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@341ccfd1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43445fc6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8debe42, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@eb1d475, org.springframework.security.web.session.SessionManagementFilter@4fd37449, org.springframework.security.web.access.ExceptionTranslationFilter@5bb99d1d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@42b43a6]
+2022-09-04 22:20:19.471  INFO 32911 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:20:19.510  INFO 32911 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:20:19.529  INFO 32911 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:20:19.622  INFO 32911 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:20:19.876  INFO 32911 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:20:19.877  INFO 32911 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:20:19.897  INFO 32911 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:20:19.919  INFO 32911 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:20:19
+2022-09-04 22:20:19.945  INFO 32911 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:20:19.947  INFO 32911 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:20:20.150  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:20:20.153  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:20:20.156  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:20:20.158  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:20:20.170  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:20:20.173  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:20:20.177  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:20:20.195  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:20:20.229  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:20:20.232  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:20:20.237  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:20:20.238  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:20:20.260  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:20:20.264  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:20:20.285  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:20:20.295  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:20:20.298  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:20:20.300  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:20:20.302  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:20:20.304  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:20:20.309  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:20:20.317  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:20:20.319  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:20:20.320  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:20:20.322  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:20:20.325  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:20:20.326  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:20:20.330  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:20:20.334  INFO 32911 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:20:20.366  INFO 32911 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.117 seconds (JVM running for 49.959)
+2022-09-04 22:20:20.593  INFO 32911 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:20:21.052  INFO 32911 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:20:21.052  INFO 32911 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:20:21.059  INFO 32911 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 7 ms
+2022-09-04 22:20:21.158  INFO 32911 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:21:37.155 ERROR 32911 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:21:37.183  INFO 32911 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:21:37.183  WARN 32911 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:21:37.183  WARN 32911 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:21:37.183  INFO 32911 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:21:37
+2022-09-04 22:21:37.183  INFO 32911 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:22:49.375  WARN 32911 --- [HikariPool-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m28s676ms).
+2022-09-04 22:22:49.458  INFO 32911 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:22:49.459  INFO 32911 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:22:49.459  INFO 32911 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:22:49.462  INFO 32911 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:22:49.472  INFO 32911 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:27:09.702  WARN 33036 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:27:04.694  INFO 33036 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 33036 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:27:14.716  INFO 33036 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:27:16.107  INFO 33036 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:27:16.119  INFO 33036 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:27:16.119  INFO 33036 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:27:16.264  INFO 33036 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:27:16.264  INFO 33036 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1501 ms
+2022-09-04 22:27:16.936  INFO 33036 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:27:17.615  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:27:17.615  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:27:17.615  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:27:17.615  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:27:17.616  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:27:17.616  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:27:17.616  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:27:17.650  INFO 33036 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@129b69b2, org.springframework.security.web.context.SecurityContextPersistenceFilter@5402612e, org.springframework.security.web.header.HeaderWriterFilter@3006bfb, org.springframework.security.web.authentication.logout.LogoutFilter@cf984d9, com.network.management.web.filter.JwtAuthenticationTokenFilter@734ce281, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@22c29aa8, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@70c31b17, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@12be4f83, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@341ccfd1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@43445fc6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8debe42, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@eb1d475, org.springframework.security.web.session.SessionManagementFilter@4fd37449, org.springframework.security.web.access.ExceptionTranslationFilter@5bb99d1d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@42b43a6]
+2022-09-04 22:27:17.690  INFO 33036 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:27:17.726  INFO 33036 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:27:17.742  INFO 33036 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:27:17.837  INFO 33036 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:27:18.083  INFO 33036 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:27:18
+2022-09-04 22:27:18.100  INFO 33036 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:27:18.101  INFO 33036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:27:18.110  INFO 33036 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:27:18.119  INFO 33036 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:27:18.174  INFO 33036 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:27:18.382  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:27:18.386  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:27:18.389  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:27:18.391  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:27:18.405  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:27:18.408  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:27:18.411  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:27:18.428  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:27:18.459  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:27:18.461  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:27:18.465  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:27:18.467  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:27:18.490  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:27:18.493  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:27:18.513  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:27:18.525  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:27:18.528  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:27:18.530  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:27:18.533  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:27:18.534  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:27:18.540  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:27:18.548  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:27:18.551  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:27:18.553  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:27:18.555  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:27:18.560  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:27:18.562  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:27:18.568  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:27:18.573  INFO 33036 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:27:18.611  INFO 33036 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.285 seconds (JVM running for 50.181)
+2022-09-04 22:27:18.772  INFO 33036 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:27:19.295  INFO 33036 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:27:19.295  INFO 33036 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:27:19.306  INFO 33036 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 11 ms
+2022-09-04 22:27:19.463  INFO 33036 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:27:37.652  INFO 33036 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:27:37.653  INFO 33036 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:27:37.654  INFO 33036 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:27:37.657  INFO 33036 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:27:37.668  INFO 33036 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:28:27.022  WARN 33079 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5003 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:28:22.017  INFO 33079 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 33079 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:28:32.035  INFO 33079 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:28:33.327  INFO 33079 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:28:33.338  INFO 33079 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:28:33.339  INFO 33079 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:28:33.463  INFO 33079 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:28:33.464  INFO 33079 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1378 ms
+2022-09-04 22:28:34.056  INFO 33079 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:28:34.577  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:28:34.602  INFO 33079 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@718f3088, org.springframework.security.web.context.SecurityContextPersistenceFilter@2f73f0c7, org.springframework.security.web.header.HeaderWriterFilter@5072e638, org.springframework.security.web.authentication.logout.LogoutFilter@67e11bda, com.network.management.web.filter.JwtAuthenticationTokenFilter@59328218, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@389008d1, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@64665781, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@11adab6d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4345fd45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fdac2a7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3dc55719, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11bfd751, org.springframework.security.web.session.SessionManagementFilter@3129299f, org.springframework.security.web.access.ExceptionTranslationFilter@17befef0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e0652ab]
+2022-09-04 22:28:34.624  INFO 33079 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:28:34.647  INFO 33079 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:28:34.660  INFO 33079 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:28:34.724  INFO 33079 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:28:34.925  INFO 33079 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:28:34.926  INFO 33079 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:28:34.939  INFO 33079 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:28:34.973  INFO 33079 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:28:35.098  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:28:35.100  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:28:35.102  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:28:35.103  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:28:35.111  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:28:35.112  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:28:35.114  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:28:35.123  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:28:35.146  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:28:35.148  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:28:35.150  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:28:35.151  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:28:35.167  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:28:35.170  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:28:35
+2022-09-04 22:28:35.171  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:28:35.185  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:28:35.193  INFO 33079 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:28:35.194  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:28:35.196  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:28:35.197  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:28:35.198  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:28:35.199  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:28:35.202  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:28:35.209  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:28:35.210  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:28:35.211  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:28:35.213  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:28:35.215  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:28:35.216  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:28:35.220  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:28:35.223  INFO 33079 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:28:35.244  INFO 33079 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 33.615 seconds (JVM running for 49.444)
+2022-09-04 22:28:35.640  INFO 33079 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:28:36.050  INFO 33079 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:28:36.050  INFO 33079 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:28:36.059  INFO 33079 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 22:28:36.145  INFO 33079 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:29:52.199 ERROR 33079 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:29:52.229  INFO 33079 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:29:52.229  WARN 33079 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:29:52.229  WARN 33079 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:29:52.229  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:29:52
+2022-09-04 22:29:52.230  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:30:14.350  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:30:14
+2022-09-04 22:30:14.363  INFO 33079 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:30:14.374  INFO 33079 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:31:30.376 ERROR 33079 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:31:30.377  INFO 33079 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:31:30.378  WARN 33079 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:31:30.378  WARN 33079 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:31:30.378  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:31:30
+2022-09-04 22:31:30.379  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:31:30
+2022-09-04 22:31:30.397  INFO 33079 --- [pool-3-thread-2] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:32:46.400 ERROR 33079 --- [pool-3-thread-2] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:32:46.401  INFO 33079 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:32:46.402  WARN 33079 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:32:46.402  WARN 33079 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:32:46.402  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:32:46
+2022-09-04 22:32:46.402  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:32:46.402  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:32:46
+2022-09-04 22:32:46.420  INFO 33079 --- [pool-3-thread-4] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:34:02.433 ERROR 33079 --- [pool-3-thread-4] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:34:02.435  INFO 33079 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:34:02.436  WARN 33079 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:34:02.436  WARN 33079 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:34:02.437  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:34:02
+2022-09-04 22:34:02.437  INFO 33079 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:34:02
+2022-09-04 22:34:02.455  INFO 33079 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:35:00.016  INFO 33079 --- [collect-device-status3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:35:00.245  INFO 33079 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:35:00.246  INFO 33079 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:35:00.246  INFO 33079 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:35:00.249  INFO 33079 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:35:00.260  INFO 33079 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:35:49.647  WARN 33222 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:35:44.642  INFO 33222 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 33222 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:35:54.663  INFO 33222 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:35:56.061  INFO 33222 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:35:56.076  INFO 33222 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:35:56.076  INFO 33222 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:35:56.211  INFO 33222 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:35:56.212  INFO 33222 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1497 ms
+2022-09-04 22:35:56.898  INFO 33222 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:35:57.500  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:35:57.501  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:35:57.531  INFO 33222 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29519337, org.springframework.security.web.context.SecurityContextPersistenceFilter@70c31b17, org.springframework.security.web.header.HeaderWriterFilter@4fdac2a7, org.springframework.security.web.authentication.logout.LogoutFilter@3cead673, com.network.management.web.filter.JwtAuthenticationTokenFilter@7a358613, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@11bfd751, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6ebbc06, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@2152fde5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@e4b54d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@40863800, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11015ca0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5d58dc61, org.springframework.security.web.session.SessionManagementFilter@8debe42, org.springframework.security.web.access.ExceptionTranslationFilter@2f73f0c7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12be4f83]
+2022-09-04 22:35:57.557  INFO 33222 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:35:57.586  INFO 33222 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:35:57.600  INFO 33222 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:35:57.676  INFO 33222 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:35:57.901  INFO 33222 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:35:57.902  INFO 33222 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:35:57.918  INFO 33222 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:35:57.954  INFO 33222 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:35:58.031  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:35:58
+2022-09-04 22:35:58.053  INFO 33222 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:35:58.096  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:35:58.098  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:35:58.100  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:35:58.102  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:35:58.113  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:35:58.115  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:35:58.117  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:35:58.131  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:35:58.159  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:35:58.162  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:35:58.166  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:35:58.167  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:35:58.192  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:35:58.196  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:35:58.212  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:35:58.221  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:35:58.223  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:35:58.224  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:35:58.226  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:35:58.227  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:35:58.230  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:35:58.236  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:35:58.238  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:35:58.239  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:35:58.240  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:35:58.244  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:35:58.245  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:35:58.249  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:35:58.254  INFO 33222 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:35:58.282  INFO 33222 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.009 seconds (JVM running for 49.831)
+2022-09-04 22:35:58.593  INFO 33222 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:35:59.070  INFO 33222 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:35:59.070  INFO 33222 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:35:59.079  INFO 33222 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 22:35:59.175  INFO 33222 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:37:15.196 ERROR 33222 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:37:15.229  INFO 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:37:15.229  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:37:15.229  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:37:15.230  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:37:15
+2022-09-04 22:37:15.230  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:37:15.230  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:37:15
+2022-09-04 22:37:15.252  INFO 33222 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:38:31.246 ERROR 33222 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:38:31.248  INFO 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:38:31.248  WARN 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:38:31.248  WARN 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:38:31.249  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:38:31
+2022-09-04 22:38:31.249  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:38:31
+2022-09-04 22:38:31.268  INFO 33222 --- [pool-3-thread-2] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:39:47.328 ERROR 33222 --- [pool-3-thread-2] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:39:47.328  INFO 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:39:47.329  WARN 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:39:47.329  WARN 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:39:47.329  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:39:47
+2022-09-04 22:39:47.329  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:39:47.329  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:39:47
+2022-09-04 22:39:47.351  INFO 33222 --- [pool-3-thread-4] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:40:00.017  INFO 33222 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:41:03.384 ERROR 33222 --- [pool-3-thread-4] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:41:03.385  INFO 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:41:03.386  WARN 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:41:03.386  WARN 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:41:03.386  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:41:03
+2022-09-04 22:41:03.386  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:41:03
+2022-09-04 22:41:03.406  INFO 33222 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:42:19.417 ERROR 33222 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:42:19.419  INFO 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:42:19.419  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:42:19.419  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:42:19.420  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:42:19
+2022-09-04 22:42:19.420  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:42:19.420  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:42:19
+2022-09-04 22:42:19.437  INFO 33222 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:43:35.370 ERROR 33222 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:43:35.372  INFO 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:43:35.372  WARN 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:43:35.373  WARN 33222 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:43:35.373  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:43:35
+2022-09-04 22:43:35.373  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:43:35
+2022-09-04 22:43:35.391  INFO 33222 --- [pool-3-thread-2] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:44:51.378 ERROR 33222 --- [pool-3-thread-2] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:44:51.379  INFO 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:44:51.380  WARN 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:44:51.380  WARN 33222 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:44:51.380  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:44:51
+2022-09-04 22:44:51.381  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:44:51.381  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:44:51
+2022-09-04 22:44:51.403  INFO 33222 --- [pool-3-thread-4] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:45:00.011  INFO 33222 --- [collect-device-status3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:46:07.462 ERROR 33222 --- [pool-3-thread-4] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:46:07.463  INFO 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:46:07.463  WARN 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:46:07.463  WARN 33222 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:46:07.464  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:46:07
+2022-09-04 22:46:07.464  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:46:07
+2022-09-04 22:46:07.482  INFO 33222 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:47:24.154 ERROR 33222 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:47:24.156  INFO 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:47:24.156  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:47:24.157  WARN 33222 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:47:24.157  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:47:24
+2022-09-04 22:47:24.158  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:47:24.158  INFO 33222 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:47:24
+2022-09-04 22:47:24.176  INFO 33222 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:47:40.947  INFO 33222 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:47:40.947  INFO 33222 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:47:40.947  INFO 33222 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:47:40.953  INFO 33222 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:47:40.966  INFO 33222 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-04 22:48:33.263  WARN 33450 --- [main] o.s.b.StartupInfoLogger                  : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2022-09-04 22:48:28.255  INFO 33450 --- [main] c.n.m.w.NetworkManagementApplication     : Starting NetworkManagementApplication on MacBook-Pro-3.local with PID 33450 (/Users/shenlong/Documents/work/private-job-code/network-management/network-management-web/target/classes started by shenlong in /Users/shenlong/Documents/work/private-job-code/network-management)
+2022-09-04 22:48:38.277  INFO 33450 --- [main] c.n.m.w.NetworkManagementApplication     : No active profile set, falling back to default profiles: default
+2022-09-04 22:48:39.688  INFO 33450 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-04 22:48:39.700  INFO 33450 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-04 22:48:39.700  INFO 33450 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2022-09-04 22:48:39.841  INFO 33450 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-09-04 22:48:39.841  INFO 33450 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1511 ms
+2022-09-04 22:48:40.503  INFO 33450 --- [main] c.n.m.c.c.CaffeineCache                  : Caffeine Cache init success.
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/registry'], []
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/img/**'], []
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-ui.html'], []
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/v2/**'], []
+2022-09-04 22:48:41.110  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/swagger-resources/**'], []
+2022-09-04 22:48:41.111  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: Ant [pattern='/webjars/**'], []
+2022-09-04 22:48:41.139  INFO 33450 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ca2be53, org.springframework.security.web.context.SecurityContextPersistenceFilter@4fedf908, org.springframework.security.web.header.HeaderWriterFilter@75805562, org.springframework.security.web.authentication.logout.LogoutFilter@6ebbc06, com.network.management.web.filter.JwtAuthenticationTokenFilter@2c60ce47, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@37c87fcc, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@431babe6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@78f5cbc5, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@cf984d9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5341641d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43445fc6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70697478, org.springframework.security.web.session.SessionManagementFilter@13d984ee, org.springframework.security.web.access.ExceptionTranslationFilter@2a16d4dc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c8df667]
+2022-09-04 22:48:41.165  INFO 33450 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:48:41.195  INFO 33450 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-09-04 22:48:41.210  INFO 33450 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2022-09-04 22:48:41.278  INFO 33450 --- [main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:48:41.494  INFO 33450 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-04 22:48:41.494  INFO 33450 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-09-04 22:48:41.510  INFO 33450 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-09-04 22:48:41.548  INFO 33450 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-09-04 22:48:41.637  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:48:41
+2022-09-04 22:48:41.664  INFO 33450 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-04 22:48:41.712  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_1
+2022-09-04 22:48:41.715  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2022-09-04 22:48:41.718  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_1
+2022-09-04 22:48:41.720  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_1
+2022-09-04 22:48:41.732  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_2
+2022-09-04 22:48:41.735  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2022-09-04 22:48:41.738  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_2
+2022-09-04 22:48:41.752  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_3
+2022-09-04 22:48:41.776  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_3
+2022-09-04 22:48:41.778  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2022-09-04 22:48:41.781  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_4
+2022-09-04 22:48:41.783  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_2
+2022-09-04 22:48:41.803  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_1
+2022-09-04 22:48:41.806  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: uploadFileUsingPOST_1
+2022-09-04 22:48:41.820  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_2
+2022-09-04 22:48:41.830  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_4
+2022-09-04 22:48:41.833  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_4
+2022-09-04 22:48:41.835  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2022-09-04 22:48:41.836  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_5
+2022-09-04 22:48:41.837  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_3
+2022-09-04 22:48:41.841  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_3
+2022-09-04 22:48:41.847  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addUsingPOST_5
+2022-09-04 22:48:41.849  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_5
+2022-09-04 22:48:41.850  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_6
+2022-09-04 22:48:41.851  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: queryAllUsingGET_4
+2022-09-04 22:48:41.854  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_6
+2022-09-04 22:48:41.856  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2022-09-04 22:48:41.861  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: modifyUsingPOST_7
+2022-09-04 22:48:41.864  INFO 33450 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: searchUsingPOST_4
+2022-09-04 22:48:41.893  INFO 33450 --- [main] c.n.m.w.NetworkManagementApplication     : Started NetworkManagementApplication in 34.004 seconds (JVM running for 49.841)
+2022-09-04 22:48:42.185  INFO 33450 --- [pool-2-thread-1] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-04 22:48:42.648  INFO 33450 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 22:48:42.648  INFO 33450 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-04 22:48:42.657  INFO 33450 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 9 ms
+2022-09-04 22:48:42.753  INFO 33450 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:48:48.765 ERROR 33450 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:48:48.796  INFO 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:48:48.796  WARN 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:48:48.796  WARN 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:48:48.796  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:48:48
+2022-09-04 22:48:48.796  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:49:41.638  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:49:41
+2022-09-04 22:49:41.663  INFO 33450 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:49:47.663 ERROR 33450 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:49:47.663  INFO 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:49:47.664  WARN 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:49:47.664  WARN 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:49:47.664  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:49:47
+2022-09-04 22:50:00.016  INFO 33450 --- [collect-device-status1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:50:41.640  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:50:41
+2022-09-04 22:50:41.659  INFO 33450 --- [pool-3-thread-2] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:50:47.661 ERROR 33450 --- [pool-3-thread-2] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:50:47.662  INFO 33450 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:50:47.662  WARN 33450 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:50:47.662  WARN 33450 --- [pool-3-thread-2] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:50:47.662  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:50:47
+2022-09-04 22:50:47.662  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:51:41.635  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:51:41
+2022-09-04 22:51:41.657  INFO 33450 --- [pool-3-thread-4] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:51:47.660 ERROR 33450 --- [pool-3-thread-4] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:51:47.661  INFO 33450 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:51:47.661  WARN 33450 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:51:47.661  WARN 33450 --- [pool-3-thread-4] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:51:47.661  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:51:47
+2022-09-04 22:52:41.638  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:52:41
+2022-09-04 22:52:41.658  INFO 33450 --- [pool-3-thread-1] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:52:47.664 ERROR 33450 --- [pool-3-thread-1] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:52:47.665  INFO 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:52:47.665  WARN 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:52:47.665  WARN 33450 --- [pool-3-thread-1] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:52:47.666  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:52:47
+2022-09-04 22:52:47.666  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 当前基站状态信息推送个数：2
+2022-09-04 22:53:54.817  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务开始执行时间：2022-09-04 22:53:54
+2022-09-04 22:53:54.833  INFO 33450 --- [pool-3-thread-3] c.n.m.c.h.HttpClientUtils                : current get request url:http://127.0.0.1:8080/cgi-bin/c2s,headers:null,responseStatus:401
+2022-09-04 22:54:00.898 ERROR 33450 --- [pool-3-thread-3] c.n.m.c.s.SocketClient                   : 网络套接字发送信息失败
+2022-09-04 22:54:00.899  INFO 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源状态入参:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1},result->null
+2022-09-04 22:54:00.899  WARN 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回结果为空:powerReqVo->{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:54:00.899  WARN 33450 --- [pool-3-thread-3] c.n.m.s.i.PowerStatusServiceImpl         : 查询电源返回参数未空:{"ip":"127.0.0.2","port":8001,"type":1}
+2022-09-04 22:54:00.899  INFO 33450 --- [pool-2-thread-1] m.w.EquipmentStatusSynchronizationEngine : 基站状态推送定时任务执行结束时间：2022-09-04 22:54:00
+2022-09-04 22:54:01.492  INFO 33450 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-09-04 22:54:01.493  INFO 33450 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-09-04 22:54:01.494  INFO 33450 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2022-09-04 22:54:01.497  INFO 33450 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-04 22:54:01.509  INFO 33450 --- [SpringContextShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.

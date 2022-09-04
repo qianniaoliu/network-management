@@ -9,6 +9,8 @@ import com.network.management.domain.vo.PowerStatusVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Objects;
+
 /**
  * 设备状态和电源状态组合对象
  *
@@ -34,4 +36,17 @@ public class EquipmentStatusCombination {
      */
     private PowerStatusVo powerStatusVo;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {return true;}
+        if (o == null || getClass() != o.getClass()) {return false;}
+        EquipmentStatusCombination that = (EquipmentStatusCombination) o;
+        return Objects.equals(equipmentId, that.equipmentId) && Objects.equals(deviceStatusVo, that.deviceStatusVo)
+                && Objects.equals(powerStatusVo, that.powerStatusVo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(equipmentId, deviceStatusVo, powerStatusVo);
+    }
 }

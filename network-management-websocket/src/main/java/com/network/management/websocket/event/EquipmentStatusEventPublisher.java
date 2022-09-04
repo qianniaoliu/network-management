@@ -7,16 +7,16 @@ package com.network.management.websocket.event;
 import com.alibaba.fastjson.JSONObject;
 import com.network.management.websocket.EquipmentStatusCombination;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * 设备状态事件发布器
@@ -35,7 +35,7 @@ public class EquipmentStatusEventPublisher {
     /**
      * 缓存上次事件数据，用于新连接用户使用
      */
-    private ConcurrentMap<Integer, EquipmentStatusCombination> cacheData = new ConcurrentHashMap<>();
+    private Collection<EquipmentStatusCombination> cacheData = new ArrayList<>();
 
     /**
      * 增加客户端连接会话
@@ -44,8 +44,10 @@ public class EquipmentStatusEventPublisher {
      */
     public void addSession(WebSocketSession session) {
         webSocketSessions.add(session);
-        // 新连接客户需立即获取到最新数据
-        doSendMessage(session, this.cacheData.values());
+        if (CollectionUtils.isNotEmpty(this.cacheData)) {
+            // 新连接客户需立即获取到最新数据
+            doSendMessage(session, this.cacheData);
+        }
     }
 
     /**
@@ -63,10 +65,10 @@ public class EquipmentStatusEventPublisher {
      * @param event
      */
     public void publish(EquipmentStatusEvent event) {
-        ConcurrentMap<Integer, EquipmentStatusCombination> source = (ConcurrentMap<Integer, EquipmentStatusCombination>) event.getSource();
+        Collection<EquipmentStatusCombination> source = (Collection) event.getSource();
         this.cacheData = source;
         webSocketSessions.forEach(session -> {
-            doSendMessage(session, source.values());
+            doSendMessage(session, source);
         });
     }
 

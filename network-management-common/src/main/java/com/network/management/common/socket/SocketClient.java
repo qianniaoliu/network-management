@@ -6,10 +6,12 @@ import org.apache.commons.io.IOUtils;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 
 /**
  * 网络套接字客户端
+ *
  * @author yyc
  * @date 2021/12/13 12:26
  */
@@ -23,9 +25,10 @@ public class SocketClient {
 
     /**
      * 发送网络套接字命令
+     *
      * @param host ip
      * @param port 端口
-     * @param cmd 命令
+     * @param cmd  命令
      * @return 返回值
      */
     public static String send(String host, Integer port, String cmd, Boolean isControl) {
@@ -37,7 +40,9 @@ public class SocketClient {
         try {
             //将十六进制的字符串转换成字节数组
             byte[] cmdBytes = hexStringToByteArray(cmd);
-            clientSocket = new Socket(host, port);
+            clientSocket = new Socket();
+            // 设置socket默认超时时间10秒
+            clientSocket.connect(new InetSocketAddress(host, port), 10000);
             os = clientSocket.getOutputStream();
             pw = new PrintWriter(os);
             is = clientSocket.getInputStream();
@@ -45,13 +50,13 @@ public class SocketClient {
             Thread.sleep(1000);
             os.flush();
             clientSocket.shutdownOutput();
-            if(isControl){
+            if (isControl) {
                 return null;
             }
             strReturn = readBytes(is);
         } catch (Exception e) {
             log.error("网络套接字发送信息失败");
-        }finally {
+        } finally {
             IOUtils.closeQuietly(is);
             IOUtils.closeQuietly(pw);
             IOUtils.closeQuietly(os);
@@ -62,12 +67,13 @@ public class SocketClient {
 
     /**
      * read数据流
+     *
      * @param is {@link InputStream}
      * @return 16进制的字符串
      */
-    private static String readBytes(InputStream is){
+    private static String readBytes(InputStream is) {
         String strReturn = null;
-        try{
+        try {
             int size = 0;
             int readLength = 0;
             int fileLength = is.available();
@@ -75,11 +81,11 @@ public class SocketClient {
             while ((size = is.read(buf)) != -1) {
                 readLength += size;
                 strReturn = binaryToHexString(buf);
-                if(fileLength == readLength){
+                if (fileLength == readLength) {
                     break;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("读取数据异常", e);
         }
         return strReturn;

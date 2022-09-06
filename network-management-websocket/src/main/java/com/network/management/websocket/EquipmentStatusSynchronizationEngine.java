@@ -96,16 +96,17 @@ public class EquipmentStatusSynchronizationEngine implements InitializingBean {
             PowerStatusVo powerStatusVo = queryPowerStatus(equipment);
             EquipmentStatusCombination equipmentStatusCombination = new EquipmentStatusCombination(equipmentId, deviceStatusVo,
                     powerStatusVo);
-            if (equipmentStatusCombinationMapping.containsKey(equipment.getId())) {
-                EquipmentStatusCombination existEquipmentStatusCombination = equipmentStatusCombinationMapping.get(equipmentId);
-                if (Objects.equals(equipmentStatusCombination, existEquipmentStatusCombination)) {
-                    equipmentStatusCombinationMapping.remove(equipmentId);
-                } else {
-                    equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
-                }
-            } else {
-                equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
-            }
+            equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
+            //if (equipmentStatusCombinationMapping.containsKey(equipment.getId())) {
+            //    EquipmentStatusCombination existEquipmentStatusCombination = equipmentStatusCombinationMapping.get(equipmentId);
+            //    if (Objects.equals(equipmentStatusCombination, existEquipmentStatusCombination)) {
+            //        equipmentStatusCombinationMapping.remove(equipmentId);
+            //    } else {
+            //        equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
+            //    }
+            //} else {
+            //    equipmentStatusCombinationMapping.put(equipment.getId(), equipmentStatusCombination);
+            //}
         } catch (Exception ex) {
             log.error("定时任务查询基站状态失败,基站id：{}", equipment.getId());
         } finally {

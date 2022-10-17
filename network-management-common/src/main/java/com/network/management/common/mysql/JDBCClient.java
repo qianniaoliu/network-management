@@ -48,7 +48,7 @@ public class JDBCClient {
      * @param sql sql
      * @return 机车对象列表 {@link List<LocomotiveBo>}
      */
-    public static List<LocomotiveBo> execute(String url, String userName, String passWord, String sql, List<String> ueIps){
+    public static List<LocomotiveBo> execute(String url, String userName, String passWord, String sql){
         List<LocomotiveBo> locomotiveBos = Lists.newArrayList();
         Connection connection = null;
         PreparedStatement statement = null;
@@ -66,14 +66,12 @@ public class JDBCClient {
             statement = connection.prepareStatement(sql);
             //设置查询超时时间
             statement.setQueryTimeout(READ_TIME_OUT);
-            //填充sql变量
-            fillStatement(statement, ueIps);
             //返回查询结果集用于保存数据库查询内容
             rs = statement.executeQuery();
             //遍历结果集拿到数据
             while (rs.next()) {
                 LocomotiveBo locomotiveBo = new LocomotiveBo(rs.getString(EPC_SUB_SCRIPTION_IMSI), rs.getString(EPC_UE_IP_ADDR), rs.getString(EPC_ENB_IP_ADDR), rs.getInt(EPC_UC_STATE));
-                if(StringUtils.isNotEmpty(locomotiveBo.getUeIp()) && StringUtils.isNotEmpty(locomotiveBo.getENodeBIP())){
+                if(isValid(locomotiveBo)){
                     locomotiveBos.add(locomotiveBo);
                 }
             }
@@ -84,6 +82,13 @@ public class JDBCClient {
             closeQuietly(connection, statement, rs);
         }
         return locomotiveBos;
+    }
+
+    private static boolean isValid(LocomotiveBo locomotiveBo) {
+        return StringUtils.isNotEmpty(locomotiveBo.getUeIp())
+                && StringUtils.isNotEmpty(locomotiveBo.getENodeBIP())
+                && Objects.nonNull(locomotiveBo.getStatus())
+                && locomotiveBo.getStatus() != 0;
     }
 
     /**

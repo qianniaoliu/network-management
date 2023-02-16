@@ -27,7 +27,7 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
     /**
      * 新网管url
      */
-    private static final String newCoreUrl = "http://%s/ueInfo.html?query=true";
+    private static final String newCoreUrl = "http://%s/ueInfo.html?query=true&filter={'imsi':{'$regex':'^'},'userStateInfo.5gsUserState':{'$in':['CONNECTED','IDLE']}}";
     /**
      * get请求参数
      * http://172.25.11.12/ueInfo.html?query=true&filter={"imsi":{"$regex":"^"},"userStateInfo.5gsUserState":{"$in":["CONNECTED"]}}

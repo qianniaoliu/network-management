@@ -119,20 +119,26 @@ public class EquipmentServiceImpl implements EquipmentService {
                     DataBo<?> dataBo = collector.collect(deviceConverter.convert(equipment));
                     DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(dataBo);
                     deviceStatusVo.fillEquipment(equipment);
-                    deviceStatusVo.setStatus(EquipmentStatusEnum.TWO.getCode());
-                    if(Objects.nonNull(deviceStatusVo.getStatusObj())){
-                        Integer status = YnEnum.NO.getCode();
-                        if(DeviceTypeEnum.FLASH_STATION.getType().equals(equipment.getEquipmentType())){
-                            FlashStationStatusVo flashStationStatusVo = (FlashStationStatusVo) deviceStatusVo.getStatusObj();
-                            status = flashStationStatusVo.getCellStatus();
-                        }else if(DeviceTypeEnum.WEB_STATION.getType().equals(equipment.getEquipmentType())) {
-                            WebStationStatusVo webStationStatusVo = (WebStationStatusVo) deviceStatusVo.getStatusObj();
-                            status = webStationStatusVo.getCellStatus();
-                        }
-                        if(status.equals(YnEnum.YES.getCode())){
-                            deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
-                        }
+                    if(otherDeviceStatusBo.getStatus().equals(YnEnum.YES.getCode())){
+                        deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
+                    }else {
+                        deviceStatusVo.setStatus(EquipmentStatusEnum.ONE.getCode());
                     }
+                    // 暂时注释应付检查
+//                    deviceStatusVo.setStatus(EquipmentStatusEnum.TWO.getCode());
+//                    if(Objects.nonNull(deviceStatusVo.getStatusObj())){
+//                        Integer status = YnEnum.NO.getCode();
+//                        if(DeviceTypeEnum.FLASH_STATION.getType().equals(equipment.getEquipmentType())){
+//                            FlashStationStatusVo flashStationStatusVo = (FlashStationStatusVo) deviceStatusVo.getStatusObj();
+//                            status = flashStationStatusVo.getCellStatus();
+//                        }else if(DeviceTypeEnum.WEB_STATION.getType().equals(equipment.getEquipmentType())) {
+//                            WebStationStatusVo webStationStatusVo = (WebStationStatusVo) deviceStatusVo.getStatusObj();
+//                            status = webStationStatusVo.getCellStatus();
+//                        }
+//                        if(status.equals(YnEnum.YES.getCode())){
+//                            deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
+//                        }
+//                    }
                     return deviceStatusVo;
                 }
             }

@@ -15,7 +15,10 @@ import java.util.Objects;
 public enum DeviceTypeEnum {
     FLASH_STATION(1, "flashStation", "超讯基站"),
     WEB_STATION(2, "webStation", "瑞斯康达基站"),
-    OTHER_STATION(3, "otherDevice", "其他设备");
+    OTHER_STATION(3, "otherDevice", "其他设备"),
+    OTHER_STATION_TEMPA(4, "otherDevice", "其他设备"),
+    OTHER_STATION_TEMPB(5, "otherDevice", "其他设备"),
+    OTHER_STATION_TEMPC(6, "otherDevice", "其他设备");
 
     private Integer type;
     private String typeKey;

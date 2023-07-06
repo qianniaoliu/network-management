@@ -102,7 +102,7 @@ public class EquipmentServiceImpl implements EquipmentService {
             OtherDeviceStatusBo otherDeviceStatusBo = (OtherDeviceStatusBo) pingDataBo.getDataObj();
             //如果未连通或者设备本身是其他类型的设备，则不需要获取真实状态，直接返回
             if (otherDeviceStatusBo.getStatus().equals(YnEnum.NO.getCode())
-                    || DeviceTypeEnum.OTHER_STATION.getTypeKey().equals(equipment.getEquipmentType())) {
+                    || DeviceTypeEnum.OTHER_STATION.getType().equals(equipment.getEquipmentType())) {
                 DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(pingDataBo);
                 deviceStatusVo.fillEquipment(equipment);
                 //如果是连通状态，则使用绿色图标，否则使用红色图标

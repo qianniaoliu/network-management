@@ -40,6 +40,8 @@ public class DeviceStatusVoConverter implements Converter<DataBo<?>, DeviceStatu
                 return getWebDeviceStatusVo(dataBo);
             }else if(Objects.equals(DeviceTypeEnum.OTHER_STATION.getType(), dataBo.getType())){
                 return getOtherDeviceStatusVo(dataBo);
+            }else {
+                return getOtherDeviceStatusVo(dataBo);
             }
         }
         return null;

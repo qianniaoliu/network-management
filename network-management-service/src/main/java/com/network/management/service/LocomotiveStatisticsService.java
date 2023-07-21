@@ -1,5 +1,6 @@
 package com.network.management.service;
 
+import com.network.management.domain.vo.LocomotiveAccessDataVo;
 import com.network.management.domain.vo.LocomotiveStatisticsVo;
 
 /**
@@ -13,4 +14,10 @@ public interface LocomotiveStatisticsService {
      * @return
      */
     LocomotiveStatisticsVo queryLocomotiveStatisticsNumbers();
+
+    /**
+     * 查询机车统计数据
+     * @return
+     */
+    LocomotiveAccessDataVo queryLocomotiveData();
 }

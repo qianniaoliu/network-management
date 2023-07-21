@@ -106,9 +106,9 @@ public class EquipmentServiceImpl implements EquipmentService {
                 DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(pingDataBo);
                 deviceStatusVo.fillEquipment(equipment);
                 //如果是连通状态，则使用绿色图标，否则使用红色图标
-                if(otherDeviceStatusBo.getStatus().equals(YnEnum.YES.getCode())){
+                if (otherDeviceStatusBo.getStatus().equals(YnEnum.YES.getCode())) {
                     deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
-                }else {
+                } else {
                     deviceStatusVo.setStatus(EquipmentStatusEnum.ONE.getCode());
                 }
                 return deviceStatusVo;
@@ -119,26 +119,20 @@ public class EquipmentServiceImpl implements EquipmentService {
                     DataBo<?> dataBo = collector.collect(deviceConverter.convert(equipment));
                     DeviceStatusVo<?> deviceStatusVo = deviceStatusVoConverter.convert(dataBo);
                     deviceStatusVo.fillEquipment(equipment);
-                    if(otherDeviceStatusBo.getStatus().equals(YnEnum.YES.getCode())){
-                        deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
-                    }else {
-                        deviceStatusVo.setStatus(EquipmentStatusEnum.ONE.getCode());
+                    deviceStatusVo.setStatus(EquipmentStatusEnum.TWO.getCode());
+                    if (Objects.nonNull(deviceStatusVo.getStatusObj())) {
+                        Integer status = YnEnum.NO.getCode();
+                        if (DeviceTypeEnum.FLASH_STATION.getType().equals(equipment.getEquipmentType())) {
+                            FlashStationStatusVo flashStationStatusVo = (FlashStationStatusVo) deviceStatusVo.getStatusObj();
+                            status = flashStationStatusVo.getCellStatus();
+                        } else if (DeviceTypeEnum.WEB_STATION.getType().equals(equipment.getEquipmentType())) {
+                            WebStationStatusVo webStationStatusVo = (WebStationStatusVo) deviceStatusVo.getStatusObj();
+                            status = webStationStatusVo.getCellStatus();
+                        }
+                        if (status.equals(YnEnum.YES.getCode())) {
+                            deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
+                        }
                     }
-                    // 暂时注释应付检查
-//                    deviceStatusVo.setStatus(EquipmentStatusEnum.TWO.getCode());
-//                    if(Objects.nonNull(deviceStatusVo.getStatusObj())){
-//                        Integer status = YnEnum.NO.getCode();
-//                        if(DeviceTypeEnum.FLASH_STATION.getType().equals(equipment.getEquipmentType())){
-//                            FlashStationStatusVo flashStationStatusVo = (FlashStationStatusVo) deviceStatusVo.getStatusObj();
-//                            status = flashStationStatusVo.getCellStatus();
-//                        }else if(DeviceTypeEnum.WEB_STATION.getType().equals(equipment.getEquipmentType())) {
-//                            WebStationStatusVo webStationStatusVo = (WebStationStatusVo) deviceStatusVo.getStatusObj();
-//                            status = webStationStatusVo.getCellStatus();
-//                        }
-//                        if(status.equals(YnEnum.YES.getCode())){
-//                            deviceStatusVo.setStatus(EquipmentStatusEnum.THREE.getCode());
-//                        }
-//                    }
                     return deviceStatusVo;
                 }
             }

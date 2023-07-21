@@ -115,4 +115,15 @@ public class LocomotiveController {
     public Result queryLocomotiveStatisticsNumbers() {
         return Result.success(locomotiveStatisticsService.queryLocomotiveStatisticsNumbers());
     }
+
+    /**
+     * 查询机车统计数量
+     *
+     * @return 前端渲染对象
+     */
+    @GetMapping("/queryLocomotiveData")
+    @ApiOperation("查询机车统计数量（新）")
+    public Result queryLocomotiveStatistics() {
+        return Result.success(locomotiveStatisticsService.queryLocomotiveData());
+    }
 }

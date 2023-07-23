@@ -39,7 +39,7 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
      * 机车统计数量URL
      */
     private static final String LOCOMOTIVE_STATISTICS_NUMBER = "http://172.16.11.17/federal-api/api/alarm-data/dashboard/overview";
-    private static final String LOCOMOTIVE_ACCESS_DATA_URL = "http://172.25.11.69:8081/get/locomotive/statistics";
+    private static final String LOCOMOTIVE_ACCESS_DATA_URL = "http://172.25.11.69:8099/get/locomotive/statistics";
     /**
      * 超时时间
      */
@@ -119,23 +119,41 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
                 }
             }
         }
-        // 进场数据
+        // 南翼进场数据
         LocomotiveData southEnterData = new LocomotiveData();
-        southEnterData.setTitle(CommonConstants.LOCOMOTIVE_KEY);
+        southEnterData.setTitle(CommonConstants.SOUTH_LOCOMOTIVE_KEY);
         southEnterData.setType(CommonConstants.ENTRANCE_KEY);
         southEnterData.setDayStatistics(southEnterDayData);
         southEnterData.setWeekStatistics(southEnterWeekData);
         southEnterData.setMonthStatistics(southEnterMonthData);
         locomotiveDatas.add(southEnterData);
 
-        // 出场数据
+        // 南翼出场数据
         LocomotiveData southOutData = new LocomotiveData();
-        southOutData.setTitle(CommonConstants.LOCOMOTIVE_KEY);
+        southOutData.setTitle(CommonConstants.SOUTH_LOCOMOTIVE_KEY);
         southOutData.setType(CommonConstants.OUT_KEY);
         southOutData.setDayStatistics(southOutDayData);
         southOutData.setWeekStatistics(southOutWeekData);
         southOutData.setMonthStatistics(southOutMonthData);
         locomotiveDatas.add(southOutData);
+
+        // 北翼进场数据
+        LocomotiveData northEnterData = new LocomotiveData();
+        northEnterData.setTitle(CommonConstants.NORTH_LOCOMOTIVE_KEY);
+        northEnterData.setType(CommonConstants.ENTRANCE_KEY);
+        northEnterData.setDayStatistics(0);
+        northEnterData.setWeekStatistics(0);
+        northEnterData.setMonthStatistics(0);
+        locomotiveDatas.add(northEnterData);
+
+        // 北翼出场数据
+        LocomotiveData northOutData = new LocomotiveData();
+        northOutData.setTitle(CommonConstants.NORTH_LOCOMOTIVE_KEY);
+        northOutData.setType(CommonConstants.OUT_KEY);
+        northOutData.setDayStatistics(0);
+        northOutData.setWeekStatistics(0);
+        northOutData.setMonthStatistics(0);
+        locomotiveDatas.add(northOutData);
         return result;
     }
 

@@ -8,7 +8,12 @@ public class CommonConstants {
     /**
      * 南翼
      */
-    public final static String LOCOMOTIVE_KEY = "南翼";
+    public final static String SOUTH_LOCOMOTIVE_KEY = "南翼";
+
+    /**
+     * 北翼
+     */
+    public final static String NORTH_LOCOMOTIVE_KEY = "北翼";
 
     /**
      * 入场

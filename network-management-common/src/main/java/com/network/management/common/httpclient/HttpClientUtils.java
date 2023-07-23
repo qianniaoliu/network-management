@@ -1,21 +1,21 @@
 package com.network.management.common.httpclient;
 
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.*;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -136,12 +136,10 @@ public class HttpClientUtils {
         CloseableHttpResponse httpResponse = null;
         HttpEntity httpEntity = null;
         try {
-            String urlParams = getParameterUrl(params);
-            if(StringUtils.isNotEmpty(urlParams)){
-                url = url + question_mark + urlParams;
-            }
-            log.info("HttpClientUtils.doGet请求URL->{}", url);
-            HttpGet request = new HttpGet(url);
+            URIBuilder URIBuilder = new URIBuilder(url);
+            MapUtils.emptyIfNull(params).forEach(URIBuilder::setParameter);
+            log.info("HttpClientUtils.doGet请求URL->{}", URIBuilder.build());
+            HttpGet request = new HttpGet(URIBuilder.build());
             request.setConfig(config(timeOut));
             if (null != headers && !headers.isEmpty()) {
                 for (Map.Entry<String, String> e : headers.entrySet()) {
@@ -166,23 +164,6 @@ public class HttpClientUtils {
             closeStreams(httpResponse, httpEntity);
         }
         return response;
-    }
-
-    /**
-     * 获取请求参数
-     * @param paramsMap {@link Map<String, String>}
-     * @return
-     * @throws IOException
-     */
-    private static String getParameterUrl(Map<String, String> paramsMap) throws IOException {
-        if(MapUtils.isEmpty(paramsMap)){
-            return null;
-        }
-        List<BasicNameValuePair> params = Lists.newArrayList();
-        MapUtils.emptyIfNull(paramsMap).forEach((key, value) -> {
-            params.add(new BasicNameValuePair(key, value));
-        });
-        return EntityUtils.toString(new UrlEncodedFormEntity(params, Consts.UTF_8));
     }
 
     /**

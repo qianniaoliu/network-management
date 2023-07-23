@@ -1,7 +1,6 @@
 package com.network.management.service.impl.locomotive;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.network.management.common.httpclient.HttpClientUtils;
@@ -27,12 +26,15 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
     /**
      * 新网管url
      */
-    private static final String newCoreUrl = "http://%s/ueInfo.html?query=true&filter={\"userStateInfo.5gsUserState\":\"{\\\"$in\\\":[\\\"CONNECTED\\\",\\\"IDLE\\\"]}\",\"imsi\":\"{\\\"$regex\\\":\\\"^\\\"}\"}";
+    private static final String newCoreUrl1 = "http://%s/ueInfo.html?query=true";
     /**
      * get请求参数
-     * http://172.25.11.12/ueInfo.html?query=true&filter={"imsi":{"$regex":"^"},"userStateInfo.5gsUserState":{"$in":["CONNECTED"]}}
+     * http://172.25.11.12/ueInfo.html?query=true&filter={"imsi":{"$regex":"^"},"userStateInfo.5gsUserState":{"$in":["CONNECTED","IDLE"]}}
      */
     private static final String newCoreUrlParams = "?query=true&filter={%22imsi%22:{%22$regex%22:%22^%22},%22userStateInfo.5gsUserState%22:{%22$in%22:[%22CONNECTED%22,%22IDLE%22]}}";
+
+
+    private static final String newCoreUrl = "http://%s/ueInfo.html";
 
 
     /**
@@ -55,13 +57,13 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
     /**
      * 机车链接状态
      */
-    private static final Set<String> ConnectStatus = Sets.newHashSet("CONNECTED","IDLE");
+    private static final Set<String> ConnectStatus = Sets.newHashSet("CONNECTED");
     /**
      * 逗号
      */
     private static final String COMMA = ",";
 
-     /**
+    /**
      * 超时时间
      */
     @Value("${locomotive.time.out:5000}")
@@ -80,7 +82,7 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
             return Maps.newHashMap();
         }
         try{
-            String htmlContent = queryData(coreIp, getHeaderMap());
+            String htmlContent = queryData(coreIp, getHeaderMap(), getParameters());
             Map<String, String> ueMap = parseHtmlContent(htmlContent);
             log.info("机车与核心网的映射关系为ueMap->{}", JSON.toJSONString(ueMap));
             return ueMap;
@@ -90,6 +92,24 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
         return Maps.newHashMap();
     }
 
+    /**
+     * 过滤条件
+     * @return
+     */
+    private String getFilterString(){
+        Map<String,Object> filterMap = Maps.newHashMap();
+
+        Map<String, String> imsiMap = Maps.newHashMap();
+        imsiMap.put("$regex", "^");
+
+        Map<String, Object> userStateMap = Maps.newHashMap();
+        userStateMap.put("$in", ConnectStatus);
+
+        filterMap.put("imsi", imsiMap);
+        filterMap.put("userStateInfo.5gsUserState", userStateMap);
+        return JSON.toJSONString(filterMap);
+    }
+
 
     /**
      * reload远端数据
@@ -97,10 +117,10 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
      * @param coreIp 核心网ip
      * @param headers headers
      */
-    private String queryData(String coreIp, Map<String, String> headers) {
+    private String queryData(String coreIp, Map<String, String> headers, Map<String, String> params) {
         try {
             String url = String.format(newCoreUrl, coreIp);
-            return HttpClientUtils.doGet(url, headers, null, Integer.parseInt(timeOut), HTTP.UTF_8);
+            return HttpClientUtils.doGet(url, headers, params, Integer.parseInt(timeOut), HTTP.UTF_8);
         } catch (Exception ex) {
             log.error("LocomotiveServiceByNewCoreNet.queryData coreIp->{},headers->{}", coreIp, JSON.toJSONString(headers), ex);
         }
@@ -116,17 +136,7 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
         Map<String, String> params = Maps.newHashMap();
         params.put("query", JSON.toJSONString(Boolean.TRUE));
 
-        Map<String, String> regexMap = Maps.newHashMap();
-        regexMap.put("$regex", "^");
-
-        Map<String, String> inMap = Maps.newHashMap();
-        inMap.put("$in", JSON.toJSONString(Lists.newArrayList("CONNECTED", "IDLE")));
-
-        Map<String, String> filterMap = Maps.newHashMap();
-        filterMap.put("imsi", JSON.toJSONString(regexMap));
-        filterMap.put("userStateInfo.5gsUserState", JSON.toJSONString(inMap));
-
-        params.put("filter", JSON.toJSONString(filterMap));
+        params.put("filter", getFilterString());
 
         return params;
     }
@@ -193,6 +203,7 @@ public class LocomotiveServiceByNewCoreNet extends AbstractLocomotiveServiceImpl
         header.put("Cookie", cookie2);
         return header;
     }
+
 
     @Override
     public boolean isSupport(String type) {

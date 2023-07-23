@@ -56,6 +56,13 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
     @Override
     public LocomotiveAccessDataVo queryLocomotiveData() {
         List<String> originLocomotiveAccessData = getOriginLocomotiveAccessData(LOCOMOTIVE_ACCESS_DATA_URL);
+        if(CollectionUtils.isNotEmpty(originLocomotiveAccessData)){
+            originLocomotiveAccessData.sort((o1, o2) -> {
+                LocomotiveAccessDataItemBo bo1 = getLocomotiveAccessDataItemBo(o1);
+                LocomotiveAccessDataItemBo bo2 = getLocomotiveAccessDataItemBo(o2);
+                return DateUtils.parseDateString(bo2.getDate()).compareTo(DateUtils.parseDateString(bo1.getDate()));
+            });
+        }
 
         return resolveOriginLocomotiveAccessData(originLocomotiveAccessData);
     }
@@ -163,7 +170,7 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
      * @param originData 机车原始数据
      * @return 业务模型
      */
-    private LocomotiveAccessDataItemBo getLocomotiveAccessDataItemBo(String originData) {
+    private static LocomotiveAccessDataItemBo getLocomotiveAccessDataItemBo(String originData) {
         if (StringUtils.isBlank(originData)) {
             return null;
         }

@@ -3,6 +3,7 @@ package com.network.management.common;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
 /**
@@ -46,10 +47,17 @@ public class DateUtils {
      * @return true：是，false：不是
      */
     public static boolean isCurrentWeek(Date date) {
+        // 获取本周的开始日期和结束日期
+        LocalDate startOfWeek = LocalDate.now().with(TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        LocalDate endOfWeek = LocalDate.now().with(TemporalAdjusters.nextOrSame(java.time.DayOfWeek.SUNDAY));
         LocalDate today = LocalDate.now();
         LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-        return targetDate.isAfter(today.minusDays(today.getDayOfWeek().getValue() - 1)) &&
-                targetDate.isBefore(today.plusDays(7 - today.getDayOfWeek().getValue()));
+//        return targetDate.isAfter(today.minusDays(today.getDayOfWeek().getValue() - 1)) &&
+//                targetDate.isBefore(today.plusDays(7 - today.getDayOfWeek().getValue()));
+
+        return targetDate.isEqual(startOfWeek)
+                || targetDate.isEqual(endOfWeek)
+                || (targetDate.isAfter(startOfWeek) && targetDate.isBefore(endOfWeek));
     }
 
     /**
@@ -62,5 +70,58 @@ public class DateUtils {
         LocalDate today = LocalDate.now();
         LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
         return targetDate.getYear() == today.getYear() && targetDate.getMonth() == today.getMonth();
+    }
+
+    /**
+     * 是否属于当月上旬
+     *
+     * @param date 时间
+     * @return true：是，false：不是
+     */
+    public static boolean isFirstThirdMonth(Date date) {
+        // 将目标时间字符串转换为 LocalDate 对象
+        LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        // 获取当月的第一天和第十一天
+        LocalDate firstDayOfMonth = targetDate.withDayOfMonth(1);
+        LocalDate eleventhDayOfMonth = targetDate.withDayOfMonth(11);
+        // 判断目标时间是否属于上旬、中旬或下旬
+        return targetDate.isEqual(firstDayOfMonth) || (targetDate.isAfter(firstDayOfMonth) && targetDate.isBefore(eleventhDayOfMonth));
+    }
+
+    /**
+     * 是否属于当月中旬
+     *
+     * @param date 时间
+     * @return true：是，false：不是
+     */
+    public static boolean isMiddleThirdMonth(Date date) {
+        // 将目标时间字符串转换为 LocalDate 对象
+        LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        // 获取当月的第十一天，第二十一天
+        LocalDate eleventhDayOfMonth = targetDate.withDayOfMonth(11);
+        LocalDate twentyFirstDayOfMonth = targetDate.withDayOfMonth(21);
+
+        // 判断目标时间是否属于上旬、中旬或下旬
+        return (targetDate.isEqual(eleventhDayOfMonth) || (targetDate.isAfter(eleventhDayOfMonth) && targetDate.isBefore(twentyFirstDayOfMonth)));
+    }
+
+    /**
+     * 是否属于当月下旬
+     *
+     * @param date 时间
+     * @return true：是，false：不是
+     */
+    public static boolean isLastThirdMonth(Date date) {
+        // 将目标时间字符串转换为 LocalDate 对象
+        LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+        // 第二十一天，最后一天
+        LocalDate twentyFirstDayOfMonth = targetDate.withDayOfMonth(21);
+        LocalDate lastDayOfMonth = targetDate.withDayOfMonth(targetDate.lengthOfMonth());
+
+        // 判断目标时间是否属于上旬、中旬或下旬
+        return targetDate.isEqual(twentyFirstDayOfMonth) || (targetDate.isAfter(twentyFirstDayOfMonth) && targetDate.isBefore(lastDayOfMonth));
     }
 }

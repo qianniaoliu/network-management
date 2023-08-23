@@ -2,6 +2,7 @@ package com.network.management.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.google.common.collect.Lists;
 import com.network.management.common.DateUtils;
 import com.network.management.common.constants.CommonConstants;
 import com.network.management.common.httpclient.HttpClientUtils;
@@ -9,7 +10,9 @@ import com.network.management.domain.bo.LocomotiveAccessDataItemBo;
 import com.network.management.domain.bo.LocomotiveStatisticsBo;
 import com.network.management.domain.vo.LocomotiveAccessDataVo;
 import com.network.management.domain.vo.LocomotiveData;
+import com.network.management.domain.vo.LocomotiveRecordVo;
 import com.network.management.domain.vo.LocomotiveStatisticsVo;
+import com.network.management.service.LocomotiveRecordService;
 import com.network.management.service.LocomotiveStatisticsService;
 import com.network.management.service.converter.LocomotiveStatisticsVoConverter;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 机车数量统计服务实现类
@@ -35,6 +35,9 @@ import java.util.Objects;
 public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsService {
     @Autowired
     private LocomotiveStatisticsVoConverter locomotiveStatisticsVoConverter;
+
+    @Autowired
+    private LocomotiveRecordService locomotiveRecordService;
     /**
      * 机车统计数量URL
      */
@@ -55,8 +58,77 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
 
     @Override
     public LocomotiveAccessDataVo queryLocomotiveData() {
+        return getNewLocomotiveAccessDataVo();
+    }
+
+    private LocomotiveAccessDataVo getNewLocomotiveAccessDataVo() {
+        List<LocomotiveRecordVo> allLocomotiveRecordVos = Lists.newArrayList();
+        Integer currentPage = 1;
+        Integer pageSize = 100;
+        while (true) {
+            List<LocomotiveRecordVo> locomotiveRecordVos = locomotiveRecordService.queryLocomotiveRecords(currentPage, pageSize);
+            if (CollectionUtils.isEmpty(locomotiveRecordVos)) {
+                break;
+            }
+            allLocomotiveRecordVos.addAll(locomotiveRecordVos);
+            currentPage++;
+        }
+        allLocomotiveRecordVos.sort((o1, o2) -> o2.getOccurDate().compareTo(o1.getOccurDate()));
+
+        return resolveLocomotiveAccessData(allLocomotiveRecordVos);
+    }
+
+    private LocomotiveAccessDataVo resolveLocomotiveAccessData(List<LocomotiveRecordVo> allLocomotiveRecordVos) {
+        if (CollectionUtils.isEmpty(allLocomotiveRecordVos)) {
+            return null;
+        }
+        /**
+         * 通过南翼/北翼，进出场作为key，例子如下
+         * 南翼进场=1
+         * 南翼出场=2
+         * 北翼进场=3
+         * 北翼出场=4
+         */
+        Map<String, LocomotiveData> locomotiveDataMap = new HashMap<>();
+
+        /**
+         * key=南翼表示南翼进出场记录
+         * key=北翼表示北翼进出场记录
+         */
+        Map<String, List<String>> particularsMap = new HashMap<>();
+
+        for (LocomotiveRecordVo locomotiveRecordVo : allLocomotiveRecordVos) {
+            StringBuilder sb = new StringBuilder(DateUtils.formatDateString(locomotiveRecordVo.getOccurDate()))
+                    .append(CommonConstants.COMMA_KEY)
+                    .append(locomotiveRecordVo.getDirection());
+            List<String> particulars = particularsMap.getOrDefault(locomotiveRecordVo.getLocation(), new ArrayList<>());
+            particulars.add(sb.toString());
+            LocomotiveData locomotiveData = locomotiveDataMap.getOrDefault(locomotiveRecordVo.getLocation() + locomotiveRecordVo.getDirection(), new LocomotiveData());
+            if (StringUtils.isBlank(locomotiveData.getTitle())
+                    || StringUtils.isBlank(locomotiveData.getType())) {
+                locomotiveData.setTitle(locomotiveRecordVo.getLocation());
+                locomotiveData.setType(locomotiveRecordVo.getDirection());
+            }
+            if (DateUtils.isToday(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setDayStatistics(locomotiveData.getDayStatistics() + 1);
+            }
+            if (DateUtils.isCurrentWeek(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + 1);
+            }
+            if (DateUtils.isCurrentMonth(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setMonthStatistics(locomotiveData.getMonthStatistics() + 1);
+            }
+        }
+        LocomotiveAccessDataVo result = new LocomotiveAccessDataVo();
+        result.setLocomotiveDatas(Lists.newArrayList(locomotiveDataMap.values()));
+        result.setSouthParticulars(particularsMap.get(CommonConstants.SOUTH_LOCOMOTIVE_KEY));
+        result.setNorthParticulars(particularsMap.get(CommonConstants.NORTH_LOCOMOTIVE_KEY));
+        return result;
+    }
+
+    private LocomotiveAccessDataVo getOldLocomotiveAccessDataVo() {
         List<String> originLocomotiveAccessData = getOriginLocomotiveAccessData(LOCOMOTIVE_ACCESS_DATA_URL);
-        if(CollectionUtils.isNotEmpty(originLocomotiveAccessData)){
+        if (CollectionUtils.isNotEmpty(originLocomotiveAccessData)) {
             originLocomotiveAccessData.sort((o1, o2) -> {
                 LocomotiveAccessDataItemBo bo1 = getLocomotiveAccessDataItemBo(o1);
                 LocomotiveAccessDataItemBo bo2 = getLocomotiveAccessDataItemBo(o2);

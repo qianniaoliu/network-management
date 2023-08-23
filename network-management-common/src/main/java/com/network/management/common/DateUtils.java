@@ -29,6 +29,17 @@ public class DateUtils {
     }
 
     /**
+     * 将时间类型转换成字符串
+     *
+     * @param date 时间
+     * @return 字符串
+     */
+    public static String formatDateString(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(date);
+    }
+
+    /**
      * 判断目标时间是否是当天
      *
      * @param date 时间

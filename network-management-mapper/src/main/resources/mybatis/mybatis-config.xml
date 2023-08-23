@@ -36,6 +36,7 @@
         <typeAlias alias="SipBook" type="com.network.management.domain.dao.SipBook"/>
         <typeAlias alias="Authority" type="com.network.management.domain.dao.Authority"/>
         <typeAlias alias="AuthorityRelation" type="com.network.management.domain.dao.AuthorityRelation"/>
+        <typeAlias alias="LocomotiveRecord" type="com.network.management.domain.dao.LocomotiveRecord"/>
     </typeAliases>
 
     <mappers>
@@ -52,5 +53,6 @@
         <mapper resource="mybatis/mapper/SipBookMapper.xml"/>
         <mapper resource="mybatis/mapper/AuthorityMapper.xml"/>
         <mapper resource="mybatis/mapper/AuthorityRelationMapper.xml"/>
+        <mapper resource="mybatis/mapper/LocomotiveRecordMapper.xml"/>
     </mappers>
 </configuration>

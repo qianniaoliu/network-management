@@ -1,6 +1,10 @@
 package com.network.management.domain.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.network.management.common.exception.IllegalParamException;
 import lombok.Data;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 
@@ -35,10 +39,15 @@ public class LocomotiveRecordVo {
     /**
      * 发生时间
      */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date occurDate;
 
-    public void checkParam(){
-
+    public void checkParam() {
+        if (StringUtils.isAnyBlank(vehicleType, direction, location)
+                || ObjectUtils.isEmpty(sectionNumber)
+                || ObjectUtils.isEmpty(occurDate)) {
+            throw new IllegalParamException("缺少必填参数");
+        }
     }
 
 }

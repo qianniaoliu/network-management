@@ -8,7 +8,7 @@ import lombok.Data;
  * @author <a href="mailto:cereb.shen@gmail.com">shenlong</a>
  */
 @Data
-public class LocomotiveData {
+public class LocomotiveData implements Comparable<LocomotiveData> {
 
     /**
      * 头
@@ -34,4 +34,9 @@ public class LocomotiveData {
      * 月统计
      */
     private int monthStatistics;
+
+    @Override
+    public int compareTo(LocomotiveData o) {
+        return o.title.compareTo(this.title);
+    }
 }

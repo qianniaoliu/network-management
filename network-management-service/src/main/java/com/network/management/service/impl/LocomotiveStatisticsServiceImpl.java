@@ -101,9 +101,12 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
             StringBuilder sb = new StringBuilder(DateUtils.formatDateString(locomotiveRecordVo.getOccurDate()))
                     .append(CommonConstants.COMMA_KEY)
                     .append(locomotiveRecordVo.getDirection());
-            List<String> particulars = particularsMap.getOrDefault(locomotiveRecordVo.getLocation(), new ArrayList<>());
+            particularsMap.putIfAbsent(locomotiveRecordVo.getLocation(), new ArrayList<>());
+            List<String> particulars = particularsMap.get(locomotiveRecordVo.getLocation());
             particulars.add(sb.toString());
-            LocomotiveData locomotiveData = locomotiveDataMap.getOrDefault(locomotiveRecordVo.getLocation() + locomotiveRecordVo.getDirection(), new LocomotiveData());
+
+            locomotiveDataMap.putIfAbsent(locomotiveRecordVo.getLocation() + locomotiveRecordVo.getDirection(), new LocomotiveData());
+            LocomotiveData locomotiveData = locomotiveDataMap.get(locomotiveRecordVo.getLocation() + locomotiveRecordVo.getDirection());
             if (StringUtils.isBlank(locomotiveData.getTitle())
                     || StringUtils.isBlank(locomotiveData.getType())) {
                 locomotiveData.setTitle(locomotiveRecordVo.getLocation());
@@ -120,7 +123,9 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
             }
         }
         LocomotiveAccessDataVo result = new LocomotiveAccessDataVo();
-        result.setLocomotiveDatas(Lists.newArrayList(locomotiveDataMap.values()));
+        List<LocomotiveData> locomotiveDatas = Lists.newArrayList(locomotiveDataMap.values());
+        Collections.sort(locomotiveDatas);
+        result.setLocomotiveDatas(locomotiveDatas);
         result.setSouthParticulars(particularsMap.get(CommonConstants.SOUTH_LOCOMOTIVE_KEY));
         result.setNorthParticulars(particularsMap.get(CommonConstants.NORTH_LOCOMOTIVE_KEY));
         return result;

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author <a href="mailto:cereb.shen@gmail.com">shenlong</a>
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/openapi")
 public class LocomotiveRecordProvider {
 
     @Autowired

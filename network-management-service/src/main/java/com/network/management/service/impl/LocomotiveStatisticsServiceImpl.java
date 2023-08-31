@@ -100,7 +100,13 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
         for (LocomotiveRecordVo locomotiveRecordVo : allLocomotiveRecordVos) {
             StringBuilder sb = new StringBuilder(DateUtils.formatDateString(locomotiveRecordVo.getOccurDate()))
                     .append(CommonConstants.COMMA_KEY)
-                    .append(locomotiveRecordVo.getDirection());
+                    .append(locomotiveRecordVo.getDirection())
+                    .append(CommonConstants.COMMA_KEY)
+                    .append("车辆类型：")
+                    .append(locomotiveRecordVo.getVehicleType())
+                    .append(CommonConstants.COMMA_KEY)
+                    .append("车厢节数：")
+                    .append(locomotiveRecordVo.getSectionNumber());
             particularsMap.putIfAbsent(locomotiveRecordVo.getLocation(), new ArrayList<>());
             List<String> particulars = particularsMap.get(locomotiveRecordVo.getLocation());
             particulars.add(sb.toString());

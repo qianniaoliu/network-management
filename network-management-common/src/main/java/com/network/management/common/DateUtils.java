@@ -61,11 +61,7 @@ public class DateUtils {
         // 获取本周的开始日期和结束日期
         LocalDate startOfWeek = LocalDate.now().with(TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
         LocalDate endOfWeek = LocalDate.now().with(TemporalAdjusters.nextOrSame(java.time.DayOfWeek.SUNDAY));
-        LocalDate today = LocalDate.now();
         LocalDate targetDate = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-//        return targetDate.isAfter(today.minusDays(today.getDayOfWeek().getValue() - 1)) &&
-//                targetDate.isBefore(today.plusDays(7 - today.getDayOfWeek().getValue()));
-
         return targetDate.isEqual(startOfWeek)
                 || targetDate.isEqual(endOfWeek)
                 || (targetDate.isAfter(startOfWeek) && targetDate.isBefore(endOfWeek));

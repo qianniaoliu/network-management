@@ -96,7 +96,7 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
          * key=北翼表示北翼进出场记录
          */
         Map<String, List<String>> particularsMap = new HashMap<>();
-
+        Date nowDate = new Date();
         for (LocomotiveRecordVo locomotiveRecordVo : allLocomotiveRecordVos) {
             StringBuilder sb = new StringBuilder(DateUtils.formatDateString(locomotiveRecordVo.getOccurDate()))
                     .append(CommonConstants.COMMA_KEY)
@@ -119,13 +119,23 @@ public class LocomotiveStatisticsServiceImpl implements LocomotiveStatisticsServ
                 locomotiveData.setType(locomotiveRecordVo.getDirection());
             }
             if (DateUtils.isToday(locomotiveRecordVo.getOccurDate())) {
-                locomotiveData.setDayStatistics(locomotiveData.getDayStatistics() + 1);
+                locomotiveData.setDayStatistics(locomotiveData.getDayStatistics() + locomotiveRecordVo.getSectionNumber());
             }
-            if (DateUtils.isCurrentWeek(locomotiveRecordVo.getOccurDate())) {
-                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + 1);
+            if (DateUtils.isFirstThirdMonth(nowDate)
+                    && DateUtils.isFirstThirdMonth(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + locomotiveRecordVo.getSectionNumber());
+            } else if (DateUtils.isMiddleThirdMonth(nowDate)
+                    && DateUtils.isMiddleThirdMonth(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + locomotiveRecordVo.getSectionNumber());
+            } else if (DateUtils.isLastThirdMonth(nowDate)
+                    && DateUtils.isLastThirdMonth(locomotiveRecordVo.getOccurDate())) {
+                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + locomotiveRecordVo.getSectionNumber());
             }
+//            if (DateUtils.isCurrentWeek(locomotiveRecordVo.getOccurDate())) {
+//                locomotiveData.setWeekStatistics(locomotiveData.getWeekStatistics() + locomotiveRecordVo.getSectionNumber());
+//            }
             if (DateUtils.isCurrentMonth(locomotiveRecordVo.getOccurDate())) {
-                locomotiveData.setMonthStatistics(locomotiveData.getMonthStatistics() + 1);
+                locomotiveData.setMonthStatistics(locomotiveData.getMonthStatistics() + locomotiveRecordVo.getSectionNumber());
             }
         }
         LocomotiveAccessDataVo result = new LocomotiveAccessDataVo();
